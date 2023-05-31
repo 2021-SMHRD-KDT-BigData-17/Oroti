@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jisang.poyong.mapper.Mapper;
 import kr.board.entity.Board;
 import kr.board.mapper.BoardMapper;
 
@@ -23,11 +24,9 @@ public class UserRegController {
 	
 	// 모든 요청들은  FrontController로 들어와서 이 POJO로 연결됨
 	
-	// 의존성 주입
-	// 특정 메모리에 객체를 다 넣어놓고 가져다 쓰는 방법
 	// @Autowired 안적으면 오류는 나지 않지만 실행이 되지 않음 
 	@Autowired
-	private BoardMapper mapper;
+	private Mapper mapper;
 	
 	
 	
