@@ -1,0 +1,17 @@
+function indivBtn(){
+    document.getElementById("indiv").style.display = "block";
+    document.getElementById("corp").style.display = "none";
+}
+
+function corpBtn(){
+    document.getElementById("indiv").style.display = "none";
+    document.getElementById("corp").style.display = "block";
+}
+
+
+// 사업자 번호 입력 - 숫자만 입력받는 기능
+function onlyNum(){
+    if(event.keyCode<48 || event.keyCode>57){
+       event.returnValue=false;
+    }
+}

@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>하이룽</title>
 </head>
 <body>
 <!-- index.jsp가 실행되면 바로 요청을 보내는 코드를 작성 
 	jstl에서 c:redirect 이용하여
 -->
-<c:redirect url="boardAjaxMain.do"/>
+<c:redirect url="SignUp.do"/>
 </body>
 </html>

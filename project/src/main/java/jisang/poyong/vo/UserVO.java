@@ -1,16 +1,16 @@
-package jisang.poyong.entity;
- // DTO = 변수하나하나 만들어주기
-public class User {
+package jisang.poyong.vo;
+ // VO = 변수하나하나 만들어주기
+public class UserVO {
 
 	// 필드명 property(프로퍼티) 속성
-	private String user_id;
-	private String user_pw;
-	private String user_name;
-	private String user_address;
-	private String phone;
-	private char user_div;
-	private char user_obstc_code;
-	private String user_parent_phone;
+	private String user_id; // 아이디
+	private String user_pw; // 비번
+	private String user_name; //이름
+	private String user_address; //주소
+	private String phone; //연락처 
+	private char user_div; //유저 구분(비장애, 장애 , 기업)
+	private char user_obstc_code; // 장애 분류 (0~15) 
+	private String user_parent_phone; // 보호자 연락처
 	
 	
 	public String getUser_id() {

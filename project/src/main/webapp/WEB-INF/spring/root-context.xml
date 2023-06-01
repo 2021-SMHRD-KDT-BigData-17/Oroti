@@ -9,10 +9,10 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- com.zaxxer.hikari.HikariConfig.class -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mysql?useSSL=false&amp;serverTimezone=UTC" />
-	    <property name="username" value="root" />
-	    <property name="password" value="12345" />
+	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	    <property name="jdbcUrl" value="jdbc:mysql:// project-db-stu.smhrd.com:3307/poyong?useSSL=false&amp;serverTimezone=UTC" />
+	    <property name="username" value="poyong" />
+	    <property name="password" value="smhrd1234" />
 	</bean>
 	<!-- com.zaxxer.hikari.HikariConfig.class 
 		위의 환경설정대로 Connection Poll을 만드는 역할
@@ -31,6 +31,6 @@
 	 </bean>
 	 
 	 <!-- BoardMapper interface들을 메모리에 올림(scan) -->
-	 <mybatis-spring:scan base-package="kr.board.mapper"/>
+	 <mybatis-spring:scan base-package="jisang.poyong.mapper"/>
 	 
 </beans>
