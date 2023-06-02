@@ -160,4 +160,8 @@ header{
     font-size: 14px;
     color: #333;
 }
+
+.nav2_right .customer:hover {
+    color: var(--main-color);
+}
 /* 헤더 두 번째 줄 (끝) */
