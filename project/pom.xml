@@ -127,7 +127,6 @@
 
 
 		<dependency>
-<<<<<<< HEAD
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.26</version>
@@ -157,7 +156,7 @@
 			<version>2.10.1</version>
 		</dependency>
 
-=======
+	<dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
           <version>5.1.38</version>
@@ -193,7 +192,7 @@
         <version>2.5.0</version>
     </dependency>
       
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-BigData-17/Oroti.git
+
 	</dependencies>
 	<build>
 		<plugins>
