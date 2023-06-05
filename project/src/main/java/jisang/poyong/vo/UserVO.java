@@ -3,66 +3,67 @@ package jisang.poyong.vo;
 public class UserVO {
 
 	// 필드명 property(프로퍼티) 속성
-	private String user_id; // 아이디
-	private String user_pw; // 비번
-	private String user_name; //이름
-	private String user_address; //주소
-	private String phone; //연락처 
-	private char user_div; //유저 구분(비장애, 장애 , 기업)
-	private char user_obstc_code; // 장애 분류 (0~15) 
-	private String user_parent_phone; // 보호자 연락처
-	
-	
-	public String getUser_id() {
-		return user_id;
+	private String userid; // 아이디
+	private String userpw; // 비번
+	private String username; //이름
+	private String useremail; //이메일
+	private String userphone; //연락처 
+	private char userdiv; //유저 구분(일반 , 기업)
+	private char userobstccode; // 장애 분류 (0~15) 
+	private String userparentphone; // 보호자 연락처
+	public String getUserid() {
+		return userid;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getUser_pw() {
-		return user_pw;
+	public String getUserpw() {
+		return userpw;
 	}
-	public void setUser_pw(String user_pw) {
-		this.user_pw = user_pw;
+	public void setUserpw(String userpw) {
+		this.userpw = userpw;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getUsername() {
+		return username;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getUser_address() {
-		return user_address;
+	public String getUseremail() {
+		return useremail;
 	}
-	public void setUser_address(String user_address) {
-		this.user_address = user_address;
+	public void setUseremail(String useremail) {
+		this.useremail = useremail;
 	}
-	public String getPhone() {
-		return phone;
+	public String getUserphone() {
+		return userphone;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setUserphone(String userphone) {
+		this.userphone = userphone;
 	}
-	public char getUser_div() {
-		return user_div;
+	public char getUserdiv() {
+		return userdiv;
 	}
-	public void setUser_div(char user_div) {
-		this.user_div = user_div;
+	public void setUserdiv(char userdiv) {
+		this.userdiv = userdiv;
 	}
-	public char getUser_obstc_code() {
-		return user_obstc_code;
+	public char getUserobstccode() {
+		return userobstccode;
 	}
-	public void setUser_obstc_code(char user_obstc_code) {
-		this.user_obstc_code = user_obstc_code;
+	public void setUserobstccode(char userobstccode) {
+		this.userobstccode = userobstccode;
 	}
-	public String getUser_parent_phone() {
-		return user_parent_phone;
+	public String getUserparentphone() {
+		return userparentphone;
 	}
-	public void setUser_parent_phone(String user_parent_phone) {
-		this.user_parent_phone = user_parent_phone;
+	public void setUserparentphone(String userparentphone) {
+		this.userparentphone = userparentphone;
 	}
-
-	
-	
+	@Override
+	public String toString() {
+		return "UserVO [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", useremail=" + useremail
+				+ ", userphone=" + userphone + ", userdiv=" + userdiv + ", userobstccode=" + userobstccode
+				+ ", userparentphone=" + userparentphone + "]";
+	}
 	
 }

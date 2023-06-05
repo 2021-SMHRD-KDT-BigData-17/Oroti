@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
    
-	@RequestMapping("/SignUp") 
+	@RequestMapping("/SignUp.do") 
     public String SignUp() {
     
     	return "/jisang/SignUp"; 
@@ -14,7 +14,7 @@ public class MainController {
     }
 	
     
-	@RequestMapping("/SignIn") 
+	@RequestMapping("/SignIn.do") 
     public String SignIn() {
     
     	return "/jisang/SignIn"; 

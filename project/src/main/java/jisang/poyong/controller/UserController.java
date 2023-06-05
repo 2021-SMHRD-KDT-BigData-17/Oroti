@@ -1,40 +1,70 @@
 package jisang.poyong.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import jisang.poyong.service.UserService;
+import jisang.poyong.mapper.UserMapper;
 import jisang.poyong.vo.UserVO;
 
 
-//@Controller
+@Controller
 public class UserController {
-	
+
+
 	@Autowired
+	private UserMapper mapper;
 	
-	
-	
-//	@GetMapping("/SignUp")
-//	public String SignupPage() {
-//		return "SignUp";
-//	}
-	
-	@PostMapping("/SignUp")
-	public String signup(UserVO UserVO) {
+	// 회원가입 
+	@PostMapping("/SignUp2.do")
+	public String SignUp(UserVO vo) {
+		System.out.println("요청받음");
 		
 		try {
-			UserService.signup(UserVO);
-		} catch(DuplicateKeyException e){
-			return "redirect:/SignUp";
-		}catch(Exception e) {
+			mapper.SignUp(vo);
+			
+		} catch (Exception e) {
+			
 			e.printStackTrace();
-			return "redirect:/SignUp";
-		} 
+		}
 		
-		return "redirect:/SignIn";// 회원가입
+		return "redirect:/jisang/SignUp.do";
+	
+	}
+	
+	
+	
+	
+	// 로그인
+	@PostMapping("/SignIn2.do")
+	public String SignIn(UserVO vo, HttpServletRequest request) {
+		System.out.println("요청받음");
+		UserVO SignIn = mapper.SignIn(vo);
+		HttpSession session = request.getSession();
+		
+		if(SignIn != null) {
+			session.setAttribute("SignIn", SignIn);
+			System.out.println("성공");
+			return "redirect:/jisang/SignUp.do";
+		}else {
+			session.setAttribute("SignIn", null);
+			System.out.println("실패");
+			return "redirect:/jisang/SignIn.do";
+		}
 		
 	}
-
+	
+	
+	// 로그아웃
+	@RequestMapping("/Logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/jisang/SignIn.do";
+	}
+	
+	
 }

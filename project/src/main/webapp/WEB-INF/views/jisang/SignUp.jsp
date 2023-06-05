@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,14 +35,14 @@
             </div>
             <!-- 로그인/회원가입 이동 버튼 (끝) -->
             
-            <form action="/SignUp" method="post">
+            <form action="${path}/SignUp2.do" method="post">
                 <!-- 회원 유형 선택 (시작) -->
                 <div class="user_mode">
                     <label>
-                        <input type="radio" name="user" value="indiv" onclick="indivBtn()" checked required>개인회원
+                        <input type="radio" name="userdiv" value="A" onclick="indivBtn()" checked required>개인회원
                     </label>
                     <label>
-                        <input type="radio" name="user" value="corp" onclick="corpBtn()" required>기업회원
+                        <input type="radio" name="userdiv" value="B" onclick="corpBtn()" required>기업회원
                     </label>
                 </div>
                 <!-- 회원 유형 선택 (끝) -->
@@ -48,37 +50,37 @@
                 <!-- 개인회원 정보 입력 (시작) -->
                 <div id="indiv">
                     <div class="indiv_info">
-                        <input type="text" id="user_id" placeholder="아이디" required>
+                        <input type="text" name="userid" placeholder="아이디" required>
                     </div>
                     <div class="indiv_info">
-                        <input type="password" id="user_pw" placeholder="비밀번호" required>
+                        <input type="password" name="userpw" placeholder="비밀번호" required>
                     </div>
                     <div class="indiv_info">
-                        <input type="text" id="user_name" placeholder="이름" required>
+                        <input type="text" name="username" placeholder="이름" required>
                     </div>
                     <div class="indiv_info">
-                        <input type="email" id="user_address" placeholder="이메일" required>
+                        <input type="email" name="useremail" placeholder="이메일" required>
                     </div>
                     <div class="indiv_info">
-                        <select name="disorder" id = "user_obstc_code" required>
+                        <select name="userobstccode" id = "user_obstc_code" required>
                             <!-- name : parameter 불러오기? (백엔드 부분) -->
                             <option disabled selected id="check">장애여부 선택</option><!-- 기본값이라 value나 name 불러올 필요 없음 -->
-                            <option value="0" class="opt" name="#">해당 없음</option>
-                            <option value="1" class="opt" name="#">지체장애</option>
-                            <option value="2" class="opt" name="#">뇌병변장애</option>
-                            <option value="3" class="opt" name="#">시각장애</option>
-                            <option value="4" class="opt" name="#">청각장애</option>
-                            <option value="5" class="opt" name="#">언어장애</option>
-                            <option value="6" class="opt" name="#">지적장애</option>
-                            <option value="7" class="opt" name="#">자폐성장애</option>
-                            <option value="8" class="opt" name="#">정신장애</option>
-                            <option value="9" class="opt" name="#">신장장애</option>
-                            <option value="10" class="opt" name="#">심장장애</option>
-                            <option value="11" class="opt" name="#">호흡기장애</option>
-                            <option value="12" class="opt" name="#">간장애</option>
-                            <option value="13" class="opt" name="#">안면장애</option>
-                            <option value="14" class="opt" name="#">장루/요루장애</option>
-                            <option value="15" class="opt" name="#">뇌전증장애</option>
+                            <option value="0" class="opt" >해당 없음</option>
+                            <option value="1" class="opt" >지체장애</option>
+                            <option value="2" class="opt" >뇌병변장애</option>
+                            <option value="3" class="opt" >시각장애</option>
+                            <option value="4" class="opt" >청각장애</option>
+                            <option value="5" class="opt" >언어장애</option>
+                            <option value="6" class="opt" >지적장애</option>
+                            <option value="7" class="opt" >자폐성장애</option>
+                            <option value="8" class="opt" >정신장애</option>
+                            <option value="9" class="opt" >신장장애</option>
+                            <option value="10" class="opt">심장장애</option>
+                            <option value="11" class="opt">호흡기장애</option>
+                            <option value="12" class="opt">간장애</option>
+                            <option value="13" class="opt">안면장애</option>
+                            <option value="14" class="opt">장루/요루장애</option>
+                            <option value="15" class="opt">뇌전증장애</option>
                         </select>
                     </div>
 

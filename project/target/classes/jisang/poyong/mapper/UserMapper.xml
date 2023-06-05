@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="jisang.poyong.mapper.UserMapper">
+	 <!-- 유저 회원가입 -->
+	<insert id="SignUp" parameterType="jisang.poyong.vo.UserVO">
+		insert into userinfo
+		values(
+		#{userid},
+		#{userpw},
+		#{username},
+		#{useremail},
+		NULL,
+		#{userdiv},
+		#{userobstccode},
+		NULL)
+	</insert>
+	 
+	<insert id="SignUp" parameterType="jisang.poyong.vo.UserVO">
+		insert into userinfo
+		values(
+		#{userid},
+		#{userpw},
+		#{username},
+		#{useremail},
+		NULL,
+		#{userdiv},
+		#{userobstccode},
+		NULL)
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="SignIn" resultType="jisang.poyong.vo.UserVO">
+		select *
+		  from userinfo
+		 where userid = #{userid}
+		   and userpw = #{userpw}
+		   and userdiv = #{userdiv}   
+	</select>
+</mapper>
