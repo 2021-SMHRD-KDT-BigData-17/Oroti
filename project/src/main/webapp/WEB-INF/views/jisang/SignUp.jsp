@@ -90,23 +90,24 @@
             </form>
         
         
-            <form action="/SignUp" method="post">
+             <form action="${path}/SignUp3.do" method="post">
                 <!-- 기업회원 정보 입력 (시작) -->
+                
                 <div id="corp">
                     <div class="corp_info">
-                        <input type="text" id="username" placeholder="아이디" required>
+                        <input type="text" name="userid" placeholder="아이디" required>
                     </div>
                     <div class="corp_info">
-                        <input type="password" id="password" placeholder="비밀번호" required>
+                        <input type="password" name="userpw" placeholder="비밀번호" required>
                     </div>
                     <div class="corp_info">
-                        <input type="email" id="email" placeholder="이메일" required>
+                        <input type="email" name="useremail" placeholder="이메일" required>
                     </div>
                     <div class="corp_info">
-                        <input type="text" id="name" placeholder="이름" required>
+                        <input type="text" name="username" placeholder="이름" required>
                     </div>
                     <div class="corp_info">
-                        <input type="text" placeholder="사업자 번호" onkeypress="onlyNum();" maxlength="13" />
+                        <input type="text" name="businessidx"placeholder="사업자 번호" onkeypress="onlyNum();" maxlength="13" />
                     </div>
                     
                     <button type="submit" class="btn">회원가입</button>
@@ -117,7 +118,6 @@
         </div>
         <!-- 회원가입 폼 (끝) -->
         </div>
-    </div>
 
     <script src="${path}/resources/js/SignUp.js"></script>
 </body>

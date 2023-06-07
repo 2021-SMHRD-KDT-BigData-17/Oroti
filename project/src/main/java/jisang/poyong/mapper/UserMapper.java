@@ -12,7 +12,9 @@ public interface UserMapper {
 	
 	public UserVO SignIn(UserVO vo);
 
-	public UserVO SignUp(UserVO vo);
+	public UserVO UserSignUp(UserVO vo);
+	
+	public UserVO BusinessSignUp(UserVO vo);
 //	public void boardInsert(Board vo);
 //
 //	public Board boardContent(int theIdx);

@@ -19,24 +19,27 @@ public class UserController {
 	@Autowired
 	private UserMapper mapper;
 	
-	// 회원가입 
+	// 개인 회원가입 
 	@PostMapping("/SignUp2.do")
-	public String SignUp(UserVO vo) {
-		System.out.println("요청받음");
-		
+	public String UserSignUp(UserVO vo) {
 		try {
-			mapper.SignUp(vo);
-			
-		} catch (Exception e) {
-			
+			mapper.UserSignUp(vo);
+		} catch (Exception e) {		
 			e.printStackTrace();
 		}
-		
 		return "redirect:/jisang/SignUp.do";
-	
 	}
 	
-	
+	// 기업 회원가입
+	@PostMapping("/SignUp3.do")
+	public String BusinessSignUp(UserVO vo) {
+		try {
+			mapper.BusinessSignUp(vo);
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}
+		return "redirect:/jisang/SignUp.do";
+	}
 	
 	
 	// 로그인
