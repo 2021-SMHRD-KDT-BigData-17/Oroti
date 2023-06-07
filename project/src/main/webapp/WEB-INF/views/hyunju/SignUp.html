@@ -56,6 +56,9 @@
                         <input type="text" id="name" placeholder="이름" required>
                     </div>
                     <div class="indiv_info">
+                        <input type="text" id="phone" placeholder="휴대전화 번호" onkeypress="onlyNum();" maxlength="11" required>
+                    </div>
+                    <div class="indiv_info">
                         <select name="disorder" required>
                             <!-- name : parameter 불러오기? (백엔드 부분) -->
                             <option disabled selected id="check">장애여부 선택</option><!-- 기본값이라 value나 name 불러올 필요 없음 -->
@@ -78,6 +81,7 @@
                         </select>
                     </div>
 
+                    <!-- 전송 버튼 -->
                     <button type="submit" class="btn">회원가입</button>
                 </div>
                 <!-- 개인회원 정보 입력 (끝) -->
@@ -100,9 +104,13 @@
                         <input type="text" id="name" placeholder="이름" required>
                     </div>
                     <div class="corp_info">
-                        <input type="text" placeholder="사업자 번호" onkeypress="onlyNum();" maxlength="13" />
+                        <input type="text" id="phone" placeholder="휴대전화 번호" onkeypress="onlyNum2();" maxlength="11" required>
+                    </div>
+                    <div class="corp_info">
+                        <input type="text" placeholder="사업자 번호" onkeypress="onlyNum3();" maxlength="13" />
                     </div>
                     
+                    <!-- 전송 버튼 -->
                     <button type="submit" class="btn">회원가입</button>
                 </div>
                 <!-- 기업회원 정보 입력 (끝) -->

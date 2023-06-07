@@ -10,8 +10,21 @@ function corpBtn(){
 
 
 // 사업자 번호 입력 - 숫자만 입력받는 기능
-function onlyNum(){
+function onlyNum3(){
     if(event.keyCode<48 || event.keyCode>57){
        event.returnValue=false;
+    }
+}
+
+// 휴대전화 번호 입력 - 숫자만 입력
+function onlyNum() {
+    if(event.keyCode<48 || event.keyCode>57){
+        event.returnValue=false;
+    }
+}
+
+function onlyNum2() {
+    if(event.keyCode<48 || event.keyCode>57){
+        event.returnValue=false;
     }
 }
