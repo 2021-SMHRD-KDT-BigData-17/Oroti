@@ -2,43 +2,30 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
-<mapper namespace="jisang.poyong.mapper.UserMapper">
-	 <!-- 유저 회원가입 -->
-	<insert id="UserSignUp" parameterType="jisang.poyong.vo.UserVO">
-		insert into userinfo
-		values(
-		#{userid},
-		#{userpw},
-		#{username},
-		#{useremail},
-		NULL,
-		#{userdiv},
-		#{userobstccode},
-		NULL,
-		NULL)
+
+<mapper namespace="jisang.poyong.mapper.ChatMapper">
+
+	<insert id="SendChat" parameterType="jisang.poyong.vo.ChatVO">
+		INSERT INTO chatinfo
+		(senduser, chattext, chatdate, receiveuser)
+		VALUES (#{senduser},
+		#{chattext}, NOW(), "smhrd")
 	</insert>
-	 
-	<insert id="BusinessSignUp" parameterType="jisang.poyong.vo.UserVO">
-		insert into userinfo
-		values(
-		#{userid},
-		#{userpw},
-		#{username},
-		#{useremail},
-		NULL,
-		"B",
-		NULL,
-		NULL,
-		#{businessidx})
-	</insert>
-	
-	<!-- 로그인 -->
-	<select id="SignIn" resultType="jisang.poyong.vo.UserVO">
-		select *
-		  from userinfo
-		 where userid = #{userid}
-		   and userpw = #{userpw}
-		   and userdiv = #{userdiv}   
+
+	<select id="ReceiveChat" parameterType="String"
+		resultType="jisang.poyong.vo.ChatVO">
+		SELECT senduser, chattext, chatdate, receiveuser
+		FROM chatinfo
+		WHERE receiveuser = #{receiveuser}
+		ORDER BY chatdate ASC
+	</select>
+
+	<select id="LoadChat" parameterType="String"
+		resultType="jisang.poyong.vo.ChatVO">
+		SELECT senduser, chattext, chatdate, receiveuser
+		FROM chatinfo
+		WHERE (senduser = #{user} AND receiveuser = #{user})
+		OR (senduser = #{user} OR receiveuser = #{user})
+		ORDER BY chatdate ASC
 	</select>
 </mapper>

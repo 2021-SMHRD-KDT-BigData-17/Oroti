@@ -12,6 +12,6 @@
 <!-- index.jsp가 실행되면 바로 요청을 보내는 코드를 작성 
 	jstl에서 c:redirect 이용하여
 -->
-<c:redirect url="SignUp.do"/>
+<c:redirect url="ChatPage.do"/>
 </body>
 </html>
