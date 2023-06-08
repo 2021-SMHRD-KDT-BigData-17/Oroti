@@ -112,47 +112,43 @@
 	<div class="chat_wrapper">
 		<!-- 채팅창 시작 -->
 		<div class="chat_screen">
-			<div class="chat_screen_comments">
-				<c:forEach var="chat" items="${chatList}">
-					<c:choose>
-						<c:when test="${chat.senduser eq currentUser.userid}">
-							<div class="comment_re_package">
-								<div class="comment">${chat.chattext}</div>
-								<div class="tts">
-									<i class="fa-sharp fa-solid fa-volume-high"></i>
-								</div>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="comment_package">
-								<div class="comment_re">${chat.chattext}</div>
-								<div class="re_tts">
-									<i class="fa-sharp fa-solid fa-volume-high"></i>
-								</div>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
+    <div class="chat_screen_comments">
+        <c:forEach var="chat" items="${chatList}">
+            <c:choose>
+                <c:when test="${chat.senduser eq currentUser.userid}">
+                    <div class="comment_re_package">
+                        <div class="comment">${chat.chattext}</div>
+                        <div class="tts"><i class="fa-sharp fa-solid fa-volume-high"></i></div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="comment_package">
+                        <div class="comment_re">${chat.chattext}</div>
+                        <div class="re_tts"><i class="fa-sharp fa-solid fa-volume-high"></i></div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </div>
+</div>
+	<!-- 입력창 및 버튼 -->
+	<div class="write_area">
+		<form action="${path}/SendChat.do" method="post"
+			class="msg_write_area">
+			<input type="hidden" name="senduser" id="senduser"
+				value="<%=userid%>">
+			<textarea class="msg_writebox" name="chattext" id="chattext"></textarea>
+			<div class="bt_container">
+				<button class="stt_bt" type="button">
+					<i class="fa-solid fa-microphone fa-2x"></i>
+				</button>
+				<button class="tts_bt" type="button">
+					<i class="fa-sharp fa-solid fa-volume-high fa-2x"></i>
+				</button>
 			</div>
-		</div>
-		<!-- 입력창 및 버튼 -->
-		<div class="write_area">
-			<form action="${path}/SendChat.do" method="post"
-				class="msg_write_area">
-				<input type="hidden" name="senduser" id="senduser"
-					value="<%=userid%>">
-				<textarea class="msg_writebox" name="chattext" id="chattext"></textarea>
-				<div class="bt_container">
-					<button class="stt_bt" type="button">
-						<i class="fa-solid fa-microphone fa-2x"></i>
-					</button>
-					<button class="tts_bt" type="button">
-						<i class="fa-sharp fa-solid fa-volume-high fa-2x"></i>
-					</button>
-				</div>
-				<button class="submit_bt" type="submit" value="전송">전송</button>
-			</form>
-		</div>
+			<button class="submit_bt" type="submit" value="전송">전송</button>
+		</form>
+	</div>
 	</div>
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
