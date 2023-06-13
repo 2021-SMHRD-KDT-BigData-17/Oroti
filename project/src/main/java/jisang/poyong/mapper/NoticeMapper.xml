@@ -5,10 +5,12 @@
 
 <mapper namespace="jisang.poyong.mapper.NoticeMapper">
 
-   <select id="LoadNotice" parameterType="String" resultType="jisang.poyong.vo.NoticeVO">
-		SELECT companyname, noticejobcode, noticeregdate, noticeperiod 
+	<select id="LoadNotice" parameterType="String"
+		resultType="jisang.poyong.vo.NoticeVO">
+		SELECT noticeidx, companyname, noticejob, noticeregdate, noticeperiod
 		FROM noticeinfo
+		WHERE noticeidx &lt; 400
 		ORDER BY noticeregdate DESC
 	</select>
-    
+
 </mapper>

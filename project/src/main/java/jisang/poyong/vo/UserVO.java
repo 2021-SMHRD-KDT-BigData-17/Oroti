@@ -8,8 +8,8 @@ public class UserVO {
 	private String username; //이름
 	private String useremail; //이메일
 	private String userphone; //연락처 
-	private char userdiv; //유저 구분(일반 , 기업)
-	private char userobstccode; // 장애 분류 (0~15) 
+	private char userdiv; //유저 구분(일반 , 기업) A,B
+	private String userobstccode; // 장애 분류 (0~15) 
 	private String userparentphone; // 보호자 연락처
 	private String businessidx;
 	public String getUserid() {
@@ -48,10 +48,10 @@ public class UserVO {
 	public void setUserdiv(char userdiv) {
 		this.userdiv = userdiv;
 	}
-	public char getUserobstccode() {
+	public String getUserobstccode() {
 		return userobstccode;
 	}
-	public void setUserobstccode(char userobstccode) {
+	public void setUserobstccode(String userobstccode) {
 		this.userobstccode = userobstccode;
 	}
 	public String getUserparentphone() {

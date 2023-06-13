@@ -134,7 +134,6 @@ label {
 
 .user_info input::placeholder {
     position: absolute;
-    transform: translateY(60%);
     color: #a9a9a9;
 }
 /* 회원 정보 입력 */

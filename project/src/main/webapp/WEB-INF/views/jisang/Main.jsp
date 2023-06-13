@@ -19,6 +19,21 @@
 
 <link rel="stylesheet" href="${path}/resources/css/index.css">
 <link rel="stylesheet" href="${path}/resources/css/header.css">
+<style>
+.bookmark .fa-star:nth-child(1):hover {
+	color: var(- -main-color);
+}
+
+.bookmark .fa-star:nth-child(1) {
+	display: block;
+	color: var(- -font-color2);
+}
+
+.bookmark .fa-star:nth-child(2) {
+	display: none;
+	color: var(- -main-color);
+}
+</style>
 </head>
 
 <body>
@@ -27,7 +42,7 @@
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="#"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
 					alt="logo">포용취업넷
 				</a>
 			</div>
@@ -40,25 +55,24 @@
 			</div>
 
 			<div class="nav1_right">
-				<div class="link_wrap">
+				 <div class="link_wrap">
 					<!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
 					<c:choose>
 						<c:when test="${not empty userid}">
 							<!-- 로그인 세션값이 있는 경우 -->
-							<p>
-								${chat.chattext} 사용자 아이디:
-								<%=userid%></p>
-							<a href="<c:url value='/Logout.do'/>" class="LogOutBtn">로그아웃</a>
+						
+							 
+							<a href="${path}/Logout.do" class="LogOutBtn">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 세션값이 없는 경우 -->
 							<div class="SignUp_nav">
-								<a href="<c:url value='/SignIn.do'/>" class="siBtn">로그인</a> <a
-									href="<c:url value='/SignUp.do'/>" class="suBtn">회원가입</a>
+								<a href="${path}/SignIn.do" class="siBtn">로그인</a> 
+								<a href="${path}/SignUp.do" class="suBtn">회원가입</a>
 							</div>
 						</c:otherwise>
 					</c:choose>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<!-- 헤더 첫 번째 줄 (끝) -->
@@ -139,37 +153,34 @@
 						<div class="industry_title">산업</div>
 						<div class="industry_list">
 							<div class="industry1 tag">
-								<label>서비스업</label>
-							</div>
-							<div class="industry2 tag">
-								<label>금융·은행업</label>
-							</div>
-							<div class="industry3 tag">
 								<label>IT·정보통신업</label>
 							</div>
+							<div class="industry2 tag">
+								<label>제조·생산 화학업</label>
+							</div>
+							<div class="industry3 tag">
+								<label>건설업</label>
+							</div>
 							<div class="industry4 tag">
-								<label>판매·유통업</label>
+								<label>미디어 광고업</label>
 							</div>
 							<div class="industry5 tag">
-								<label>제조·생산·화학업</label>
+								<label>판매 유통업</label>
 							</div>
 							<div class="industry6 tag">
 								<label>교육업</label>
 							</div>
 							<div class="industry7 tag">
-								<label>건설업</label>
+								<label>의료 제약업</label>
 							</div>
 							<div class="industry8 tag">
-								<label>의료·제약업</label>
+								<label>문화 예술 디자인업</label>
 							</div>
 							<div class="industry9 tag">
-								<label>미디어·광고업</label>
+								<label>서비스업</label>
 							</div>
 							<div class="industry10 tag">
-								<label>문화·예술·디자인업</label>
-							</div>
-							<div class="industry11 tag">
-								<label>기관·협회</label>
+								<label>사무직</label>
 							</div>
 						</div>
 					</div>
@@ -181,25 +192,13 @@
 						<div class="emply_title">고용 형태</div>
 						<div class="emply_list">
 							<div class="emply1 tag">
-								<label>정규직</label>
-							</div>
-							<div class="emply2 tag">
 								<label>계약직</label>
 							</div>
+							<div class="emply2 tag">
+								<label>상용직</label>
+							</div>
 							<div class="emply3 tag">
-								<label>인턴</label>
-							</div>
-							<div class="emply4 tag">
-								<label>파견직</label>
-							</div>
-							<div class="emply5 tag">
-								<label>프리랜서</label>
-							</div>
-							<div class="emply6 tag">
-								<label>아르바이트</label>
-							</div>
-							<div class="emply7 tag">
-								<label>연수생/교육생</label>
+								<label>시간제</label>
 							</div>
 						</div>
 					</div>
@@ -238,239 +237,19 @@
 			</select>
 			<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
 			<ul class="announce_list">
-					<c:forEach var="notice" items="${notices}">
-						<li>
-							<div class="announce_title">${notice.companyname}</div>
-							<div class="announce_content">${notice.noticejobcode}</div>
-							<div class="announce_bottom">
-								<div class="announce_date">${notice.noticeperiod}</div>
-								<div class="bookmark">
-									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
-								</div>
+				<c:forEach var="notice" items="${notices}">
+					<li>
+						<div class="announce_title">${notice.companyname}</div>
+						<div class="announce_content">${notice.noticejob}</div>
+						<div class="announce_bottom">
+							<div class="announce_date">${notice.noticeperiod}</div>
+							<div class="bookmark">
+								<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
 							</div>
-						</li>
-					</c:forEach>
-				<!-- 
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="announce_title">OO 소프트</div>
-                    <div class="announce_content">프론트엔드/웹 퍼블리셔 채용</div>
-                    <div class="announce_bottom">
-                        <div class="announce_date">06.09 - 06.23</div>
-                        <div class="bookmark">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </li> -->
+						</div>
+					</li>
+				</c:forEach>
+				
 			</ul>
 		</section>
 	</form>

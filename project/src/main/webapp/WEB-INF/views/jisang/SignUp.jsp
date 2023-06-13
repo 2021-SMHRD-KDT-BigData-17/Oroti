@@ -21,8 +21,7 @@
 
         <!-- 첫 화면으로 이동 (시작) -->
         <div class="send_home">
-            <a href="#"><!-- 메인페이지 파일 경로 -->
-                첫 화면으로 이동 
+            <a href="${path}/MainPage.do"><!-- 메인페이지 파일 경로 --> 첫 화면으로 이동 
             </a>
         </div>
         <!-- 첫 화면으로 이동 (끝) -->
@@ -41,15 +40,15 @@
                 <!-- 회원 유형 선택 (시작) -->
                 <div class="user_mode">
                     <label>
-                        <input type="radio" name="userdiv" value="A" checked required>개인회원
+                        <input type="radio" name="userdiv" value="A" onclick="indivBtn()" checked required>개인회원
                     </label>
                     <label>
-                        <input type="radio" name="userdiv" value="B" required>기업회원
+                        <input type="radio" name="userdiv" value="B" onclick="corpBtn()" required>기업회원
                     </label>
                 </div>
                 <!-- 회원 유형 선택 (끝) -->
         
-                <!-- 개인회원 정보 입력 (시작) -->
+                 <!-- 개인회원 정보 입력 (시작) -->
                 <div id="indiv">
                     <div class="indiv_info">
                         <input type="text" name="userid" placeholder="아이디" required>
@@ -58,13 +57,16 @@
                         <input type="password" name="userpw" placeholder="비밀번호" required>
                     </div>
                     <div class="indiv_info">
-                        <input type="text" name="username" placeholder="이름" required>
-                    </div>
-                    <div class="indiv_info">
                         <input type="email" name="useremail" placeholder="이메일" required>
                     </div>
                     <div class="indiv_info">
-                        <select name="userobstccode" id = "user_obstc_code" required>
+                        <input type="text" name="username" placeholder="이름" required>
+                    </div>
+                    <div class="indiv_info">
+                        <input type="text" name="userphone" placeholder="휴대전화 번호" onkeypress="onlyNum();" maxlength="11" required>
+                    </div>
+                    <div class="indiv_info">
+                        <select name="userobstccode" required>
                             <!-- name : parameter 불러오기? (백엔드 부분) -->
                             <option disabled selected id="check">장애여부 선택</option><!-- 기본값이라 value나 name 불러올 필요 없음 -->
                             <option value="0" class="opt" >해당 없음</option>
@@ -79,13 +81,14 @@
                             <option value="9" class="opt" >신장장애</option>
                             <option value="10" class="opt">심장장애</option>
                             <option value="11" class="opt">호흡기장애</option>
-                            <option value="12" class="opt">간장애</option>
-                            <option value="13" class="opt">안면장애</option>
-                            <option value="14" class="opt">장루/요루장애</option>
-                            <option value="15" class="opt">뇌전증장애</option>
+                            <option value="12" class="opt" >간장애</option>
+                            <option value="13" class="opt" > 안면장애</option>
+                            <option value="14" class="opt" >장루/요루장애</option>
+                            <option value="15" class="opt" >뇌전증장애</option>
                         </select>
                     </div>
 
+                    <!-- 전송 버튼 -->
                     <button type="submit" class="btn">회원가입</button>
                 </div>
                 <!-- 개인회원 정보 입력 (끝) -->
@@ -93,8 +96,7 @@
         
         
              <form action="${path}/SignUp3.do" method="post">
-                <!-- 기업회원 정보 입력 (시작) -->
-                
+               <!-- 기업회원 정보 입력 (시작) -->
                 <div id="corp">
                     <div class="corp_info">
                         <input type="text" name="userid" placeholder="아이디" required>
@@ -109,9 +111,13 @@
                         <input type="text" name="username" placeholder="이름" required>
                     </div>
                     <div class="corp_info">
-                        <input type="text" name="businessidx"placeholder="사업자 번호" onkeypress="onlyNum();" maxlength="13" />
+                        <input type="text" name="userphone" placeholder="휴대전화 번호" onkeypress="onlyNum2();" maxlength="11" required>
+                    </div>
+                    <div class="corp_info">
+                        <input type="text" name ="businessidx"  placeholder="사업자 번호" onkeypress="onlyNum3();" maxlength="13" />
                     </div>
                     
+                    <!-- 전송 버튼 -->
                     <button type="submit" class="btn">회원가입</button>
                 </div>
                 <!-- 기업회원 정보 입력 (끝) -->
@@ -120,7 +126,6 @@
         </div>
         <!-- 회원가입 폼 (끝) -->
         </div>
-
     <script src="${path}/resources/js/SignUp.js"></script>
 </body>
 </html>

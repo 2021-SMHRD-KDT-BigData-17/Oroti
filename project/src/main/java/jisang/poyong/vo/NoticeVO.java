@@ -5,7 +5,7 @@ public class NoticeVO {
 	private int noticeidx; // 공고번호 (PK)
 	private String userid; // 유저 아이디 (FK)
 	private String companyname; // 사업장 명
-	private String noticejobcode; // 모집직종
+	private int noticejobcode; // 모집직종
 	private String noticeemp; // 고용형태
 	private String noticewagemode; // 임금형태
 	private int noticewage; // 임금
@@ -15,7 +15,7 @@ public class NoticeVO {
 	private String companyaddress; // 사업장 주소
 	private String noticeregdate; // 공고글 등록일
 	private String noticeperiod; // 구인 마감기간
-	
+	private String noticejob; //모집직종
 	
 	public int getNoticeidx() {
 		return noticeidx;
@@ -35,10 +35,10 @@ public class NoticeVO {
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
 	}
-	public String getNoticejobcode() {
+	public int getNoticejobcode() {
 		return noticejobcode;
 	}
-	public void setNoticejobcode(String noticejobcode) {
+	public void setNoticejobcode(int noticejobcode) {
 		this.noticejobcode = noticejobcode;
 	}
 	public String getNoticeemp() {
@@ -95,14 +95,22 @@ public class NoticeVO {
 	public void setNoticeperiod(String noticeperiod) {
 		this.noticeperiod = noticeperiod;
 	}
+	public String getNoticejob() {
+		return noticejob;
+	}
+	public void setNoticejob(String noticejob) {
+		this.noticejob = noticejob;
+	}
 	@Override
 	public String toString() {
 		return "NoticeVO [noticeidx=" + noticeidx + ", userid=" + userid + ", companyname=" + companyname
 				+ ", noticejobcode=" + noticejobcode + ", noticeemp=" + noticeemp + ", noticewagemode=" + noticewagemode
 				+ ", noticewage=" + noticewage + ", noticejoinmode=" + noticejoinmode + ", noticecarrer=" + noticecarrer
 				+ ", noticeedu=" + noticeedu + ", companyaddress=" + companyaddress + ", noticeregdate=" + noticeregdate
-				+ ", noticeperiod=" + noticeperiod + "]";
+				+ ", noticeperiod=" + noticeperiod + ", noticejob=" + noticejob + "]";
 	}
+	
+	
 
 
 }

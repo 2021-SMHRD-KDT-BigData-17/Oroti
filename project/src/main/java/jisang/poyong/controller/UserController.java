@@ -65,7 +65,7 @@ public class UserController {
 	@RequestMapping("/Logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/SignIn.do";
+		return "redirect:/MainPage.do";
 	}
 
 }
