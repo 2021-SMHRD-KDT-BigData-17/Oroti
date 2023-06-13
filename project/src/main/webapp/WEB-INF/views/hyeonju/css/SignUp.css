@@ -159,7 +159,6 @@ label {
 
 .indiv_info input::placeholder {
     position: absolute;
-    transform: translateY(60%);
     color: #a9a9a9;
 }
 /* 개인회원 정보 입력 */
@@ -192,7 +191,6 @@ label {
 
 .corp_info input::placeholder {
     position: absolute;
-    transform: translateY(60%);
     color: #a9a9a9;
 }
 /* 기업회원 정보 입력 */
