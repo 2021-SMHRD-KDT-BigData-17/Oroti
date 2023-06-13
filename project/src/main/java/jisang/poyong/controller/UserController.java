@@ -52,7 +52,7 @@ public class UserController {
 	        session.setAttribute("SignIn", SignIn);
 	        session.setAttribute("userid", SignIn.getUserid()); // 세션에 사용자 아이디 저장
 	        System.out.println("성공");
-	        return "redirect:/ChatPage.do";
+	        return "redirect:/MainPage.do";
 	    } else {
 	        session.setAttribute("SignIn", null);
 	        System.out.println("실패");
