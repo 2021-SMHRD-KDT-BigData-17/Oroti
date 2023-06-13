@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,7 +39,9 @@ public class MainController {
 
 	@RequestMapping("/ChatPage.do")
 	public String loadChatData(HttpServletRequest request, Model model) {
-	    HttpSession session = request.getSession();
+	    
+		System.out.println("요청옵니다");
+		HttpSession session = request.getSession();
 	    UserVO currentUser = (UserVO) session.getAttribute("SignIn");
 	    if (currentUser == null) {
 	        // 로그인되지 않은 사용자 처리

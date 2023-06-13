@@ -39,10 +39,10 @@
                 <!-- 회원 유형 선택 (시작) -->
                 <div class="user_mode">
                     <label>
-                        <input type="radio" name="userdiv" value="A" onclick="indivBtn()" checked required>개인회원
+                        <input type="radio" name="userdiv" value="A" checked required>개인회원
                     </label>
                     <label>
-                        <input type="radio" name="userdiv" value="B" onclick="corpBtn()" required>기업회원
+                        <input type="radio" name="userdiv" value="B" required>기업회원
                     </label>
                 </div>
                 <!-- 회원 유형 선택 (끝) -->
