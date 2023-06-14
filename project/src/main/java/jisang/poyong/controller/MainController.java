@@ -80,5 +80,20 @@ public class MainController {
 		// JSP 파일의 경로와 파일명을 리턴
 		return "/jisang/ChatPage"; // JSP 파일명을 리턴
 	}
+	
+	@RequestMapping("/UserMyinfo.do")
+	public String UserMyinfo() {
 
+		return "/jisang/usermyinfo";
+
+	}
+	
+	@RequestMapping("/CompanyMyinfo.do")
+	public String CompanyMyinfo() {
+
+		return "/jisang/companymyinfo";
+
+	}
+	
+	
 }

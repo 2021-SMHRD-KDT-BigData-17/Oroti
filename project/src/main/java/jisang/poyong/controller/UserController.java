@@ -50,7 +50,6 @@ public class UserController {
 
 	    if (SignIn != null) {
 	        session.setAttribute("SignIn", SignIn);
-	        session.setAttribute("userid", SignIn.getUserid()); // 세션에 사용자 아이디 저장
 	        System.out.println("성공");
 	        return "redirect:/MainPage.do";
 	    } else {
@@ -67,5 +66,7 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/MainPage.do";
 	}
+	
+	
 
 }

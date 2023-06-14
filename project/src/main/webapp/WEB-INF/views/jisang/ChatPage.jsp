@@ -18,16 +18,16 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chat_page</title>
-<link rel="stylesheet" href="${path}/resources/css/ChatPage.css">
+<title>포용취업넷</title>
+<link rel="stylesheet" href="${path}/resources/css/message.css">
 </head>
 <body>
 	<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="#"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
-					alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
+					src="img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -42,18 +42,23 @@
 				<div class="link_wrap">
 					<!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
 					<c:choose>
-						<c:when test="${not empty userid}">
-							<!-- 로그인 세션값이 있는 경우 -->
-							<p>
-								${chat.chattext} 사용자 아이디:
-								<%=userid%></p>
-							<a href="<c:url value='/Logout.do'/>" class="LogOutBtn">로그아웃</a>
+						<c:when test="${not empty SignIn}">
+							<c:choose>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+							</c:choose>
+							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
+							<a href="${path}/Logout.do" class="LogOutBtn">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 세션값이 없는 경우 -->
 							<div class="SignUp_nav">
-								<a href="<c:url value='/SignIn.do'/>" class="siBtn">로그인</a> <a
-									href="<c:url value='/SignUp.do'/>" class="suBtn">회원가입</a>
+								<a href="${path}/SignIn.do" class="siBtn">로그인</a> <a
+									href="${path}/SignUp.do" class="suBtn">회원가입</a>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -66,132 +71,91 @@
 		<!-- 헤더 두 번째 줄 (시작) -->
 		<div class="nav2">
 			<div class="nav2_left">
-				<a href="#" class="hire">채용정보</a> <a href="#">취업 분포도</a> <a href="#">직업·진로</a>
-				<a href="#">이력서 작성</a>
+				<a href="index.html" class="hire">채용정보</a> <a href="chart.html"
+					class="job">취업 분포도</a> <a href="preference_check_1.html"
+					class="career">직업·진로</a> <a href="resume.html" class="resume">이력서
+					작성</a>
 			</div>
 
 			<div class="nav2_right">
-				<a href="<c:url value='/LoadChat.do'/>" class="customer">고객센터</a>
+				<a href="service.html" class="customer">고객센터</a>
 				<!-- 고객센터 페이지 링크 -->
 			</div>
 		</div>
 		<!-- 헤더 두 번째 줄 (끝) -->
 	</header>
-	<!-- 쪽지리스트 시작 -->
-	<nav class="sidebar">
-		<header>
+
+	<!-- 쪽지 리스트 (시작) -->
+	<aside>
+		<nav class="sidebar">
 			<h3>쪽지</h3>
-		</header>
-		<div class="scrollbox">
-			<div class="scrollbox-inner">
-				<div class="chats_list_wrapper">
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-					<div class="chats">OO소프트</div>
-				</div>
-			</div>
-		</div>
-	</nav>
+			<ul class="scrollbox">
+				<li id="list1">1번째 기업</li>
+			</ul>
+		</nav>
+	</aside>
+	<!-- 쪽지 리스트 (끝) -->
 
-	<div class="chat_wrapper">
-		<!-- 채팅창 시작 -->
+
+	<!-- 채팅창 (시작) -->
+	<section class="chat_wrap">
 		<div class="chat_screen">
-			<div class="chat_screen_comments">
-				<c:forEach var="chat" items="${chatList}">
-					<c:choose>
-						<c:when test="${chat.senduser eq currentUser.userid}">
-							<div class="comment_re_package">
-								<div class="comment_re">${chat.chattext}</div>
-								<div class="tts">
-									<i class="fa-sharp fa-solid fa-volume-high"></i>
-								</div>
-							</div>
-						</c:when>
-						<c:otherwise>
-
-							<div class="comment_package">
-								<div class="comment">${chat.chattext}</div>
-								<div class="re_tts">
-									<i class="fa-sharp fa-solid fa-volume-high"></i>
-								</div>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</div>
+			<c:forEach var="chat" items="${chatList}">
+				<c:choose>
+					<c:when test="${chat.senduser eq currentUser.userid}">
+						<!-- 우측 -->
+						<div class="chat_content_wrap2">
+							<button type="button" class="chat_content_tts2">
+								<i class="fa-solid fa-volume-high"></i>
+							</button>
+							<div class="chat_content2">${chat.chattext}</div>
+						</div>
+						<!-- 우측 -->
+					</c:when>
+					<c:otherwise>
+						<!-- 좌측 -->
+						<div class="chat_content_wrap1">
+							<div class="chat_content1">${chat.chattext}</div>
+							<button type="button" class="chat_content_tts1">
+								<i class="fa-solid fa-volume-high"></i>
+							</button>
+						</div>
+						<!-- 좌측 -->
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</div>
-		<!-- 입력창 및 버튼 -->
-		<div class="write_area">
-			<form action="${path}/SendChat.do" method="post"
-				class="msg_write_area">
-				<input type="hidden" name="senduser" id="senduser"
-					value="<%=userid%>">
-				<textarea class="msg_writebox" name="chattext" id="chattext"></textarea>
-				<div class="bt_container">
-					<button class="stt_bt" type="button">
-						<i class="fa-solid fa-microphone fa-2x"></i>
+	</section>
+
+
+	<!-- 채팅 입력, 전송 부분 (시작) -->
+	<div class="chat_bottom">
+		<form action="" class="chat_form">
+			<div class="chat_input">
+				<textarea name="" class="input_value"></textarea>
+			</div>
+			<div class="chat_btn">
+				<div class="tts_stt">
+					<!-- 버튼말고 div로 바꾸고 기능을 js로 구현해야할 듯(form 때문에 누를 때마다 새로고침됨) -->
+					<button class="chat_tts">
+						<i class="fa-solid fa-volume-high"></i>
 					</button>
-					<button class="tts_bt" type="button">
-						<i class="fa-sharp fa-solid fa-volume-high fa-2x"></i>
+					<button class="chat_stt">
+						<i class="fa-solid fa-microphone"></i>
 					</button>
 				</div>
-				<button class="submit_bt" type="submit" value="전송">전송</button>
-			</form>
-		</div>
+				<div class="submit_btn">
+					<button type="submit">전송</button>
+				</div>
+			</div>
+		</form>
 	</div>
-
-
+	<!-- 채팅 입력, 전송 부분 (끝) -->
+	</section>
+	<!-- 채팅창 (끝) -->
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- 	<script>
-		$(document).ready(function() {
-			// 페이지 로드 시 초기 데이터를 가져오는 함수 호출
-			loadChatData();
-
-			// 일정 간격으로 데이터를 업데이트하는 함수 호출
-			setInterval(function() {
-				loadChatData();
-			}, 5000); // 5초마다 업데이트 (원하는 간격으로 설정)
-
-			function loadChatData() {
-				$.ajax({
-					url : '/ChatPage.do', // 데이터를 가져올 URL
-					method : 'GET',
-					dataType : 'html',
-					success : function(response) {
-						// 성공적으로 데이터를 가져온 경우 처리할 로직 작성
-						$('.chat_screen_comments').html(response); // 채팅 내용을 갱신할 요소의 클래스를 사용하여 업데이트
-					},
-					error : function(xhr, status, error) {
-						// 데이터를 가져오는 도중 에러가 발생한 경우 처리할 로직 작성
-						console.log('Error:', error);
-					}
-				});
-			}
-		});
-	</script> -->
-	<%--  <script src="${path}/resources/js/ChatHeader.js"></script>
-	<script src="${path}/resources/js/ChatPage.js"></script> --%>
+	<script src="${path}/resources/js/message.js"></script>
 </body>
 </html>

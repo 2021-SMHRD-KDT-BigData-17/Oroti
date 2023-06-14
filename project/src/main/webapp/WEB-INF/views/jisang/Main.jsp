@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-	String userid = (String) session.getAttribute("userid");
+	UserVO userid = (UserVO) session.getAttribute("SignIn");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,11 +39,10 @@
 <body>
 	<header id="top">
 		<!-- 헤더 첫 번째 줄 (시작)-->
-		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
-					alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
+					src="img/logo.png" alt="logo">
 				</a>
 			</div>
 
@@ -55,24 +54,30 @@
 			</div>
 
 			<div class="nav1_right">
-				 <div class="link_wrap">
+				<div class="link_wrap">
 					<!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
 					<c:choose>
-						<c:when test="${not empty userid}">
-							<!-- 로그인 세션값이 있는 경우 -->
-						
-							 
+						<c:when test="${not empty SignIn}">
+							<c:choose>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+							</c:choose>
+							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
 							<a href="${path}/Logout.do" class="LogOutBtn">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 세션값이 없는 경우 -->
 							<div class="SignUp_nav">
-								<a href="${path}/SignIn.do" class="siBtn">로그인</a> 
-								<a href="${path}/SignUp.do" class="suBtn">회원가입</a>
+								<a href="${path}/SignIn.do" class="siBtn">로그인</a> <a
+									href="${path}/SignUp.do" class="suBtn">회원가입</a>
 							</div>
 						</c:otherwise>
 					</c:choose>
-				</div> 
+				</div>
 			</div>
 		</div>
 		<!-- 헤더 첫 번째 줄 (끝) -->
@@ -249,7 +254,7 @@
 						</div>
 					</li>
 				</c:forEach>
-				
+
 			</ul>
 		</section>
 	</form>
