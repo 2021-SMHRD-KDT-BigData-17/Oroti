@@ -74,8 +74,8 @@
 							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
 						</c:when>
 						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-							<a href="${path}/Notice.do" class="resume">공고글 작성</a>
-						</c:when>
+								<a href="${path}/business.do" class="resume">공고글 작성</a>
+							</c:when>
 					</c:choose>
 				</c:when>
 				</c:choose>

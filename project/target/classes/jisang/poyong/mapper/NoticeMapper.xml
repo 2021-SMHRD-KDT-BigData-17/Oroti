@@ -7,14 +7,27 @@
 
 	<select id="LoadNotice" parameterType="String"
 		resultType="jisang.poyong.vo.NoticeVO">
-		SELECT noticeidx, companyname, noticejob, noticeregdate, noticeperiod
+		SELECT noticeidx, companyname, noticejobcode, noticeregdate,
+		noticeperiod
 		FROM noticeinfo
-		WHERE noticeidx &lt; 400
-		ORDER BY noticeregdate DESC
+		WHERE noticeidx > 1090
+		ORDER BY
+		noticeregdate DESC
 	</select>
-	
-	<insert id="InsertNotice" parameterType="jisang.poyong.vo.NoticeVO">
-	    
-	    
+
+
+	<insert id="insertNotice"	parameterType="jisang.poyong.vo.NoticeVO">
+		INSERT INTO noticeinfo (
+		userid, companyname, noticejobcode, noticeemp, noticewagemode,
+		noticewage, noticejoinmode, noticecareer, noticeedu,
+		companyaddress, noticeregdate, noticeperiod, noticejob
+		)
+		VALUES (
+		#{userid}, #{companyname}, #{noticejobcode}, #{noticeemp},
+		#{noticewagemode}, #{noticewage}, #{noticejoinmode},
+		#{noticecareer}, #{noticeedu}, #{companyaddress},
+		#{noticeregdate}, #{noticeperiod} , ''
+		)
 	</insert>
+
 </mapper>

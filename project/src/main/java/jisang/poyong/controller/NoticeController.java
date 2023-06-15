@@ -33,11 +33,11 @@ public class NoticeController {
     public String loadBusinessInfo(Model model, HttpSession session) {
         UserVO user = (UserVO) session.getAttribute("SignIn");
         String userid = user.getUserid();
-
+        
         BusinessVO business = businessMapper.loadBusiness(userid);
         model.addAttribute("business", business);
-
-        
+        session.setAttribute("business", business);
+        System.out.println(business);
         return "redirect:/Notice.do";
     }
 }

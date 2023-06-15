@@ -7,23 +7,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-
 	UserVO user = (UserVO) session.getAttribute("SignIn");
-	String businessidx = user.getBusinessidx();
-	String Userid = user.getUserid();
-	String username = user.getUsername();
-	String useremail = user.getUseremail();
-	String userphone = user.getUserphone();
-	
-	
-    BusinessVO businessAttribute = (BusinessVO) request.getAttribute("business");
-    String username2 = businessAttribute.getUserid();
-    String businessidx2 = businessAttribute.getBusinesidx();
-    String businessname = businessAttribute.getBusinessname();
-    String businessboss = businessAttribute.getBusinessboss();
-    String businessmember = businessAttribute.getBusinessmember();
-    String businesscode = businessAttribute.getBusinesscode();
-	String companyaddress = businessAttribute.getCompanyaddress();
+String businessidx = user.getBusinessidx();
+String Userid = user.getUserid();
+String username = user.getUsername();
+String useremail = user.getUseremail();
+String userphone = user.getUserphone();
+
+BusinessVO businessAttribute = (BusinessVO) request.getAttribute("business");
+if (businessAttribute == null) {
+	businessAttribute = (BusinessVO) session.getAttribute("business");
+}
+String username2 = businessAttribute.getUserid();
+String businessidx2 = businessAttribute.getBusinessidx();
+String businessname = businessAttribute.getBusinessname();
+String businessboss = businessAttribute.getBusinessboss();
+String businessmember = businessAttribute.getBusinessmember();
+String businesscode = businessAttribute.getBusinesscode();
+String companyaddress = businessAttribute.getCompanyaddress();
+%>
+
+<%
+	java.util.Calendar calendar = java.util.Calendar.getInstance();
+int year = calendar.get(java.util.Calendar.YEAR);
+int month = calendar.get(java.util.Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +47,8 @@
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> 
-				<img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
+					src="${path}/resources/img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -93,8 +101,9 @@
 							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
 								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
 							</c:when>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-								<a href="${path}/Notice.do" class="resume">공고글 작성</a>
+							<c:when
+								test="${String.valueOf(SignIn.userdiv) eq 'B' && businessAttribute ne null && businessAttribute.getUserid() ne null && businessAttribute.getBusinessidx() ne null && businessAttribute.getBusinessname() ne null && businessAttribute.getBusinessboss() ne null && businessAttribute.getBusinessmember() ne null && businessAttribute.getBusinesscode() ne null && businessAttribute.getCompanyaddress() ne null}">
+								<a href="${path}/business.do" class="resume">공고글 작성</a>
 							</c:when>
 						</c:choose>
 					</c:when>
@@ -110,48 +119,39 @@
 	</header>
 	<!-- 채용공고 시작 -->
 	<div class="notice_wrapper">
-		<form action="#" method="get">
+		<form action="${path}/InsertNotice.do" method="get">
+			<input name="userid" type="hidden" value="<%=Userid%>"> <input
+				name="companyname" type="hidden" value="<%=businessname%>">
+			<input name="companyaddress" type="hidden"
+				value="<%=companyaddress%>"> <input name="noticejoinmode"
+				type="hidden" value="임의의값">
+
 			<h1 class="notice_title">채용공고</h1>
 			<!-- 회사정보 입력페이지 -->
 			<table class="notice_content">
-    <tr>
-        <td class="logo" rowspan="4">
-            <button class="logo_register">로고 등록</button>
-        </td>
-        <td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;이름</td>
-        <td class="businessname_input"><%=username2 %></td>
-        <td class="business_idx">&nbsp;사업자번호</td>
-        <td class="business_idx_input"><%=businessidx2%></td>
-    </tr>
-    <tr>
-        <td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
-        <td class="business_boss_input">
-            <input class="business_boss_box" name="businessboss" type="text" value="<%= businessboss %>">
-        </td>
-        <td class="business_number">&nbsp;총인원</td>
-        <td class="business_number_input">
-            <input class="business_number_box" name="businesscode" type="text" value="<%= businessmember %>">
-        </td>
-    </tr>
-    <tr>
-        <td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
-        <td class="businesscategory_input" colspan="3">
-            <select name="businesscode" class="businesscategory_box">
-                <option value="it" <%= business.getBusinesscode().equals("it") ? "selected" : "" %>>IT⦁정보통신</option>
-                <option value="menu" <%= business.getBusinesscode().equals("menu") ? "selected" : "" %>>제조⦁생산⦁화학업</option>
-                <option value="building" <%= business.getBusinesscode().equals("building") ? "selected" : "" %>>건설업</option>
-                <!-- 나머지 옵션들도 동일한 방식으로 추가 -->
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
-        <td class="businessaddress_input" colspan="3">
-            <input type="text" name="companyaddress" class="businessaddress_box" value="<%= companyaddress %>">
-        </td>
-    </tr>
-</table>
-			<div><button class="edit_bt">수정</button></div>
+				<tr>
+					<td class="logo" rowspan="4"><button class="logo_register">로고
+							등록</button></td>
+					<td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;회사명</td>
+					<td class="businessname_input"><%=businessname%></td>
+					<td class="business_idx">&nbsp;사업자번호</td>
+					<td class="business_idx_input"><%=businessidx%></td>
+				</tr>
+				<tr>
+					<td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
+					<td class="business_boss_input"><%=businessboss%></td>
+					<td class="business_number">&nbsp;총인원</td>
+					<td class="business_number_input"><%=businessmember%></td>
+				</tr>
+				<tr>
+					<td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
+					<td class="businesscategory_input" colspan="3"><%=businesscode%></td>
+				</tr>
+				<tr>
+					<td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
+					<td class="businessaddress_input" colspan="3"><%=companyaddress%></td>
+				</tr>
+			</table>
 			<h2 class="hire_information">고용정보</h2>
 			<table class="notice_content_2">
 				<tr>
@@ -163,63 +163,72 @@
 					<td class="salary">임금</td>
 				</tr>
 				<tr>
+					<!-- 모집직종 -->
 					<td class="hirecategory_input"><select name="noticejobcode"
 						class="hirecategory_box">
-							<option value="it">IT⦁정보통신</option>
-							<option value="menu">제조⦁생산⦁화학업</option>
-							<option value="building">건설업</option>
-							<option value="media">미디어⦁광고업</option>
-							<option value="sell">판매⦁유통업</option>
-							<option value="education">교육업</option>
-							<option value="medical">의료⦁제약업</option>
-							<option value="culture">문화⦁예술⦁디자인업</option>
-							<option value="service">서비스업</option>
-							<option value="office">사무직</option>
+							<option value="1">IT⦁정보통신</option>
+							<option value="2">제조⦁생산⦁화학업</option>
+							<option value="3">건설업</option>
+							<option value="4">미디어⦁광고업</option>
+							<option value="5">판매⦁유통업</option>
+							<option value="6">교육업</option>
+							<option value="7">의료⦁제약업</option>
+							<option value="8">문화⦁예술⦁디자인업</option>
+							<option value="9">서비스업</option>
+							<option value="10">사무직</option>
 					</select></td>
+					<!-- 고용형태 -->
 					<td class="hiretype_input"><select name="noticeemp"
 						class="hiretype_box">
-							<option value="contract">계약직</option>
-							<option value="fulltime">상용직</option>
-							<option value="parttime">시간제</option>
+							<option value="계약직">계약직</option>
+							<option value="상용직">상용직</option>
+							<option value="시간제">시간제</option>
 					</select></td>
+					<!-- 요국 -->
 					<td class="requirementcareer_input"><input
 						class="requirementcareer_box" name="noticecareer" type="text"></td>
+
 					<td class="requirementedu_input"><select name="noticeedu"
 						class="requirementedu_box">
-							<option value="uni">대졸이상</option>
-							<option value="high">고졸</option>
-							<option value="middle">중졸이하</option>
+							<option value="대졸이상">대졸이상</option>
+							<option value="고졸">고졸</option>
+							<option value="중졸이하">중졸이하</option>
 					</select></td>
+
 					<td class="salarytype_input"><select name="noticewagemode"
 						class="salarytype_box">
-							<option value="yearincome">연봉</option>
-							<option value="monthincome">월급</option>
-							<option value="timeincome">시급</option>
+							<option value="연봉">연봉</option>
+							<option value="월급">월급</option>
+							<option value="시급">시급</option>
 					</select></td>
+
 					<td class="salary_input"><input class="salary_box"
 						name="noticewage" type="text"></td>
 				</tr>
 			</table>
 
-			 <h2 class="apply_information">채용공고 정보</h2>
-            <table class="notice_content_3" border="1" cellspacing="0">    
-                <tr>
-                    <td class="notice_regdate">공고글 등록일</td>
-                    <td class="notice_period">공고글 마감일</td>
-                </tr>
-                <tr>
-                    <td class="noticeregdate_input" name="noticeregdate">2023.06.15</td>
-                    <td class="noticeperiod_input"><input class="noticeperiod_box" type="date" name="noticeperiod"></td>
-                </tr>
-            </table>
+			<h2 class="apply_information">채용공고 정보</h2>
+			<table class="notice_content_3" border="1" cellspacing="0">
+				<tr>
+					<td class="notice_regdate">공고글 등록일</td>
+					<td class="notice_period">공고글 마감일</td>
+				</tr>
+				<tr>
+					<td class="noticeperiod_input"><input name="noticeregdate"
+						type="hidden" value="<%=year%>-<%=month%>-<%=day%>">
+						<%=year%>-<%=month%>-<%=day%></td>
+					<td class="noticeperiod_input"><input class="noticeperiod_box"
+						type="date" name="noticeperiod"></td>
+				</tr>
+			</table>
 
-            <div class="buttons">
-                <button class="register" type="submit">등록</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="cancle" type="button">취소</button>
-            </div>
-        </form>
-    </div>
+			<div class="buttons">
+				<button class="register" type="submit">등록</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="cancle" type="button">취소</button>
+			</div>
+		</form>
+	</div>
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>

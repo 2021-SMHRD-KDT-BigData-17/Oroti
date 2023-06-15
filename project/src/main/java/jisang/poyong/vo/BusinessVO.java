@@ -3,24 +3,23 @@ package jisang.poyong.vo;
 public class BusinessVO {
 
 	private String userid; //회원가입 아이디
-	private String businesidx; // 사업자 번호
+	private String businessidx; // 사업자 번호
 	private String businessname; // 사업체 이름
 	private String businessboss; // 대표
 	private String businessmember; // 사업체 총 인원
 	private String businesscode; // 사업체 직군 분류
 	private String companyaddress; // 사업체 주소(위치)
-	
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getBusinesidx() {
-		return businesidx;
+	public String getBusinessidx() {
+		return businessidx;
 	}
-	public void setBusinesidx(String businesidx) {
-		this.businesidx = businesidx;
+	public void setBusinessidx(String businessidx) {
+		this.businessidx = businessidx;
 	}
 	public String getBusinessname() {
 		return businessname;
@@ -46,7 +45,6 @@ public class BusinessVO {
 	public void setBusinesscode(String businesscode) {
 		this.businesscode = businesscode;
 	}
-	
 	public String getCompanyaddress() {
 		return companyaddress;
 	}
@@ -55,11 +53,9 @@ public class BusinessVO {
 	}
 	@Override
 	public String toString() {
-		return "BusinessVO [userid=" + userid + ", businesidx=" + businesidx + ", businessname=" + businessname
+		return "BusinessVO [userid=" + userid + ", businessidx=" + businessidx + ", businessname=" + businessname
 				+ ", businessboss=" + businessboss + ", businessmember=" + businessmember + ", businesscode="
 				+ businesscode + ", companyaddress=" + companyaddress + "]";
 	}
-	
-	
-	
+
 }

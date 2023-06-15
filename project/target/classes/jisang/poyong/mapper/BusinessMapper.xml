@@ -5,10 +5,15 @@
 
 <mapper namespace="jisang.poyong.mapper.BusinessMapper">
 
-	<select id="loadBusiness" parameterType="String" resultType="jisang.poyong.vo.BusinessVO">
-		SELECT userid, businessidx, businessname, businessboss, businessmember,	businesscode, companyaddress
+	<select id="loadBusiness" parameterType="String"
+		resultType="jisang.poyong.vo.BusinessVO">
+		SELECT userid, businessidx, businessname, businessboss,
+		businessmember, businesscode, companyaddress
 		FROM businessinfo
-		WHERE userid = #{userid}
+		WHERE
+		userid = #{userid}
 	</select>
 
+
+	
 </mapper>

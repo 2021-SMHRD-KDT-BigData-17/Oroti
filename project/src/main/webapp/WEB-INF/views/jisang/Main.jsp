@@ -95,8 +95,8 @@
 							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
 						</c:when>
 						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-							<a href="${path}/Notice.do" class="resume">공고글 작성</a>
-						</c:when>
+								<a href="${path}/business.do" class="resume">공고글 작성</a>
+							</c:when>
 					</c:choose>
 				</c:when>
 				</c:choose>
@@ -257,7 +257,7 @@
 				<c:forEach var="notice" items="${notices}">
 					<li>
 						<div class="announce_title">${notice.companyname}</div>
-						<div class="announce_content">${notice.noticejob}</div>
+						<div class="announce_content">${notice.noticejobcode}</div>
 						<div class="announce_bottom">
 							<div class="announce_date">${notice.noticeperiod}</div>
 							<div class="bookmark">

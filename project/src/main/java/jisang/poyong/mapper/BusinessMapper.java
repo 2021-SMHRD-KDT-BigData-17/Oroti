@@ -10,5 +10,7 @@ import java.util.ArrayList;
 
 @Mapper
 public interface BusinessMapper {
-    BusinessVO loadBusiness(String userid);
+  
+	BusinessVO loadBusiness(String userid);
+    
 }

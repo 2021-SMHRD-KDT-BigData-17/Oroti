@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import jisang.poyong.mapper.ChatMapper;
 import jisang.poyong.mapper.NoticeMapper;
+import jisang.poyong.vo.BusinessVO;
 import jisang.poyong.vo.ChatVO;
 import jisang.poyong.vo.NoticeVO;
 import jisang.poyong.vo.UserVO;
@@ -41,6 +42,11 @@ public class MainController {
 	return "/jisang/Main"; // JSP 파일명을 리턴
 	}
 	
+	@RequestMapping("/InsertNotice.do")
+	public String insertNotice(NoticeVO notice) {
+		noticeMapper.insertNotice(notice);
+		return "redirect:/MainPage.do";
+	}
 	
 	@RequestMapping("/SignUp.do")
 	public String SignUp() {
@@ -132,9 +138,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/Notice.do")
-	public String Notice() {
+	public String Notice(HttpSession session) {
+	    BusinessVO businessAttribute = (BusinessVO) session.getAttribute("business");
+	    // businessAttribute를 사용하여 필요한 작업을 수행
 
-		return "/jisang/notice";
-
+	    return "/jisang/notice";
 	}
 }
