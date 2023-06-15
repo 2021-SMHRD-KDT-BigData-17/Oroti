@@ -132,7 +132,7 @@
 				</tr>
 				<tr class="user_phone">
 					<td class="edit_list">사업자번호</td>
-					<td class="edit_content">&nbsp;&nbsp;&nbsp;******</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=businessidx%></td>
 				</tr>
 
 			</table>

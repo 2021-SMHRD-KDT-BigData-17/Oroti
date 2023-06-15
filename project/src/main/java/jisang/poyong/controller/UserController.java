@@ -100,4 +100,6 @@ public class UserController {
 		return "redirect:/CompanyMyinfo.do";
 	}
 	
+	
+	
 }

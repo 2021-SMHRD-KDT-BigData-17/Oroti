@@ -1,4 +1,3 @@
-<%@page import="jisang.poyong.vo.BusinessVO"%>
 <%@page import="jisang.poyong.vo.UserVO"%>
 <%@page import="javax.xml.crypto.dsig.SignedInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,16 +13,6 @@
 	String username = user.getUsername();
 	String useremail = user.getUseremail();
 	String userphone = user.getUserphone();
-	
-	
-    BusinessVO businessAttribute = (BusinessVO) request.getAttribute("business");
-    String username2 = businessAttribute.getUserid();
-    String businessidx2 = businessAttribute.getBusinesidx();
-    String businessname = businessAttribute.getBusinessname();
-    String businessboss = businessAttribute.getBusinessboss();
-    String businessmember = businessAttribute.getBusinessmember();
-    String businesscode = businessAttribute.getBusinesscode();
-	String companyaddress = businessAttribute.getCompanyaddress();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,43 +103,44 @@
 			<h1 class="notice_title">채용공고</h1>
 			<!-- 회사정보 입력페이지 -->
 			<table class="notice_content">
-    <tr>
-        <td class="logo" rowspan="4">
-            <button class="logo_register">로고 등록</button>
-        </td>
-        <td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;이름</td>
-        <td class="businessname_input"><%=username2 %></td>
-        <td class="business_idx">&nbsp;사업자번호</td>
-        <td class="business_idx_input"><%=businessidx2%></td>
-    </tr>
-    <tr>
-        <td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
-        <td class="business_boss_input">
-            <input class="business_boss_box" name="businessboss" type="text" value="<%= businessboss %>">
-        </td>
-        <td class="business_number">&nbsp;총인원</td>
-        <td class="business_number_input">
-            <input class="business_number_box" name="businesscode" type="text" value="<%= businessmember %>">
-        </td>
-    </tr>
-    <tr>
-        <td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
-        <td class="businesscategory_input" colspan="3">
-            <select name="businesscode" class="businesscategory_box">
-                <option value="it" <%= business.getBusinesscode().equals("it") ? "selected" : "" %>>IT⦁정보통신</option>
-                <option value="menu" <%= business.getBusinesscode().equals("menu") ? "selected" : "" %>>제조⦁생산⦁화학업</option>
-                <option value="building" <%= business.getBusinesscode().equals("building") ? "selected" : "" %>>건설업</option>
-                <!-- 나머지 옵션들도 동일한 방식으로 추가 -->
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
-        <td class="businessaddress_input" colspan="3">
-            <input type="text" name="companyaddress" class="businessaddress_box" value="<%= companyaddress %>">
-        </td>
-    </tr>
-</table>
+				<tr>
+					<td class="logo" rowspan="4"><button class="logo_register">로고
+							등록</button></td>
+					<td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;이름</td>
+					<td class="businessname_input"><%=username%></td>
+					<td class="business_idx">&nbsp;사업자번호</td>
+					<td class="business_idx_input"><%=businessidx%></td>
+				</tr>
+				<tr> 
+					<td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
+					<td class="business_boss_input"><input
+						class="business_boss_box" name="businessboss" type="text"></td>
+					<td class="business_number">&nbsp;총인원</td>
+					<td class="business_number_input"><input
+						class="business_number_box" name="businesscode" type="text"></td>
+				</tr>
+				<tr>
+					<td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
+					<td class="businesscategory_input" colspan="3"><select
+						name="businesscode" class="businesscategory_box">
+							<option value="it">IT⦁정보통신</option>
+							<option value="menu">제조⦁생산⦁화학업</option>
+							<option value="building">건설업</option>
+							<option value="media">미디어⦁광고업</option>
+							<option value="sell">판매⦁유통업</option>
+							<option value="education">교육업</option>
+							<option value="medical">의료⦁제약업</option>
+							<option value="culture">문화⦁예술⦁디자인업</option>
+							<option value="service">서비스업</option>
+							<option value="office">사무직</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
+					<td class="businessaddress_input" colspan="3"><input
+						type="text" name="companyaddress" class="businessaddress_box"></td>
+				</tr>
+			</table>
 			<div><button class="edit_bt">수정</button></div>
 			<h2 class="hire_information">고용정보</h2>
 			<table class="notice_content_2">

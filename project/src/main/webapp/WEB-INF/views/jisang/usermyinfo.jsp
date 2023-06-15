@@ -4,8 +4,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<%
+	UserVO userid = (UserVO) session.getAttribute("SignIn");
+%>
 
 <%
 	UserVO user = (UserVO) session.getAttribute("SignIn");
@@ -16,6 +18,7 @@ String useremail = user.getUseremail();
 String userphone = user.getUserphone();
 String userobstccode = user.getUserobstccode();
 String userparentphone = user.getUserparentphone();
+Character userdiv = (Character) user.getUserdiv();
 %>
 <!DOCTYPE html>
 <html lang="en">

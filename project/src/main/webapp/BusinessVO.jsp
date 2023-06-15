@@ -8,8 +8,6 @@ public class BusinessVO {
 	private String businessboss; // 대표
 	private String businessmember; // 사업체 총 인원
 	private String businesscode; // 사업체 직군 분류
-	private String companyaddress; // 사업체 주소(위치)
-	
 	public String getUserid() {
 		return userid;
 	}
@@ -46,18 +44,11 @@ public class BusinessVO {
 	public void setBusinesscode(String businesscode) {
 		this.businesscode = businesscode;
 	}
-	
-	public String getCompanyaddress() {
-		return companyaddress;
-	}
-	public void setCompanyaddress(String companyaddress) {
-		this.companyaddress = companyaddress;
-	}
 	@Override
 	public String toString() {
 		return "BusinessVO [userid=" + userid + ", businesidx=" + businesidx + ", businessname=" + businessname
 				+ ", businessboss=" + businessboss + ", businessmember=" + businessmember + ", businesscode="
-				+ businesscode + ", companyaddress=" + companyaddress + "]";
+				+ businesscode + "]";
 	}
 	
 	

@@ -12,5 +12,9 @@
 		WHERE noticeidx &lt; 400
 		ORDER BY noticeregdate DESC
 	</select>
-
+	
+	<insert id="InsertNotice" parameterType="jisang.poyong.vo.NoticeVO">
+	    
+	    
+	</insert>
 </mapper>

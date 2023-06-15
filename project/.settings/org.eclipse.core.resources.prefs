@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/BusinessVO.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/jisang/chart.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/jisang/companymyinfo.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/jisang/companymyinfoedit.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/jisang/notice.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jisang/noticeComplete.jsp=UTF-8
