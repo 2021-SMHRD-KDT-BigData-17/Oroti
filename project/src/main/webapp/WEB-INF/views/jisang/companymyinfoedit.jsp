@@ -1,4 +1,4 @@
-<%@page import="jisang.poyong.vo.UserVO"%>
+ <%@page import="jisang.poyong.vo.UserVO"%>
 <%@page import="javax.xml.crypto.dsig.SignedInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -7,7 +7,23 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
 	UserVO userid = (UserVO) session.getAttribute("SignIn");
+	
+
 %>
+
+
+
+<%
+
+	UserVO user = (UserVO) session.getAttribute("SignIn");
+	String businessidx = user.getBusinessidx();
+	String Userid = user.getUserid();
+	String username = user.getUsername();
+	String useremail = user.getUseremail();
+	String userphone = user.getUserphone();
+	Character userdiv = (Character) user.getUserdiv();
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +38,7 @@
         <!-- 헤더 첫 번째 줄 (시작)-->
         <div class="nav1">
             <div class="nav1_left">
-                <a href="#"> <!-- 메인페이지 링크 -->
+                <a href="${path}/MainPage.do"> <!-- 메인페이지 링크 -->
                     <img src="img/logo.png" alt="logo">포용취업넷
                 </a>
             </div>
@@ -80,37 +96,45 @@
 
     <!-- 내 정보 시작 -->
     <div class="myinfo_wrapper">
-        <div class="myinfo">
-            <form action="#" method="get">
-                <table class="edit_area">
-                    <tr class="user_id">
-                        <td class="edit_list">아이디</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;company00</td>
-                    </tr>
-                    <tr class="user_pw">
-                        <td class="edit_list">비밀번호</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;<input class="edit_pw" type="password"></td>
-                    </tr>
-                    <tr class="business_name">
-                        <td class="edit_list">회사명</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;<input class="edit_pw" type="text"></td>
-                    </tr>
-                    <tr class="business_boss">
-                        <td class="edit_list">대표명</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;<input class="edit_pw" type="text"></td>
-                    </tr>
-                    <tr class="business_email">
-                        <td class="edit_list">이메일</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;<input class="edit_pw" type="email"></td>
-                    </tr>
-                    <tr class="disability_type">
-                        <td class="edit_list">직군분류</td>
-                        <td class="edit_content">&nbsp;&nbsp;&nbsp;IT</td>
-                    </tr>
-                </table>
-                <button class="edit_btn" type="submit">수정</button>
-                <a href="#"><button class="cancle_btn">취소</button></a>
-            </form>
+		<div class="myinfo">
+			<form action="${path}/Companymyinfoedit.do" method="post">
+				<table class="edit_area">
+					<tr class="user_id">
+						<td class="edit_list">아이디</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=Userid%> 
+						</td>
+					</tr>
+					<tr class="user_pw">
+						<td class="edit_list">비밀번호</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
+							class="edit_pw" name="userpw" type="password"></td>
+					</tr>
+					<tr class="user_name">
+						<td class="edit_list">이름</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=username%></td>
+					</tr>
+					<tr class="user_phone">
+						<td class="edit_list">연락처</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
+							class="edit_pw" name="userphone" type="text"></td>
+					</tr>
+					<tr class="user_email">
+						<td class="edit_list">이메일</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
+							class="edit_pw" name="useremail" type="email"></td>
+					</tr>
+					<tr class="user_email">
+						<td class="edit_list">사업자번호</td>
+						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
+							class="edit_pw" name="businessidx" type="password"></td>
+					</tr>
+					
+				</table>
+				<input type="hidden" name="userid" id="userid"	value="<%=Userid%>">
+				<input type="hidden" name="userdiv" id="userdiv" value="<%=userdiv%>">
+				<button class="edit_btn" type="submit">수정</button>
+				<a href="${path}/CompanyMyinfo.do"><button type = "button" class="cancle_btn">취소</button></a>
+			</form>
         </div>
         <div class="side">
             <table class="side_menu">

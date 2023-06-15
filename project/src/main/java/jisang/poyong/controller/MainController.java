@@ -27,6 +27,7 @@ public class MainController {
 	private ChatMapper chatMapper;
 	@Autowired
 	private NoticeMapper noticeMapper;
+	
 
 	
 
@@ -48,6 +49,19 @@ public class MainController {
 
 	}
 
+	@RequestMapping("/Companyedit.do")
+	public String Companyedit() {
+
+		return "/jisang/companymyinfoedit";
+
+	}
+	
+	@RequestMapping("/Useredit.do")
+	public String Useredit() {
+		
+		return "/jisang/usermyinfoedit";
+	}
+	
 	@RequestMapping("/SignIn.do")
 	public String SignIn() {
 
@@ -88,6 +102,13 @@ public class MainController {
 
 	}
 	
+	@RequestMapping("/Chart.do")
+	public String Chart() {
+
+		return "/jisang/chart";
+
+	}
+	
 	@RequestMapping("/CompanyMyinfo.do")
 	public String CompanyMyinfo() {
 
@@ -95,5 +116,12 @@ public class MainController {
 
 	}
 	
+
+	@RequestMapping("/Resume.do")
+	public String Resume() {
+
+		return "/jisang/resume";
+
+	}
 	
 }

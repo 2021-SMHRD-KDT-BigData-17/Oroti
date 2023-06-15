@@ -1,7 +1,5 @@
 package jisang.poyong.controller;
 
-import java.net.URLEncoder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,23 +39,24 @@ public class UserController {
 		}
 		return "redirect:/SignIn.do";
 	}
-	//로그인
+
+	// 로그인
 	@PostMapping("/SignIn2.do")
 	public String SignIn(UserVO vo, HttpServletRequest request, Model model) {
-	    System.out.println("요청받음");
-	    UserVO SignIn = mapper.SignIn(vo);
-	    HttpSession session = request.getSession();
+		System.out.println("요청받음");
+		UserVO SignIn = mapper.SignIn(vo);
+		HttpSession session = request.getSession();
 
-	    if (SignIn != null) {
-	        session.setAttribute("SignIn", SignIn);
-	        System.out.println("성공");
-	        return "redirect:/MainPage.do";
-	    } else {
-	        session.setAttribute("SignIn", null);
-	        System.out.println("실패");
-	        session.setAttribute("errorMessage", "로그인에 실패했습니다. 다시 확인해주세요.");
-	        return "redirect:/SignIn.do";
-	    }
+		if (SignIn != null) {
+			session.setAttribute("SignIn", SignIn);
+			System.out.println("성공");
+			return "redirect:/MainPage.do";
+		} else {
+			session.setAttribute("SignIn", null);
+			System.out.println("실패");
+			session.setAttribute("errorMessage", "로그인에 실패했습니다. 다시 확인해주세요.");
+			return "redirect:/SignIn.do";
+		}
 	}
 
 	// 로그아웃
@@ -66,7 +65,39 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/MainPage.do";
 	}
-	
-	
 
+	@PostMapping("/Usermyinfoedit.do")
+	public String updateUser(UserVO vo,HttpServletRequest request, Model model) {
+		// UserVO의 값을 업데이트
+		System.out.println("수정요청이 들어옴");
+		System.out.println(vo);
+		
+
+		mapper.UpdateUser(vo);
+		// 업데이트 후 필요한 작업 수행
+
+		UserVO SignIn = mapper.SignIn(vo);
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("SignIn", SignIn);
+		return "redirect:/UserMyinfo.do";
+	}
+	
+	@PostMapping("/Companymyinfoedit.do")
+	public String updateCompany(UserVO vo,HttpServletRequest request, Model model) {
+		// UserVO의 값을 업데이트
+		System.out.println("수정요청이 들어옴");
+		System.out.println(vo);
+		
+
+		mapper.UpdateUser(vo);
+		// 업데이트 후 필요한 작업 수행
+
+		UserVO SignIn = mapper.SignIn(vo);
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("SignIn", SignIn);
+		return "redirect:/CompanyMyinfo.do";
+	}
+	
 }

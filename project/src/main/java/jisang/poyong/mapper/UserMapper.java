@@ -15,6 +15,11 @@ public interface UserMapper {
 	public UserVO UserSignUp(UserVO vo);
 	
 	public UserVO BusinessSignUp(UserVO vo);
+	
+	void UpdateUser(UserVO vo);
+	
+	void UpdateCompany(UserVO vo);
+	
 //	public void boardInsert(Board vo);
 //
 //	public Board boardContent(int theIdx);
