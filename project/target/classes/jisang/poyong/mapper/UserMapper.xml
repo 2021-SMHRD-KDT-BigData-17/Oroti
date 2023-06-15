@@ -15,8 +15,8 @@
 		#{userphone},
 		#{userdiv},
 		#{userobstccode},
-		NULL,
-		NULL)
+		'',
+		'')
 	</insert>
 
 	<insert id="BusinessSignUp"	parameterType="jisang.poyong.vo.UserVO">
@@ -28,8 +28,8 @@
 		#{useremail},
 		#{userphone},
 		"B",
-		NULL,
-		NULL,
+		'',
+		'',
 		#{businessidx})
 	</insert>
 
@@ -37,8 +37,7 @@
 	<select id="SignIn" resultType="jisang.poyong.vo.UserVO">
 		select *
 		from userinfo
-		where userid
-		= #{userid}
+		where userid = #{userid}
 		and userpw = #{userpw}
 		and userdiv = #{userdiv}
 	</select>

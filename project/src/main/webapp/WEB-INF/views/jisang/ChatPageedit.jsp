@@ -26,8 +26,7 @@
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="#"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
-					alt="logo">포용취업넷
+				<a href="#"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -66,7 +65,7 @@
 		<!-- 헤더 두 번째 줄 (시작) -->
 		<div class="nav2">
 			<div class="nav2_left">
-				<a href="#" class="hire">채용정보</a> <a href="#">취업 분포도</a> <a href="#">직업·진로</a>
+				<a href="#" class="hire">채용정보</a><a href="${path}/chart.do" class="job">취업 분포도</a> <a href="#">직업·진로</a>
 				<a href="#">이력서 작성</a>
 			</div>
 

@@ -124,4 +124,17 @@ public class MainController {
 
 	}
 	
+	@RequestMapping("/Career.do")
+	public String Carrer() {
+
+		return "/jisang/carrer";
+
+	}
+	
+	@RequestMapping("/Notice.do")
+	public String Notice() {
+
+		return "/jisang/notice";
+
+	}
 }

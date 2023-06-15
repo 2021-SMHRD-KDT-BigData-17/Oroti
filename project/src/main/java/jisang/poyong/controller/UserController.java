@@ -87,10 +87,10 @@ public class UserController {
 	public String updateCompany(UserVO vo,HttpServletRequest request, Model model) {
 		// UserVO의 값을 업데이트
 		System.out.println("수정요청이 들어옴");
-		System.out.println(vo);
+		System.out.println(vo.getBusinessidx());
 		
 
-		mapper.UpdateUser(vo);
+		mapper.UpdateCompany(vo);
 		// 업데이트 후 필요한 작업 수행
 
 		UserVO SignIn = mapper.SignIn(vo);

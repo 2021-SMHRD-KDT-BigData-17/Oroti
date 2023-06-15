@@ -33,7 +33,7 @@
 
 		<!-- 첫 화면으로 이동 (시작) -->
 		<div class="send_home">
-			<a href="<c:url value='/ChatPage.do'/>" class="homeBtn">첫 화면으로 이동</a>
+			<a href="<c:url value='/MainPage.do'/>" class="homeBtn">첫 화면으로 이동</a>
 		</div>
 		<!-- 첫 화면으로 이동 (끝) -->
 

@@ -5,19 +5,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <%
-
 	UserVO user = (UserVO) session.getAttribute("SignIn");
 
-	String Userid = user.getUserid();
-	String username = user.getUsername();
-	String useremail = user.getUseremail();
-	String userphone = user.getUserphone();
-	String userobstccode = user.getUserobstccode();
-	String userparentphone = user.getUserparentphone();
-	
+String Userid = user.getUserid();
+String username = user.getUsername();
+String useremail = user.getUseremail();
+String userphone = user.getUserphone();
+String userobstccode = user.getUserobstccode();
+String userparentphone = user.getUserparentphone();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,12 +27,11 @@
 <link rel="stylesheet" href="${path}/resources/css/usermyinfo.css">
 </head>
 <body>
-	<header>
+		<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="#"> <!-- 메인페이지 링크 --> <img src="img/logo.png"
-					alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -78,8 +75,21 @@
 		<!-- 헤더 두 번째 줄 (시작) -->
 		<div class="nav2">
 			<div class="nav2_left">
-				<a href="#" class="hire">채용정보</a> <a href="#">취업 분포도</a> <a href="#">직업·진로</a>
-				<a href="#">이력서 작성</a>
+				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
+					href="${path}/Chart.do" class="job">취업 분포도</a> <a
+					href="${path}/Career.do" class="career">직업·진로</a>
+				<c:choose>
+				<c:when test="${not empty SignIn}">
+					<c:choose>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
+						</c:when>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+							<a href="${path}/Notice.do" class="resume">공고글 작성</a>
+						</c:when>
+					</c:choose>
+				</c:when>
+				</c:choose>
 			</div>
 
 			<div class="nav2_right">
@@ -93,33 +103,70 @@
 	<!-- 내 정보 시작 -->
 	<div class="myinfo_wrapper">
 		<div class="myinfo">
-				<table class="edit_area">
-					<tr class="user_id">
-						<td class="edit_list">아이디</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= Userid %></td>
-					</tr>
-					<tr class="user_name">
-						<td class="edit_list">이름</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= username %></td>
-					</tr>
-					<tr class="user_phone">
-						<td class="edit_list">연락처</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= userphone %></td>
-					</tr>
-					<tr class="user_email">
-						<td class="edit_list">이메일</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= useremail %></td>
-					</tr>
-					<tr class="disability_type">
-						<td class="edit_list">장애유형</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= userobstccode %></td>
-					</tr>
-					<tr class="user_parent_phone">
-						<td class="edit_list">보호자 연락처</td>
-						<td class="edit_content">&nbsp;&nbsp;&nbsp;<%= userparentphone %></td>
-					</tr>
-				</table>
-				<a href="${path}/Useredit.do"><button class="edit_btn" type="button">수정</button></a>
+			<table class="edit_area">
+				<tr class="user_id">
+					<td class="edit_list">아이디</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=Userid%></td>
+				</tr>
+				<tr class="user_name">
+					<td class="edit_list">이름</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=username%></td>
+				</tr>
+				<tr class="user_phone">
+					<td class="edit_list">연락처</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=userphone%></td>
+				</tr>
+				<tr class="user_email">
+					<td class="edit_list">이메일</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=useremail%></td>
+				</tr>
+				<tr class="disability_type">
+					<td class="edit_list">장애유형</td>
+					<td class="edit_content">
+						<%
+							if (userobstccode.equals("0")) {
+						%>&nbsp;&nbsp;&nbsp;해당없음<%
+							} else if (userobstccode.equals("1")) {
+						%>&nbsp;&nbsp;&nbsp;지체장애<%
+							} else if (userobstccode.equals("2")) {
+						%>&nbsp;&nbsp;&nbsp;뇌병변장애<%
+							} else if (userobstccode.equals("3")) {
+						%>&nbsp;&nbsp;&nbsp;시각장애<%
+							} else if (userobstccode.equals("4")) {
+						%>&nbsp;&nbsp;&nbsp;청각장애<%
+							} else if (userobstccode.equals("5")) {
+						%>&nbsp;&nbsp;&nbsp;언어장애<%
+							} else if (userobstccode.equals("6")) {
+						%>&nbsp;&nbsp;&nbsp;지적장애<%
+							} else if (userobstccode.equals("7")) {
+						%>&nbsp;&nbsp;&nbsp;자폐성장애<%
+							} else if (userobstccode.equals("8")) {
+						%>&nbsp;&nbsp;&nbsp;정신장애<%
+							} else if (userobstccode.equals("9")) {
+						%>&nbsp;&nbsp;&nbsp;신장장애<%
+							} else if (userobstccode.equals("10")) {
+						%>&nbsp;&nbsp;&nbsp;심장장애<%
+							} else if (userobstccode.equals("11")) {
+						%>&nbsp;&nbsp;&nbsp;호흡기장애<%
+							} else if (userobstccode.equals("12")) {
+						%>&nbsp;&nbsp;&nbsp;간장애<%
+							} else if (userobstccode.equals("13")) {
+						%>&nbsp;&nbsp;&nbsp;안면장애<%
+							} else if (userobstccode.equals("14")) {
+						%>&nbsp;&nbsp;&nbsp;장루/요루장애<%
+							} else if (userobstccode.equals("15")) {
+						%>뇌전증장애&nbsp;&nbsp;&nbsp;<%
+							}
+						%>
+					</td>
+				</tr>
+				<tr class="user_parent_phone">
+					<td class="edit_list">보호자 연락처</td>
+					<td class="edit_content">&nbsp;&nbsp;&nbsp;<%=userparentphone%></td>
+				</tr>
+			</table>
+			<a href="${path}/Useredit.do"><button class="edit_btn"
+					type="button">수정</button></a>
 		</div>
 
 		<div class="side">

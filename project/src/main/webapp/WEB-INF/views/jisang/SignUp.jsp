@@ -82,7 +82,7 @@
                             <option value="10" class="opt">심장장애</option>
                             <option value="11" class="opt">호흡기장애</option>
                             <option value="12" class="opt" >간장애</option>
-                            <option value="13" class="opt" > 안면장애</option>
+                            <option value="13" class="opt" >안면장애</option>
                             <option value="14" class="opt" >장루/요루장애</option>
                             <option value="15" class="opt" >뇌전증장애</option>
                         </select>

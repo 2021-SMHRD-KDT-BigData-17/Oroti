@@ -34,21 +34,22 @@
     <link rel="stylesheet" href="${path}/resources/css/companymyinfo.css">
 </head>
 <body>
-    <header>
-        <!-- 헤더 첫 번째 줄 (시작)-->
-        <div class="nav1">
-            <div class="nav1_left">
-                <a href="${path}/MainPage.do"> <!-- 메인페이지 링크 -->
-                    <img src="img/logo.png" alt="logo">포용취업넷
-                </a>
-            </div>
+ 	<header>
+		<!-- 헤더 첫 번째 줄 (시작)-->
+		<div class="nav1">
+			<div class="nav1_left">
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+				</a>
+			</div>
 
-            <div class="nav1_center">
-                <input type="text" class="search">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            
-            <div class="nav1_right">
+			<div class="nav1_center">
+				<input type="text" class="search">
+				<button>
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</div>
+
+			<div class="nav1_right">
 				<div class="link_wrap">
 					<!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
 					<c:choose>
@@ -75,24 +76,36 @@
 				</div>
 			</div>
 		</div>
-        <!-- 헤더 첫 번째 줄 (끝) -->
+		<!-- 헤더 첫 번째 줄 (끝) -->
 
 
-        <!-- 헤더 두 번째 줄 (시작) -->
-        <div class="nav2">
-            <div class="nav2_left">
-                <a href="#" class="hire">채용정보</a>
-                <a href="#">취업 분포도</a>
-                <a href="#">직업·진로</a>
-                <a href="#">이력서 작성</a>
-            </div>
+		<!-- 헤더 두 번째 줄 (시작) -->
+		<div class="nav2">
+			<div class="nav2_left">
+				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
+					href="${path}/Chart.do" class="job">취업 분포도</a> <a
+					href="${path}/Career.do" class="career">직업·진로</a>
+				<c:choose>
+				<c:when test="${not empty SignIn}">
+					<c:choose>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
+						</c:when>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+							<a href="${path}/Notice.do" class="resume">공고글 작성</a>
+						</c:when>
+					</c:choose>
+				</c:when>
+				</c:choose>
+			</div>
 
-            <div class="nav2_right">
-                <a href="#" class="customer">고객센터</a><!-- 고객센터 페이지 링크 -->
-            </div>
-        </div>
-        <!-- 헤더 두 번째 줄 (끝) -->
-    </header>
+			<div class="nav2_right">
+				<a href="#" class="customer">고객센터</a>
+				<!-- 고객센터 페이지 링크 -->
+			</div>
+		</div>
+		<!-- 헤더 두 번째 줄 (끝) -->
+	</header>
 
     <!-- 내 정보 시작 -->
     <div class="myinfo_wrapper">
@@ -123,7 +136,7 @@
 						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
 							class="edit_pw" name="useremail" type="email"></td>
 					</tr>
-					<tr class="user_email">
+					<tr>
 						<td class="edit_list">사업자번호</td>
 						<td class="edit_content">&nbsp;&nbsp;&nbsp;<input
 							class="edit_pw" name="businessidx" type="password"></td>
