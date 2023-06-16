@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 폼 제출을 처리
   form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
     var message = textarea.value.trim();
 

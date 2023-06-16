@@ -141,17 +141,18 @@
 
 	<!-- 채팅 입력, 전송 부분 (시작) -->
 	<div class="chat_bottom">
-		<form action="" class="chat_form">
+		<form action="${path}/SendChat.do" method="post" class="chat_form">
+				<input type="hidden" name="senduser" id="senduser"	value="<%=userid%>">
 			<div class="chat_input">
-				<textarea name="" class="input_value"></textarea>
+				<textarea name="chattext" class="input_value"></textarea>
 			</div>
 			<div class="chat_btn">
 				<div class="tts_stt">
 					<!-- 버튼말고 div로 바꾸고 기능을 js로 구현해야할 듯(form 때문에 누를 때마다 새로고침됨) -->
-					<button class="chat_tts">
+					<button class="chat_tts" type = "button">
 						<i class="fa-solid fa-volume-high"></i>
 					</button>
-					<button class="chat_stt">
+					<button class="chat_stt" type = "button">
 						<i class="fa-solid fa-microphone"></i>
 					</button>
 				</div>
@@ -162,11 +163,10 @@
 		</form>
 	</div>
 	<!-- 채팅 입력, 전송 부분 (끝) -->
-	</section>
 	<!-- 채팅창 (끝) -->
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
-	<script src="${path}/resources/js/message.js"></script>
+	<%-- <script src="${path}/resources/js/message.js"></script> --%>
 </body>
 </html>

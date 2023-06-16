@@ -15,7 +15,13 @@
 		noticeidx DESC
 	</select>
 
-
+	<select id="NoticeResult" parameterType="String"
+		resultType="jisang.poyong.vo.NoticeVO">
+		SELECT *
+		FROM noticeinfo
+		WHERE noticeidx = #{noticeidx};
+	</select>
+	
 	<insert id="insertNotice"	parameterType="jisang.poyong.vo.NoticeVO">
 		INSERT INTO noticeinfo (
 		userid, companyname, noticejobcode, noticeemp, noticewagemode,

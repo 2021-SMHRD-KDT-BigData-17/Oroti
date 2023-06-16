@@ -104,7 +104,7 @@
 						class="jumin1">&nbsp;-&nbsp;<input type="password"
 						class="jumin2">******</td>
 				</tr>
-				<tr>
+				<tr> 
 					<td class="address">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주소</td>
 					<td class="address_input" colspan="3"><input
 						class="big_address" type="text"> <br>

@@ -33,12 +33,12 @@ public class MainController {
 	
 
 	@GetMapping("/MainPage.do")
-    public String loadNoticeData(Model model) {
-        List<NoticeVO> notices = noticeMapper.LoadNotice();
+	public String loadNoticeData(Model model, HttpServletRequest request) {
+	    List<NoticeVO> notices = noticeMapper.LoadNotice();
 
-        for (NoticeVO notice : notices) {
-            int noticejobcode = notice.getNoticejobcode();
-            String noticejob = "";
+	    for (NoticeVO notice : notices) {
+	        int noticejobcode = notice.getNoticejobcode();
+	        String noticejob = "";
 
             switch (noticejobcode) {
                 case 1:
@@ -77,12 +77,13 @@ public class MainController {
             }
 
             notice.setNoticejob(noticejob);
-        }
+	    }
 
-        model.addAttribute("notices", notices);
+	    model.addAttribute("notices", notices);
+	    model.addAttribute("path", request.getContextPath());
 
-        return "/jisang/Main";
-    }
+	    return "/jisang/Main";
+	}
 
 	
 	@RequestMapping("/InsertNotice.do")
@@ -121,7 +122,7 @@ public class MainController {
 	@RequestMapping("/ChatPage.do")
 	public String loadChatData(HttpServletRequest request, Model model) {
 
-		System.out.println("요청옵니다");
+		System.out.println("쪽지 페이지로 이동해요");
 		HttpSession session = request.getSession();
 		UserVO currentUser = (UserVO) session.getAttribute("SignIn");
 		if (currentUser == null) {
@@ -186,5 +187,13 @@ public class MainController {
 	    // businessAttribute를 사용하여 필요한 작업을 수행
 
 	    return "/jisang/notice";
+	}
+	
+
+	@RequestMapping("/NoticeResult.do")
+	public String NoticeResult() {
+		
+		return "/jisang/noticeresult";
+
 	}
 }

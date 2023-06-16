@@ -22,17 +22,17 @@
 <link rel="stylesheet" href="${path}/resources/css/header.css">
 <style>
 .bookmark .fa-star:nth-child(1):hover {
-	color: var(--main-color);
+	color: var(- -main-color);
 }
 
 .bookmark .fa-star:nth-child(1) {
 	display: block;
-	color: var(--font-color2);
+	color: var(- -font-color3);
 }
 
 .bookmark .fa-star:nth-child(2) {
 	display: none;
-	color: var(--main-color);
+	color: var(- -main-color);
 }
 </style>
 </head>
@@ -42,7 +42,8 @@
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
+					src="${path}/resources/img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -90,16 +91,16 @@
 					href="${path}/Chart.do" class="job">취업 분포도</a> <a
 					href="${path}/Career.do" class="career">직업·진로</a>
 				<c:choose>
-				<c:when test="${not empty SignIn}">
-					<c:choose>
-						<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-						</c:when>
-						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+					<c:when test="${not empty SignIn}">
+						<c:choose>
+							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
+							</c:when>
+							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
 								<a href="${path}/business.do" class="resume">공고글 작성</a>
 							</c:when>
-					</c:choose>
-				</c:when>
+						</c:choose>
+					</c:when>
 				</c:choose>
 			</div>
 
@@ -254,21 +255,40 @@
 				<option value="desc">마감일순</option>
 			</select>
 			<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
-			<ul class="announce_list">
-				<c:forEach var="notice" items="${notices}">
-					<li>
-						<div class="announce_title">${notice.companyname}</div>
-						<div class="announce_content">${notice.noticejob}</div>
-						<div class="announce_bottom">
-							<div class="announce_date">${notice.noticeregdate} ~ ${notice.noticeperiod}</div>
-							<div class="bookmark">
-								<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
+			<c:choose>
+				<c:when test="${not empty SignIn}">
+					<ul class="announce_list">
+						<c:forEach var="notice" items="${notices}">
+							<li onclick="NoticeResult(${notice.noticeidx})">
+								<div class="announce_title">${notice.companyname}</div>
+								<div class="announce_content">${notice.noticejob}</div>
+								<div class="announce_bottom">
+									<div class="announce_date">${notice.noticeregdate}~
+										${notice.noticeperiod}</div>
+									<div class="bookmark">
+										<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
+									</div>
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="announce_list">
+						<c:forEach var="notice" items="${notices}">
+							<div class="announce_title">${notice.companyname}</div>
+							<div class="announce_content">${notice.noticejob}</div>
+							<div class="announce_bottom">
+								<div class="announce_date">${notice.noticeregdate}~
+									${notice.noticeperiod}</div>
+								<div class="bookmark">
+									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
+								</div>
 							</div>
-						</div>
-					</li>
-				</c:forEach>
-
-			</ul>
+						</c:forEach>
+					</ul>
+				</c:otherwise>
+			</c:choose>
 		</section>
 	</form>
 	<!-- 기업 공고 (끝) -->
@@ -292,6 +312,13 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 	<script src="${path}/resources/js/index.js"></script>
+	<script>
+		function NoticeResult(noticeIdx) {
+			// 선택한 공고의 ID를 가지고 NoticeResult.do 요청을 보냅니다.
+			// 필요한 경우 Ajax를 사용하여 비동기 요청을 보낼 수 있습니다.
+			window.location.href = "NoticeResult.do?noticeIdx=" + noticeIdx;
+		}
+	</script>
 </body>
 
 </html>

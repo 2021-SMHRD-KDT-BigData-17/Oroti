@@ -1,56 +1,101 @@
+<%@page import="jisang.poyong.vo.BusinessVO"%>
+<%@page import="jisang.poyong.vo.UserVO"%>
+<%@page import="javax.xml.crypto.dsig.SignedInfo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<%
+	UserVO user = (UserVO) session.getAttribute("SignIn");
+String businessidx = user.getBusinessidx();
+String Userid = user.getUserid();
+String username = user.getUsername();
+String useremail = user.getUseremail();
+String userphone = user.getUserphone();
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>notice</title>
-    <link rel="stylesheet" href="notice_complete.css">
+    <link rel="stylesheet" href="${path}/resources/css/notice_complete.css">
 </head>
 <body>
-    <header>
-        <!-- 헤더 첫 번째 줄 (시작)-->
-        <div class="nav1">
-            <div class="nav1_left">
-                <a href="#"> <!-- 메인페이지 링크 -->
-                    <img src="img/logo.png" alt="logo">포용취업넷
-                </a>
-            </div>
+   <header>
+		<!-- 헤더 첫 번째 줄 (시작)-->
+		<div class="nav1">
+			<div class="nav1_left">
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+				</a>
+			</div>
 
-            <div class="nav1_center">
-                <input type="text" class="search">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            
-            <div class="nav1_right">
-                <div class="link_wrap">
-                    <!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
-                    <a href="SignIn.html">로그인</a>
-                    <a href="SignUp.html">회원가입</a>
-                    <!-- 로그인 후에는 "쪽지함, 내정보, 로그아웃" 버튼만 보이게, 나머지는 숨김 처리 -->
-                    <a href="#" class="message">쪽지함</a>
-                    <a href="#" class="myPage">내정보</a>
-                    <a href="#" class="logout">로그아웃</a>
-                </div>
-            </div>
-        </div>
-        <!-- 헤더 첫 번째 줄 (끝) -->
+			<div class="nav1_center">
+				<input type="text" class="search">
+				<button>
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</div>
+
+			<div class="nav1_right">
+				<div class="link_wrap">
+					<!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
+					<c:choose>
+						<c:when test="${not empty SignIn}">
+							<c:choose>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
+								</c:when>
+							</c:choose>
+							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
+							<a href="${path}/Logout.do" class="LogOutBtn">로그아웃</a>
+						</c:when>
+						<c:otherwise>
+							<!-- 로그인 세션값이 없는 경우 -->
+							<div class="SignUp_nav">
+								<a href="${path}/SignIn.do" class="siBtn">로그인</a> <a
+									href="${path}/SignUp.do" class="suBtn">회원가입</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
+		<!-- 헤더 첫 번째 줄 (끝) -->
 
 
-        <!-- 헤더 두 번째 줄 (시작) -->
-        <div class="nav2">
-            <div class="nav2_left">
-                <a href="#" class="hire">채용정보</a>
-                <a href="#">취업 분포도</a>
-                <a href="#">직업·진로</a>
-                <a href="#">이력서 작성</a>
-            </div>
+		<!-- 헤더 두 번째 줄 (시작) -->
+		<div class="nav2">
+			<div class="nav2_left">
+				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
+					href="${path}/Chart.do" class="job">취업 분포도</a> <a
+					href="${path}/Career.do" class="career">직업·진로</a>
+				<c:choose>
+				<c:when test="${not empty SignIn}">
+					<c:choose>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
+						</c:when>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
+								<a href="${path}/business.do" class="resume">공고글 작성</a>
+							</c:when>
+					</c:choose>
+				</c:when>
+				</c:choose>
+			</div>
 
-            <div class="nav2_right">
-                <a href="#" class="customer">고객센터</a><!-- 고객센터 페이지 링크 -->
-            </div>
-        </div>
-        <!-- 헤더 두 번째 줄 (끝) -->
-    </header>
+			<div class="nav2_right">
+				<a href="#" class="customer">고객센터</a>
+				<!-- 고객센터 페이지 링크 -->
+			</div>
+		</div>
+		<!-- 헤더 두 번째 줄 (끝) -->
+	</header>
     <!-- 채용공고 시작 -->
     <div class="notice_wrapper">
         <form action="#" method="get">
@@ -60,7 +105,7 @@
                 <tr>
                     <td class="logo" rowspan="4"><button class="logo_register">로고 등록</button></td>
                     <td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;회사명</td>
-                    <td class="businessname_input">사성전자</td>
+                    <td class="businessname_input"></td>
                     <td class="business_idx">&nbsp;사업자번호</td>
                     <td class="business_idx_input" name="businessidx">12345678</td>
                 </tr>

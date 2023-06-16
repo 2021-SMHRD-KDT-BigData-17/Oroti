@@ -145,7 +145,7 @@
 				</table>
 				<input type="hidden" name="userid" id="userid"	value="<%=Userid%>">
 				<input type="hidden" name="userdiv" id="userdiv" value="<%=userdiv%>">
-				<button class="edit_btn" type="submit">수정</button>
+				<button class="edit_btn" type="button">수정</button>
 				<a href="${path}/CompanyMyinfo.do"><button type = "button" class="cancle_btn">취소</button></a>
 			</form>
         </div>

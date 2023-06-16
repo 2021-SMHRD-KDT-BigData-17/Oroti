@@ -408,7 +408,11 @@ header{
     border: 2px solid var(--main-color);
     cursor: pointer;
 }
-
+/* 
+.announce_wrap ul li a div {
+	text-decoration: none;
+}
+ */
 .announce_title, .announce_content, .announce_bottom {
     display: flex;
     align-items: center;

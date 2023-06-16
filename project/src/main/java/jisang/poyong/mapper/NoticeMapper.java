@@ -11,4 +11,6 @@ public interface NoticeMapper {
     
     void insertNotice(NoticeVO notice);
     
+    List<NoticeVO> NoticeResult();
+    
 }

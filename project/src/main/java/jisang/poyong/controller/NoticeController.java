@@ -40,4 +40,11 @@ public class NoticeController {
         System.out.println(business);
         return "redirect:/Notice.do";
     }
+    
+    @GetMapping("/NoticeResult.do")
+    public String NoticeResult(NoticeVO notice) {
+    	
+    	return "/jisang/noticeresult";
+    }
+    		
 }
