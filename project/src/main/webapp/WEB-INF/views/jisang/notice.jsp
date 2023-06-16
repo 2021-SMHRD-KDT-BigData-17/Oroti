@@ -33,6 +33,8 @@ int year = calendar.get(java.util.Calendar.YEAR);
 int month = calendar.get(java.util.Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
 int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +49,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
-				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
-					src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img src="${path}/resources/img/logo.png" alt="logo">포용취업넷
 				</a>
 			</div>
 
@@ -96,17 +97,16 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 					href="${path}/Chart.do" class="job">취업 분포도</a> <a
 					href="${path}/Career.do" class="career">직업·진로</a>
 				<c:choose>
-					<c:when test="${not empty SignIn}">
-						<c:choose>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-							</c:when>
-							<c:when
-								test="${String.valueOf(SignIn.userdiv) eq 'B' && businessAttribute ne null && businessAttribute.getUserid() ne null && businessAttribute.getBusinessidx() ne null && businessAttribute.getBusinessname() ne null && businessAttribute.getBusinessboss() ne null && businessAttribute.getBusinessmember() ne null && businessAttribute.getBusinesscode() ne null && businessAttribute.getCompanyaddress() ne null}">
+				<c:when test="${not empty SignIn}">
+					<c:choose>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
+							<a href="${path}/Resume.do" class="resume">이력서 작성</a>
+						</c:when>
+						<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
 								<a href="${path}/business.do" class="resume">공고글 작성</a>
 							</c:when>
-						</c:choose>
-					</c:when>
+					</c:choose>
+				</c:when>
 				</c:choose>
 			</div>
 
@@ -218,7 +218,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 						type="hidden" value="<%=year%>-<%=month%>-<%=day%>">
 						<%=year%>-<%=month%>-<%=day%></td>
 					<td class="noticeperiod_input"><input class="noticeperiod_box"
-						type="date" name="noticeperiod"></td>
+						type="date" name="noticeperiod" value=""></td>
 				</tr>
 			</table>
 
@@ -232,6 +232,18 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
+		
+	<script>
+  function addValue() {
+    var noticeregdateInput = document.querySelector('input[name="noticeregdate"]');
+    var noticeperiodInput = document.querySelector('.noticeperiod_box');
+    var noticeregdate = noticeregdateInput.value;
+    var selectedDate = noticeperiodInput.value;
+    var modifiedValue = noticeregdate + selectedDate;
+
+    noticeperiodInput.value = modifiedValue;
+  }
+</script>	
 
 </body>
 </html>

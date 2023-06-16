@@ -12,7 +12,7 @@
 		FROM noticeinfo
 		WHERE noticeidx > 1090
 		ORDER BY
-		noticeregdate DESC
+		noticeidx DESC
 	</select>
 
 

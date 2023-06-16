@@ -8,6 +8,7 @@
 <%
 	UserVO userid = (UserVO) session.getAttribute("SignIn");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -257,9 +258,9 @@
 				<c:forEach var="notice" items="${notices}">
 					<li>
 						<div class="announce_title">${notice.companyname}</div>
-						<div class="announce_content">${notice.noticejobcode}</div>
+						<div class="announce_content">${notice.noticejob}</div>
 						<div class="announce_bottom">
-							<div class="announce_date">${notice.noticeperiod}</div>
+							<div class="announce_date">${notice.noticeregdate} ~ ${notice.noticeperiod}</div>
 							<div class="bookmark">
 								<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
 							</div>

@@ -32,15 +32,58 @@ public class MainController {
 
 	
 
-	@RequestMapping("/MainPage.do")
-	public String loadNoticeData(Model model) {
-	List<NoticeVO> notices = noticeMapper.LoadNotice();
+	@GetMapping("/MainPage.do")
+    public String loadNoticeData(Model model) {
+        List<NoticeVO> notices = noticeMapper.LoadNotice();
 
-	model.addAttribute("notices", notices);
+        for (NoticeVO notice : notices) {
+            int noticejobcode = notice.getNoticejobcode();
+            String noticejob = "";
 
-	// JSP 파일의 경로와 파일명을 리턴
-	return "/jisang/Main"; // JSP 파일명을 리턴
-	}
+            switch (noticejobcode) {
+                case 1:
+                    noticejob = "IT⦁정보통신";
+                    break;
+                case 2:
+                    noticejob = "제조⦁생산⦁화학업";
+                    break;
+                case 3:
+                    noticejob = "건설업";
+                    break;
+                case 4:
+                    noticejob = "미디어⦁광고업";
+                    break;
+                case 5:
+                    noticejob = "판매⦁유통업";
+                    break;
+                case 6:
+                    noticejob = "교육업";
+                    break;
+                case 7:
+                    noticejob = "의료⦁제약업";
+                    break;
+                case 8:
+                    noticejob = "문화⦁예술⦁디자인업";
+                    break;
+                case 9:
+                    noticejob = "서비스업";
+                    break;
+                case 10:
+                    noticejob = "사무직";
+                    break;
+                default:
+                    noticejob = "기타";
+                    break;
+            }
+
+            notice.setNoticejob(noticejob);
+        }
+
+        model.addAttribute("notices", notices);
+
+        return "/jisang/Main";
+    }
+
 	
 	@RequestMapping("/InsertNotice.do")
 	public String insertNotice(NoticeVO notice) {
