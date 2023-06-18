@@ -16,3 +16,5 @@ INSERT INTO chatinfo (senduser, chattext, chatdate, receiveuser)
 		userparentphone = '21342134',
 		userdiv = 'A'
 		WHERE userid = 'smhrd';
+		
+		

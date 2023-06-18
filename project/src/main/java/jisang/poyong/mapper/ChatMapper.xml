@@ -9,7 +9,7 @@
 		INSERT INTO chatinfo
 		(senduser, chattext, chatdate, receiveuser)
 		VALUES (#{senduser},
-		#{chattext}, NOW(), "smhrd")
+		#{chattext}, NOW(), "smhrd2")
 	</insert>
 
 	<select id="ReceiveChat" parameterType="String"

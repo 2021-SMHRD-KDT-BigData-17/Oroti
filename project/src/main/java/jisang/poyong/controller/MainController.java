@@ -12,7 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import jisang.poyong.mapper.ChatMapper;
 import jisang.poyong.mapper.NoticeMapper;
@@ -28,70 +31,66 @@ public class MainController {
 	private ChatMapper chatMapper;
 	@Autowired
 	private NoticeMapper noticeMapper;
-	
-
-	
 
 	@GetMapping("/MainPage.do")
 	public String loadNoticeData(Model model, HttpServletRequest request) {
-	    List<NoticeVO> notices = noticeMapper.LoadNotice();
+		List<NoticeVO> notices = noticeMapper.LoadNotice();
 
-	    for (NoticeVO notice : notices) {
-	        int noticejobcode = notice.getNoticejobcode();
-	        String noticejob = "";
+		for (NoticeVO notice : notices) {
+			int noticejobcode = notice.getNoticejobcode();
+			String noticejob = "";
 
-            switch (noticejobcode) {
-                case 1:
-                    noticejob = "IT⦁정보통신";
-                    break;
-                case 2:
-                    noticejob = "제조⦁생산⦁화학업";
-                    break;
-                case 3:
-                    noticejob = "건설업";
-                    break;
-                case 4:
-                    noticejob = "미디어⦁광고업";
-                    break;
-                case 5:
-                    noticejob = "판매⦁유통업";
-                    break;
-                case 6:
-                    noticejob = "교육업";
-                    break;
-                case 7:
-                    noticejob = "의료⦁제약업";
-                    break;
-                case 8:
-                    noticejob = "문화⦁예술⦁디자인업";
-                    break;
-                case 9:
-                    noticejob = "서비스업";
-                    break;
-                case 10:
-                    noticejob = "사무직";
-                    break;
-                default:
-                    noticejob = "기타";
-                    break;
-            }
+			switch (noticejobcode) {
+			case 1:
+				noticejob = "IT⦁정보통신";
+				break;
+			case 2:
+				noticejob = "제조⦁생산⦁화학업";
+				break;
+			case 3:
+				noticejob = "건설업";
+				break;
+			case 4:
+				noticejob = "미디어⦁광고업";
+				break;
+			case 5:
+				noticejob = "판매⦁유통업";
+				break;
+			case 6:
+				noticejob = "교육업";
+				break;
+			case 7:
+				noticejob = "의료⦁제약업";
+				break;
+			case 8:
+				noticejob = "문화⦁예술⦁디자인업";
+				break;
+			case 9:
+				noticejob = "서비스업";
+				break;
+			case 10:
+				noticejob = "사무직";
+				break;
+			default:
+				noticejob = "기타";
+				break;
+			}
 
-            notice.setNoticejob(noticejob);
-	    }
+			notice.setNoticejob(noticejob);
+		}
 
-	    model.addAttribute("notices", notices);
-	    model.addAttribute("path", request.getContextPath());
+		model.addAttribute("notices", notices);
+		model.addAttribute("path", request.getContextPath());
 
-	    return "/jisang/Main";
+		return "/jisang/Main";
 	}
 
-	
 	@RequestMapping("/InsertNotice.do")
 	public String insertNotice(NoticeVO notice) {
 		noticeMapper.insertNotice(notice);
 		return "redirect:/MainPage.do";
 	}
-	
+
 	@RequestMapping("/SignUp.do")
 	public String SignUp() {
 
@@ -105,13 +104,13 @@ public class MainController {
 		return "/jisang/companymyinfoedit";
 
 	}
-	
+
 	@RequestMapping("/Useredit.do")
 	public String Useredit() {
-		
+
 		return "/jisang/usermyinfoedit";
 	}
-	
+
 	@RequestMapping("/SignIn.do")
 	public String SignIn() {
 
@@ -144,28 +143,27 @@ public class MainController {
 		// JSP 파일의 경로와 파일명을 리턴
 		return "/jisang/ChatPage"; // JSP 파일명을 리턴
 	}
-	
+
 	@RequestMapping("/UserMyinfo.do")
 	public String UserMyinfo() {
 
 		return "/jisang/usermyinfo";
 
 	}
-	
+
 	@RequestMapping("/Chart.do")
 	public String Chart() {
 
 		return "/jisang/chart";
 
 	}
-	
+
 	@RequestMapping("/CompanyMyinfo.do")
 	public String CompanyMyinfo() {
 
 		return "/jisang/companymyinfo";
 
 	}
-	
 
 	@RequestMapping("/Resume.do")
 	public String Resume() {
@@ -173,27 +171,30 @@ public class MainController {
 		return "/jisang/resume";
 
 	}
-	
+
 	@RequestMapping("/Career.do")
 	public String Carrer() {
 
 		return "/jisang/carrer";
 
 	}
-	
+
 	@RequestMapping("/Notice.do")
 	public String Notice(HttpSession session) {
-	    BusinessVO businessAttribute = (BusinessVO) session.getAttribute("business");
-	    // businessAttribute를 사용하여 필요한 작업을 수행
+		BusinessVO businessAttribute = (BusinessVO) session.getAttribute("business");
+		// businessAttribute를 사용하여 필요한 작업을 수행
 
-	    return "/jisang/notice";
+		return "/jisang/notice";
 	}
-	
 
-	@RequestMapping("/NoticeResult.do")
-	public String NoticeResult() {
-		
-		return "/jisang/noticeresult";
-
+	@GetMapping("/NoticeResult.do")
+	public ModelAndView noticeResult(@RequestParam("noticeidx") int noticeidx, Model model) {
+	    System.out.println("noticeresult.do");
+	    List<NoticeVO> noticeList = noticeMapper.NoticeResult(noticeidx);
+	    // 필요한 로직 수행
+	    System.out.println(noticeList);
+	    model.addAttribute("noticeList", noticeList);
+	    System.out.println("모델 실행 확인");
+	    return new ModelAndView("/jisang/noticeresult", "model", model);
 	}
 }

@@ -1,12 +1,15 @@
+<%@page import="jisang.poyong.vo.NoticeVO"%>
 <%@page import="jisang.poyong.vo.UserVO"%>
 <%@page import="javax.xml.crypto.dsig.SignedInfo"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-	UserVO userid = (UserVO) session.getAttribute("SignIn");
+	NoticeVO notice = (NoticeVO) request.getAttribute("notice");
+UserVO userid = (UserVO) session.getAttribute("SignIn");
 %>
 
 <!DOCTYPE html>
@@ -38,6 +41,30 @@
 </head>
 
 <body>
+
+	<script>
+	function NoticeResult(noticeidx) {
+	    // AJAX를 사용하여 noticeidx 값을 서버로 전송
+	    console.log(noticeidx);
+	    $.ajax({
+	        url: '${path}/NoticeResult.do',
+	        method: 'GET',
+	        data: { noticeidx: noticeidx },
+	        dataType: "html",
+	        success: function() {
+	            // 성공적으로 응답을 받은 경우의 처리 로직
+	            // ...
+	            alert("연결 성공");
+	        },
+	        error: function() {
+	            // 요청이 실패한 경우의 처리 로직
+	            alert("연결 실패");
+	            // ...
+	        }
+	    });
+	}
+</script>
+
 	<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
@@ -248,49 +275,47 @@
 
 	<!-- 기업 공고 (시작) -->
 	<!-- 공고 글 클릭 시 모달창 노출 (js 기능) -->
-	<form action="">
-		<section class="announce_wrap">
-			<select name="announce_filter" id="announce_filter">
-				<option value="asc">등록일순</option>
-				<option value="desc">마감일순</option>
-			</select>
-			<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
-			<c:choose>
-				<c:when test="${not empty SignIn}">
-					<ul class="announce_list">
-						<c:forEach var="notice" items="${notices}">
-							<li onclick="NoticeResult(${notice.noticeidx})">
-								<div class="announce_title">${notice.companyname}</div>
-								<div class="announce_content">${notice.noticejob}</div>
-								<div class="announce_bottom">
-									<div class="announce_date">${notice.noticeregdate}~
-										${notice.noticeperiod}</div>
-									<div class="bookmark">
-										<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
-									</div>
-								</div>
-							</li>
-						</c:forEach>
-					</ul>
-				</c:when>
-				<c:otherwise>
-					<ul class="announce_list">
-						<c:forEach var="notice" items="${notices}">
+	<section class="announce_wrap">
+		<select name="announce_filter" id="announce_filter">
+			<option value="asc">등록일순</option>
+			<option value="desc">마감일순</option>
+		</select>
+		<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
+		<c:choose>
+			<c:when test="${not empty SignIn}">
+				<ul class="announce_list">
+					<c:forEach var="notice" items="${notices}">
+						<li onclick="NoticeResult(${notice.noticeidx})">
 							<div class="announce_title">${notice.companyname}</div>
 							<div class="announce_content">${notice.noticejob}</div>
 							<div class="announce_bottom">
-								<div class="announce_date">${notice.noticeregdate}~
-									${notice.noticeperiod}</div>
+								<div class="announce_date">${notice.noticeregdate}~${notice.noticeperiod}</div>
 								<div class="bookmark">
 									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
 								</div>
 							</div>
-						</c:forEach>
-					</ul>
-				</c:otherwise>
-			</c:choose>
-		</section>
-	</form>
+						</li>
+					</c:forEach>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				<ul class="announce_list">
+					<c:forEach var="notice" items="${notices}">
+						<li>
+							<div class="announce_title">${notice.companyname}</div>
+							<div class="announce_content">${notice.noticejob}</div>
+							<div class="announce_bottom">
+								<div class="announce_date">${notice.noticeregdate}~${notice.noticeperiod}</div>
+								<div class="bookmark">
+									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
+								</div>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+			</c:otherwise>
+		</c:choose>
+	</section>
 	<!-- 기업 공고 (끝) -->
 
 
@@ -312,13 +337,9 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 	<script src="${path}/resources/js/index.js"></script>
-	<script>
-		function NoticeResult(noticeIdx) {
-			// 선택한 공고의 ID를 가지고 NoticeResult.do 요청을 보냅니다.
-			// 필요한 경우 Ajax를 사용하여 비동기 요청을 보낼 수 있습니다.
-			window.location.href = "NoticeResult.do?noticeIdx=" + noticeIdx;
-		}
-	</script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </body>
 
 </html>

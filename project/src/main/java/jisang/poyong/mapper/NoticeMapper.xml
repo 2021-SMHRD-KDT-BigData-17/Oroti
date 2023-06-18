@@ -15,12 +15,10 @@
 		noticeidx DESC
 	</select>
 
-	<select id="NoticeResult" parameterType="String"
-		resultType="jisang.poyong.vo.NoticeVO">
-		SELECT *
-		FROM noticeinfo
-		WHERE noticeidx = #{noticeidx};
-	</select>
+	<select id="NoticeResult" resultType="jisang.poyong.vo.NoticeVO">
+        SELECT * FROM noticeinfo 
+        WHERE noticeidx = #{noticeIdx}
+    </select>
 	
 	<insert id="insertNotice"	parameterType="jisang.poyong.vo.NoticeVO">
 		INSERT INTO noticeinfo (

@@ -41,10 +41,10 @@ public class NoticeController {
         return "redirect:/Notice.do";
     }
     
-    @GetMapping("/NoticeResult.do")
-    public String NoticeResult(NoticeVO notice) {
-    	
-    	return "/jisang/noticeresult";
-    }
+//    @GetMapping("/NoticeResult.do")
+//    public String NoticeResult(NoticeVO notice) {
+//    	
+//    	return "/jisang/noticeresult";
+//    }
     		
 }
