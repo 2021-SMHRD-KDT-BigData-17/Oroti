@@ -16,11 +16,9 @@
     box-sizing: border-box;
 }
 
-
 header{
     width: 100%;
     height: 120px;
-    margin-left: 0;
 }
 
 
@@ -33,6 +31,10 @@ header{
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
 }
+
+/* .nav1_left, .nav1_center {
+    border-right: 1px solid #c9c9c9;
+} */
 
 .nav1_left {
     flex: 1;
@@ -94,6 +96,10 @@ header{
 .nav1_center button:hover {
     color: var(--main-color);
 }
+
+/* .nav1_center button:active {
+    color: var(--main-color);
+} */
 
 .nav1_right {
     flex: 1;
@@ -169,7 +175,7 @@ header{
 /* 수정 부분 (시작) */
 .all {
     width: 100%;
-    height: 430px;
+    height: 390px;
     display: flex;
     justify-content: center;
 }
@@ -191,33 +197,25 @@ header{
     border-bottom: 2px solid var(--line-color);
 }
 
-.personal, .company {
+.personal_info_wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.personal_info_left, .personal_info_right {
     flex: 1;
 }
 
-.personal {
-    margin-right: 20px;
-}
 
-/* 개인정보 수정 (시작) */
-.personal input {
-    height: 24px;
-    padding-left: 5px;
-    border: 1px solid var(--line-color2);
-    border-radius: 4px;
-    color: var(--font-color2);
-}
-
-.personal input:focus {
-    outline: 1px solid var(--main-color);
-}
-
-.personal_info {
-    height: 260px;
+/* 개인정보 왼쪽 (시작) */
+.personal_info_wrap {
+    height: 240px;
 }
 
 .personal_id, .personal_pw, .personal_email,
-.personal_name, .personal_phone, .personal_number {
+.personal_name, .personal_birth, .personal_address,
+.personal_phone, .personal_parent, .personal_disorder {
+    width: 340px;
     height: 24px;
     margin: 15px 0 15px 20px;
     display: flex;
@@ -226,7 +224,8 @@ header{
 }
 
 .id_title, .pw_title, .email_title,
-.name_title, .phone_title, .number_title {
+.name_title, .birth_title, .address_title,
+.phone_title, .parent_title, .disorder_title {
     width: 120px;
     letter-spacing: -2px;
     color: var(--font-color3);
@@ -235,7 +234,8 @@ header{
 }
 
 .id_content, .pw_content, .email_content,
-.name_content, .phone_content, .number_content {
+.name_content, .birth_content, .address_content,
+.phone_content, .parent_content, .disorder_content {
     margin-left: 10px;
     font-size: 13px;
     color: var(--font-color3);
@@ -247,36 +247,25 @@ header{
     align-items: center;
 }
 
-.personal_btn button {
+.personal_btn a {
     width: 60px;
     height: 30px;
-    margin-right: 10px;
     background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     border-radius: 4px;
     font-size: 14px;
     color: #fff;
+    text-decoration: none;
     cursor: pointer;
 }
-
-.personal_btn a {
-    width: 60px;
-    height: 30px;
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--line-color2);
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--font-color);
-    text-decoration: none;
-}
-/* 개인정보 수정 (끝) */
+/* 개인정보 왼쪽 (끝) */
 
 
-/* 기업정보 수정 (시작) */
-.company input, .company select {
+/* 개인정보 오른쪽 (시작) */
+.personal_info_right input, .personal_info_right select {
     height: 24px;
     padding-left: 5px;
     border: 1px solid var(--line-color2);
@@ -284,71 +273,10 @@ header{
     color: var(--font-color2);
 }
 
-.company input:focus {
+.personal_info_right input:focus {
     outline: 1px solid var(--main-color);
 }
-
-.company_info {
-    height: 260px;
-}
-
-.company_name, .company_boss, .company_employee,
-.company_type, .company_address {
-    height: 24px;
-    margin: 15px 0 15px 20px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-
-.company_title, .boss_title, .employee_title,
-.type_title, .address_title {
-    width: 120px;
-    letter-spacing: -2px;
-    color: var(--font-color3);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.company_content, .boss_content, .employee_content,
-.type_content, .address_content {
-    margin-left: 10px;
-    font-size: 13px;
-    color: var(--font-color3);
-}
-
-.company_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.company_btn button {
-    width: 60px;
-    height: 30px;
-    margin-right: 10px;
-    background-color: var(--main-color);
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.company_btn a {
-    width: 60px;
-    height: 30px;
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--line-color2);
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--font-color);
-    text-decoration: none;
-}
-/* 기업정보 수정 (끝) */
+/* 개인정보 오른쪽 (끝) */
 
 /* 수정 부분 (끝) */
 
@@ -392,20 +320,20 @@ header{
 /* 오른쪽 사이드 바 (끝) */
 
 
-.hire_summary {
+.job_summary {
     width: 100%;
     margin-top: 60px;
     display: flex;
     justify-content: center;
 }
 
-.hire_wrap {
+.job_wrap {
     width: 1200px;
     display: flex;
     justify-content: space-between;
 }
 
-.hire_wrap2 {
+.job_wrap2 {
     margin-left: 200px;
     display: flex;
     justify-content: flex-start;
@@ -427,8 +355,7 @@ header{
     border: 1px solid var(--line-color);
 }
 
-.imploy_notice, .notsee_resume,
-.applyer, .paper {
+.resume, .resume_see, .apply, .like_company {
     width: 140px;
 }
 
@@ -442,11 +369,11 @@ header{
     font-size: 15px;
     color: var(--font-color3);
 }
-/* 구직 활동 요약표 (끝) */
+/* 구직활동 요약표 (끝) */
 
 
 /* 회원탈퇴 버튼 */
-.hire_summary_btn {
+.job_summary_btn {
     display: flex;
     justify-content: flex-end;
     align-items: end;
