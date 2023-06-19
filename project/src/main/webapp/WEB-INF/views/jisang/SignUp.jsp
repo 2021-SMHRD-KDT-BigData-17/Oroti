@@ -127,5 +127,6 @@
         <!-- 회원가입 폼 (끝) -->
         </div>
     <script src="${path}/resources/js/SignUp.js"></script>
+    
 </body>
 </html>

@@ -2,6 +2,7 @@ package jisang.poyong.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import jisang.poyong.vo.BusinessVO;
 import jisang.poyong.vo.UserVO;
 
 @Mapper
@@ -14,11 +15,17 @@ public interface UserMapper {
 
 	public UserVO UserSignUp(UserVO vo);
 	
-	public UserVO BusinessSignUp(UserVO vo);
-
+	void BusinessSignUp(UserVO vo);
+	
+	void CompanyInsert (BusinessVO vo);
+	
 	void UpdateUser(UserVO vo);
 	
 	void UpdateCompany(UserVO vo);
+	
+	void BusinessUpdate(BusinessVO vo);
+	
+	 BusinessVO findBusinessInfoByUserid(String userid);
 	
 //	public void boardInsert(Board vo);
 //

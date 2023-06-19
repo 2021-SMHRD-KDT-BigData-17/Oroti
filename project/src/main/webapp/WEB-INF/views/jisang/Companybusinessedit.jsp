@@ -13,19 +13,24 @@ String Userid = user.getUserid();
 String username = user.getUsername();
 String useremail = user.getUseremail();
 String userphone = user.getUserphone();
-
-BusinessVO businessAttribute = (BusinessVO) request.getAttribute("business");
-if (businessAttribute == null) {
-	businessAttribute = (BusinessVO) session.getAttribute("business");
-}
-String username2 = businessAttribute.getUserid();
-String businessidx2 = businessAttribute.getBusinessidx();
-String businessname = businessAttribute.getBusinessname();
-String businessboss = businessAttribute.getBusinessboss();
-String businessmember = businessAttribute.getBusinessmember();
-String businesscode = businessAttribute.getBusinesscode();
-String companyaddress = businessAttribute.getCompanyaddress();
 %>
+
+
+<%
+	BusinessVO businessAttribute = (BusinessVO) session.getAttribute("business");
+if (businessAttribute != null) {
+	String username2 = businessAttribute.getUserid();
+	String businessidx2 = businessAttribute.getBusinessidx();
+	String businessname = businessAttribute.getBusinessname();
+	String businessboss = businessAttribute.getBusinessboss();
+	String businessmember = businessAttribute.getBusinessmember();
+	String businesscode = businessAttribute.getBusinesscode();
+	String companyaddress = businessAttribute.getCompanyaddress();
+	// 이후에 변수들을 사용할 수 있습니다.
+} else {
+}
+%>
+
 
 <%
 	java.util.Calendar calendar = java.util.Calendar.getInstance();
@@ -33,6 +38,8 @@ int year = calendar.get(java.util.Calendar.YEAR);
 int month = calendar.get(java.util.Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
 int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,8 +47,8 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>포용취업넷</title>
-<link rel="stylesheet" href="${path}/resources/css/header.css">
-<link rel="stylesheet" href="${path}/resources/css/companyMyinfo.css">
+
+<link rel="stylesheet" href="${path}/resources/css/companyEdit.css">
 </head>
 
 <body>
@@ -126,21 +133,27 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 			<!-- 내정보 수정 (시작) -->
 			<section>
 				<!-- 개인정보 수정 (시작) -->
-				<form action="#" method="#" class="personal">
+				<form action="${path}/Companymyinfoedit.do" method="get"
+					class="personal">
 					<div class="personal_info">
 						<div class="personal_id">
 							<div class="id_title">아이디</div>
 							<div class="id_content"><%=Userid%></div>
 						</div>
+						<input type="hidden" value="<%=Userid%>" name="userid">
 
 						<div class="personal_pw">
 							<div class="pw_title">비밀번호</div>
-							<div class="pw_content">******</div>
+							<div class="pw_content">
+								<input type="password" name="userpw" required>
+							</div>
 						</div>
 
 						<div class="personal_email">
 							<div class="email_title">이메일</div>
-							<div class="email_content"><%=useremail%></div>
+							<div class="email_content">
+								<input type="email" name="useremail" required>
+							</div>
 						</div>
 
 						<div class="personal_name">
@@ -150,52 +163,85 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 
 						<div class="personal_phone">
 							<div class="phone_title">전화번호</div>
-							<div class="phone_content"><%=userphone%></div>
+							<div class="phone_content">
+								<input name="userphone" type="text" onkeypress="onlyNum();"
+									maxlength="11">
+							</div>
 						</div>
 
 						<div class="personal_number">
 							<div class="number_title">사업자 번호</div>
-							<div class="number_content"><%=businessidx%></div>
+							<div class="number_content">
+								<input type="text" name="businessidx" onkeypress="onlyNum();"
+									maxlength="13">
+							</div>
 						</div>
 					</div>
+
 					<div class="personal_btn">
-						<a href="${path}/Companybusinessedit.do">수정</a>
+						<button type="submit">수정</button>
+						<a href="${path}/business2.do">취소</a>
 					</div>
 				</form>
 				<!-- 개인정보 수정 (끝) -->
 
 
 				<!-- 기업정보 수정 (시작) -->
-				<form action="#" method="#" class="company">
+				<form action="${path}/BusinessUpdate.do" method="get"
+					class="company">
 					<div class="company_info">
+						<input type="hidden" value="<%=Userid%>" name="userid"> <input
+							type="hidden" value="<%=businessidx%>" name="businessidx">
 						<div class="company_name">
 							<div class="company_title">회사명</div>
-							<div class="company_content"><%=businessname%></div>
+							<div class="company_content">
+								<input type="text" required name="businessname">
+							</div>
 						</div>
 
 						<div class="company_boss">
 							<div class="boss_title">대표명</div>
-							<div class="boss_content"><%=businessboss %></div>
+							<div class="boss_content">
+								<input type="text" name="businessboss" required>
+							</div>
 						</div>
 
 						<div class="company_employee">
 							<div class="employee_title">직원수</div>
-							<div class="employee_content"><%=businessmember %></div>
+							<div class="employee_content">
+								<input type="text" name="businessmember" required>
+							</div>
 						</div>
 
 						<div class="company_type">
 							<div class="type_title">사업체 직군</div>
-							<div class="type_content"><%=businesscode %></div>
+							<div class="type_content">
+								<select name="businesscode" class="type_list">
+									<option value="1">IT·정보통신</option>
+									<option value="2">제조·생산·화학업</option>
+									<option value="3">건설업</option>
+									<option value="4">미디어·광고업</option>
+									<option value="5">판매·유통업</option>
+									<option value="6">교육업</option>
+									<option value="7">의료·제약업</option>
+									<option value="8">문화·예술·디자인</option>
+									<option value="9">서비스업</option>
+									<option value="10">사무직</option>
+								</select>
+							</div>
 						</div>
 
 						<div class="company_address">
 							<div class="address_title">사업체 주소</div>
-							<div class="address_content"><%=companyaddress %></div>
+							<div class="address_content">
+								<input type="text" name="companyaddress" required>
+							</div>
 						</div>
 					</div>
 
 					<div class="company_btn">
-						<a href="${path}/Companybusinessedit.do">수정</a>
+						<button type="submit">수정</button>
+						<a href="${path}/business2.do">취소</a>
 					</div>
 				</form>
 				<!-- 기업정보 수정 (끝) -->

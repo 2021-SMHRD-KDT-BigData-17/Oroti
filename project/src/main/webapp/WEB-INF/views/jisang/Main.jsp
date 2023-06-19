@@ -43,26 +43,25 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 <body>
 
 	<script>
-	function NoticeResult(noticeidx) {
-	    // AJAX를 사용하여 noticeidx 값을 서버로 전송
-	    console.log(noticeidx);
-	    $.ajax({
-	        url: '${path}/NoticeResult.do',
-	        method: 'GET',
-	        data: { noticeidx: noticeidx },
-	        dataType: "html",
-	        success: function() {
-	            // 성공적으로 응답을 받은 경우의 처리 로직
-	            // ...
-	            alert("연결 성공");
-	        },
-	        error: function() {
-	            // 요청이 실패한 경우의 처리 로직
-	            alert("연결 실패");
-	            // ...
-	        }
-	    });
-	}
+    function NoticeResult(noticeidx) {
+        // AJAX를 사용하여 noticeidx 값을 서버로 전송
+        console.log(noticeidx);
+        $.ajax({
+            url: '${path}/NoticeResult.do',
+            method: 'GET',
+            data: { noticeidx: noticeidx },
+            success: function() {
+                // 성공적으로 응답을 받은 경우의 처리 로직
+                // 페이지 이동을 수행하며 noticeidx 값을 전달
+                window.location.href = '${path}/NoticeResult.do?noticeidx=' + noticeidx;
+            },
+            error: function() {
+                // 요청이 실패한 경우의 처리 로직
+                alert("연결 실패");
+                // ...
+            }
+        });
+    }
 </script>
 
 	<header>
@@ -91,7 +90,7 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
+									<a href="${path}/business2.do" class="myPage">내정보</a>
 								</c:when>
 							</c:choose>
 							<a href="${path}/ChatPage.do" class="message">쪽지함</a>

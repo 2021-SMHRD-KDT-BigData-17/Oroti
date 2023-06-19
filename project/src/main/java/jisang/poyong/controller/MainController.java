@@ -94,7 +94,7 @@ public class MainController {
 	@RequestMapping("/SignUp.do")
 	public String SignUp() {
 
-		return "/jisang/SignUp";
+		return "/jisang/Main";
 
 	}
 
@@ -178,6 +178,12 @@ public class MainController {
 		return "/jisang/carrer";
 
 	}
+	
+	@RequestMapping("/Companybusinessedit.do")
+	public String companybusinessedit() {
+		
+		return "/jisang/Companybusinessedit";
+	}
 
 	@RequestMapping("/Notice.do")
 	public String Notice(HttpSession session) {
@@ -188,13 +194,13 @@ public class MainController {
 	}
 
 	@GetMapping("/NoticeResult.do")
-	public ModelAndView noticeResult(@RequestParam("noticeidx") int noticeidx, Model model) {
+	public String noticeResult(@RequestParam("noticeidx") int noticeidx, Model model) {
 	    System.out.println("noticeresult.do");
 	    List<NoticeVO> noticeList = noticeMapper.NoticeResult(noticeidx);
 	    // 필요한 로직 수행
 	    System.out.println(noticeList);
 	    model.addAttribute("noticeList", noticeList);
 	    System.out.println("모델 실행 확인");
-	    return new ModelAndView("/jisang/noticeresult", "model", model);
+	    return "/jisang/noticeresult";
 	}
 }

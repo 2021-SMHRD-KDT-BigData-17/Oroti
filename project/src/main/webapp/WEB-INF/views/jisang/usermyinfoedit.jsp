@@ -163,8 +163,8 @@ Character userdiv = (Character) user.getUserdiv();
 				</table>
 				<input type="hidden" name="userid" id="userid"	value="<%=Userid%>">
 				<input type="hidden" name="userdiv" id="userdiv" value="<%=userdiv%>">
-				<button class="edit_btn" type="button">수정</button>
-				<a href="${path}/UserMyinfo.do"><button class="cancle_btn">취소</button></a>
+				<a href="${path}/UserMyinfo.do"><button class="edit_btn" type="button">수정</button></a>
+				<button class="cancle_btn">취소</button>
 			</form>
 		</div>
 		<div class="side">

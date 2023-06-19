@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +42,29 @@ public class NoticeController {
         return "redirect:/Notice.do";
     }
     
+    @GetMapping("/business2.do")
+    public String loadBusinessInfo2(Model model, HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("SignIn");
+        String userid = user.getUserid();
+        
+        BusinessVO business = businessMapper.loadBusiness(userid);
+        model.addAttribute("business", business);
+        session.setAttribute("business", business);
+        System.out.println(business);
+        return "redirect:/CompanyMyinfo.do";
+    }
+    
+    @GetMapping("/business3.do")
+    public String loadBusinessInfo3(Model model, HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("SignIn");
+        String userid = user.getUserid();
+        
+        BusinessVO business = businessMapper.loadBusiness(userid);
+        model.addAttribute("business", business);
+        session.setAttribute("business", business);
+        System.out.println(business);
+        return "redirect:/CompanyMyinfo.do";
+    }
 //    @GetMapping("/NoticeResult.do")
 //    public String NoticeResult(NoticeVO notice) {
 //    	
