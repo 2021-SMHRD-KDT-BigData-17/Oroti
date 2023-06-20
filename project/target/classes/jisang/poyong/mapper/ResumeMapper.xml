@@ -48,5 +48,9 @@
 		#{employment1}, #{employment2}, #{employment3}
 		)
 	</insert>
-
+	
+	
+	<select id="ResumeResult" resultType="jisang.poyong.vo.ResumeVO">
+        SELECT * FROM resumeinfo
+    </select>
 </mapper>

@@ -318,7 +318,7 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 							<button type="reset">
 								<i class="fa-solid fa-rotate-left"></i>&nbsp;초기화
 							</button>
-							<button type="submit">검색</button>
+							<button type="submit" onclick="searchajax()">검색</button>
 						</div>
 					</form>
 				</div>
@@ -348,7 +348,7 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 							<div class="announce_title">${notice.companyname}</div>
 							<div class="announce_content">${notice.noticejob}</div>
 							<div class="announce_bottom">
-								<div class="announce_date">${notice.noticeregdate}~${notice.noticeperiod}</div>
+								<div class="announce_date">${notice.noticeregdate} ~ ${notice.noticeperiod}</div>
 								<div class="bookmark">
 									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
 								</div>

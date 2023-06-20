@@ -35,7 +35,7 @@ public class MainController {
 	private NoticeMapper noticeMapper;
 	@Autowired
 	private ResumeMapper resumemapper;
-
+	
 	@GetMapping("/MainPage.do")
 	public String loadNoticeData(Model model, HttpServletRequest request) {
 		List<NoticeVO> notices = noticeMapper.LoadNotice();
@@ -94,7 +94,7 @@ public class MainController {
 		noticeMapper.insertNotice(notice);
 		return "redirect:/MainPage.do";
 	}
-	
+
 	@PostMapping("/resume.do")
 	public String insertResume(ResumeVO resume) {
 		System.out.println(resume.toString());
@@ -190,10 +190,10 @@ public class MainController {
 		return "/jisang/carrer";
 
 	}
-	
+
 	@RequestMapping("/Companybusinessedit.do")
 	public String companybusinessedit() {
-		
+
 		return "/jisang/Companybusinessedit";
 	}
 
@@ -207,17 +207,21 @@ public class MainController {
 
 	@GetMapping("/NoticeResult.do")
 	public String noticeResult(@RequestParam("noticeidx") int noticeidx, Model model) {
-	    System.out.println("noticeresult.do");
-	    List<NoticeVO> noticeList = noticeMapper.NoticeResult(noticeidx);
-	    // 필요한 로직 수행
-	    System.out.println(noticeList);
-	    model.addAttribute("noticeList", noticeList);
-	    System.out.println("모델 실행 확인");
-	    return "/jisang/noticeresult";
+		System.out.println("noticeresult.do");
+		List<NoticeVO> noticeList = noticeMapper.NoticeResult(noticeidx);
+		// 필요한 로직 수행
+		System.out.println(noticeList);
+		model.addAttribute("noticeList", noticeList);
+		System.out.println("모델 실행 확인");
+		return "/jisang/noticeresult";
 	}
-	
-	@RequestMapping("/resumeresult.do")
-	public String resumeresult() {
-		return "/jisang/resumeresult";
+
+	@GetMapping("/resumeresult.do")
+	public String getResumeInfo(Model model) {
+	    List<ResumeVO> resumeList = resumemapper.ResumeResult();
+	    System.out.println(resumeList);
+
+	    model.addAttribute("resumeList", resumeList);
+	    return "/jisang/resumeresult"; // 사용자에게 보여줄 뷰의 이름
 	}
 }
