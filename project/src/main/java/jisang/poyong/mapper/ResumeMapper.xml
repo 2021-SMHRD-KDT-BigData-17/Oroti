@@ -9,13 +9,12 @@
 	<insert id="insertResume"
 		parameterType="jisang.poyong.vo.ResumeVO">
 		INSERT INTO resumeinfo (
-		userid, username, useraddress,
-		useremail, userobstccode, userphone,
+		userid, username, useraddress, useremail,
+		userobstccode, userphone,
 		userbirth,
-		edustart1, eduend1,
-		schoolname1, major1, grade1,
-		edustart2, eduend2, schoolname2, major2,
-		grade2,
+		edustart1, eduend1, schoolname1,
+		major1, grade1,
+		edustart2, eduend2, schoolname2, major2, grade2,
 		edustart3, eduend3, schoolname3, major3, grade3,
 		graduated1,
 		graduated2, graduated3,
@@ -23,8 +22,9 @@
 		position1,
 		carrerstart2, carrerend2, companyname2, position2,
 		carrerstart3, carrerend3, companyname3, position3,
-		jobcode, wagemode,
-		wage, worklocation, employmenttype
+		jobcode,
+		worklocation, employmenttype,
+		employment1, employment2, employment3
 		)
 		VALUES (
 		#{userid}, #{username}, #{useraddress}, #{useremail},
@@ -44,10 +44,9 @@
 		#{position2},
 		#{carrerstart3}, #{carrerend3}, #{companyname3},
 		#{position3},
-		#{jobcode}, #{wagemode}, #{wage}, #{worklocation},
-		#{employmenttype}
+		#{jobcode}, #{worklocation}, #{employmenttype},
+		#{employment1}, #{employment2}, #{employment3}
 		)
 	</insert>
-
 
 </mapper>

@@ -8,11 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jisang.poyong.mapper.BusinessMapper;
+import jisang.poyong.mapper.ResumeMapper;
 import jisang.poyong.mapper.UserMapper;
 import jisang.poyong.vo.BusinessVO;
+import jisang.poyong.vo.ResumeVO;
 import jisang.poyong.vo.UserVO;
 
 @Controller
@@ -93,9 +96,9 @@ public class UserController {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("SignIn", SignIn);
-	    session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
+		session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
 
-	    return "redirect:/SignIn.do?updateSuccess=true";
+		return "redirect:/SignIn.do?updateSuccess=true";
 	}
 
 	@GetMapping("/Companymyinfoedit.do")
@@ -110,25 +113,38 @@ public class UserController {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("SignIn", SignIn);
-	    session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
+		session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
 
-	    return "redirect:/SignIn.do?updateSuccess=true";
+		return "redirect:/SignIn.do?updateSuccess=true";
 	}
 
 	@GetMapping("/BusinessUpdate.do")
 	public String updateBusiness(BusinessVO vo2, UserVO vo, HttpServletRequest request, Model model) {
-	    // UserVO의 값을 업데이트
-	    System.out.println("수정요청이 들어옴");
-	    mapper.BusinessUpdate(vo2);
-	    // 업데이트 후 필요한 작업 수행
+		// UserVO의 값을 업데이트
+		System.out.println("수정요청이 들어옴");
+		mapper.BusinessUpdate(vo2);
+		// 업데이트 후 필요한 작업 수행
 
-	    UserVO SignIn = mapper.SignIn(vo);
-	    HttpSession session = request.getSession();
+		UserVO SignIn = mapper.SignIn(vo);
+		HttpSession session = request.getSession();
 
-	    session.setAttribute("SignIn", SignIn);
-	    session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
+		session.setAttribute("SignIn", SignIn);
+		session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
 
-	    return "redirect:/SignIn.do?updateSuccess=true";
+		return "redirect:/SignIn.do?updateSuccess=true";
 	}
+
+	
+//
+//	@Autowired
+//	private ResumeMapper resumemapper;
+//
+//	@GetMapping("/resume.do")
+//	public String insertResume(@RequestBody ResumeVO resume) {
+//		resumemapper.insertResume(resume);
+//		System.out.println("이력서작성");
+//		// 적절한 리다이렉션 경로 또는 응답을 반환합니다.
+//		return "resumeresult";
+//	}
 
 }

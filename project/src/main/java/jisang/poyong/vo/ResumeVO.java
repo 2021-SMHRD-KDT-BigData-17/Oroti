@@ -40,10 +40,12 @@ public class ResumeVO {
 	private String companyname3;
 	private String position3;
 	private String jobcode;
-	private String wagemode;
 	private String wage;
 	private String worklocation;
 	private String employmenttype;
+	private String employment1;
+	private String employment2;
+	private String employment3;
 	public String getUserid() {
 		return userid;
 	}
@@ -272,12 +274,7 @@ public class ResumeVO {
 	public void setJobcode(String jobcode) {
 		this.jobcode = jobcode;
 	}
-	public String getWagemode() {
-		return wagemode;
-	}
-	public void setWagemode(String wagemode) {
-		this.wagemode = wagemode;
-	}
+	
 	public String getWage() {
 		return wage;
 	}
@@ -296,6 +293,24 @@ public class ResumeVO {
 	public void setEmploymenttype(String employmenttype) {
 		this.employmenttype = employmenttype;
 	}
+	public String getEmployment1() {
+		return employment1;
+	}
+	public void setEmployment1(String employment1) {
+		this.employment1 = employment1;
+	}
+	public String getEmployment2() {
+		return employment2;
+	}
+	public void setEmployment2(String employment2) {
+		this.employment2 = employment2;
+	}
+	public String getEmployment3() {
+		return employment3;
+	}
+	public void setEmployment3(String employment3) {
+		this.employment3 = employment3;
+	}
 	@Override
 	public String toString() {
 		return "ResumeVO [userid=" + userid + ", username=" + username + ", useraddress=" + useraddress + ", useremail="
@@ -309,10 +324,12 @@ public class ResumeVO {
 				+ companyname1 + ", position1=" + position1 + ", carrerstart2=" + carrerstart2 + ", carrerend2="
 				+ carrerend2 + ", companyname2=" + companyname2 + ", position2=" + position2 + ", carrerstart3="
 				+ carrerstart3 + ", carrerend3=" + carrerend3 + ", companyname3=" + companyname3 + ", position3="
-				+ position3 + ", jobcode=" + jobcode + ", wagemode=" + wagemode + ", wage=" + wage + ", worklocation="
-				+ worklocation + ", employmenttype=" + employmenttype + "]";
+				+ position3 + ", jobcode=" + jobcode + ", wage=" + wage + ", worklocation="
+				+ worklocation + ", employmenttype=" + employmenttype + ", employment1=" + employment1
+				+ ", employment2=" + employment2 + ", employment3=" + employment3 + "]";
 	}
-
+	
+	
 
 	
 }

@@ -185,11 +185,16 @@ header {
     /* border-bottom: solid 1px #c9c9c9; */
     border-right: none;
     border-left: none;
+    border-collapse: collapse;
+}
+
+.resume_content td{
+    border-bottom: solid 1px #c9c9c9;
 }
 
 .picture{
-    width: 165px;
-    /* border-left: none; */
+    width: 220px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .pic_register{
@@ -204,63 +209,72 @@ header {
     font-weight: 600;
 }
 
-.name{
-    width: 150px;
+.user_name{
+    width: 130px;
     text-align: left;
     font-weight: 600;
     border-right: none;
     height: 55px;
 }
 
-.name_input{
+.username_input{
     /* width: 150px; */
     border-left: none;
     border-right: none;
 }
 
-.jumin1{
-    height: 35px;
-    width: 120px
+.person_number{
+    width: 100px;
+    text-align: left;
+    font-weight: 600;
+    border-right: none;
+    height: 55px;
 }
 
-/*.jumin1:focus{
-    outline: 2px solid #3399ff;
-    opacity: 0.6;
-}*/
-
-.jumin2{
-    height: 35px;
-    width: 22px;
+.personnumber_input{
+    border-left: none;
+    border-right: none;
 }
 
-.address{
+.personnumber_box{
+    height: 35px;
     width: 150px;
+}
+
+.user_email{
+    width: 130px;
     font-weight: 600;
     border-right: none;
     height: 100px;
 }
 
-.address_input{
+.useraddress_input{
     border-left: none;
-    height: 85px;
+    height: 55px;
     
 }
 
-.big_address{
-    width: 400px;
+.user_address{
+    width: 130px;
     height: 35px;
     margin-bottom: 2px;
+    text-align: left;
+    font-weight: 600;
 }
 
-.small_address{
-    width: 400px;
+.useraddress_box{
     height: 35px;
-}
-.phone_number{
-    border-right: none;
+    width: 450px;
 }
 
-.phone_number_input{
+.user_phone{
+    border-right: none;
+    width: 130px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.userphone_input{
     border-left: none;
     height: 55px;
 }
@@ -287,6 +301,7 @@ header {
     border-right: none;
     font-weight: 600;
     height: 55px;
+    text-align: left;
 }
 
 .email_input{
@@ -305,14 +320,19 @@ header {
 }
 
 .resume_content_2{
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     margin-top: 10px;
     width: 850px;
     height: 250px;
     border: #c9c9c9;
+    border-top: solid 2px #c9c9c9;
     border-left: none;
     border-right: none;
+    border-collapse: collapse;
+}
+
+.resume_content_2 td{
+    border-bottom: solid 1px #c9c9c9;
 }
 
 .study{
@@ -322,37 +342,47 @@ header {
     /* font-size: 25px; */
     margin-left: 333px;
     margin-top: 20px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .time{
     font-weight: 600;
     text-align: center;
     width: 151px;
+    border-right: solid 1px #c9c9c9;
+
 }
 
 .time_input{
     height: 65.78px;
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .school{
     font-weight: 600;
     text-align: center;
     width: 500px;
+    border-right: solid 1px #c9c9c9;
+
 }
 
 .school_input{
     text-align: center;
+    border-right: solid 1px #c9c9c9;
+
 }
 
 .score{
     font-weight: 600;
     text-align: center;
     width: 120px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .score_input{
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .graduate{
@@ -392,25 +422,32 @@ header {
 }
 
 .resume_content_3{
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     margin-top: 10px;
     width: 850px;
     height: 250px;
     border: #c9c9c9;
+    border-top: solid 2px #c9c9c9;
     border-left: none;
     border-right: none;
+    border-collapse: collapse;
+}
+
+.resume_content_3 td{
+    border-bottom: solid 1px #c9c9c9;
 }
 
 .career_time{
     font-weight: 600;
     text-align: center;
     width: 151px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .career_time_input{
     height: 65.78px;
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .companybox{
@@ -422,20 +459,24 @@ header {
 .company{
     font-weight: 600;
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .company_input{
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .position{
     font-weight: 600;
     text-align: center;
     width: 113px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .position_input{
     text-align: center;
+    border-right: solid 1px #c9c9c9;
 }
 
 .positionbox{
@@ -458,6 +499,7 @@ header {
     width: 65px;
 }
 
+/* 희망사항 */
 .hope_list{
     position: relative;
     margin-left: 333px;
@@ -466,48 +508,69 @@ header {
 }
 
 .resume_content_4{
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     margin-top: 10px;
     width: 850px;
     height: 250px;
     border: #c9c9c9;
     border-left: none;
     border-right: none;
+    border-top: solid 2px #c9c9c9;
+    border-collapse: collapse;
+}
+
+.resume_content_4 td{
+    border-bottom: solid 1px #c9c9c9;
 }
 
 .hope_job{
     width: 151px;
     height: 53.5px;
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
+    border-right: solid 1px #c9c9c9;
 }
 
 .hope_pay{
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
     height: 53.5px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .hope_area{
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
     height: 53.5px;
+    border-right: solid 1px #c9c9c9;
 }
 
 .hire_type{
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
     height: 53.5px;
+    border-right: solid 1px #c9c9c9;
 }
 
-.hire_option{
+.hiretype_box{
     height: 35px;
     width: 500px;
     margin-left: 25px;
 }
 
-.sido{
+.hopejob_box{
+    height: 35px;
+    width: 500px;
+    margin-left: 25px;
+}
+
+.hopepay_box{
+    height: 35px;
+    width: 500px;
+    margin-left: 25px;
+}
+
+.area_box{
     height: 35px;
     width: 500px;
     margin-left: 25px;
@@ -558,4 +621,18 @@ header {
     font-weight: 500;
     font-size: 30px;
     cursor: pointer;
+}
+
+.edit_bt{
+    height: 35px;
+    width: 55px;
+    background-color: #3399ff;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin-left: 1130px;
+    margin-top: 10px;
 }

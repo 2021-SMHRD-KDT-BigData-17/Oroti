@@ -114,10 +114,9 @@ Character userdiv = (Character) user.getUserdiv();
 			<section>
 
 				<!-- 개인정보 수정 (시작) -->
-				<div class="personal">
+				<form action="${path}/Usermyinfoedit.do" method="post">
 					<div class="personal_info_wrap">
-
-						<!-- 개인정보 왼쪽 (시작) -->
+						<input type="hidden" value ="<%=Userid%>" name ="userid">
 						<div class="personal_info_left">
 							<div class="personal_id">
 								<div class="id_title">아이디</div>
@@ -126,22 +125,28 @@ Character userdiv = (Character) user.getUserdiv();
 
 							<div class="personal_pw">
 								<div class="pw_title">비밀번호</div>
-								<div class="pw_content">******</div>
+								<div class="pw_content">
+									<input type="password" name="userpw" required>
+								</div>
 							</div>
 
 							<div class="personal_email">
 								<div class="email_title">이메일</div>
-								<div class="email_content"><%=useremail %></div>
+								<div class="email_content">
+									<input type="email" name="useremail" required>
+								</div>
 							</div>
 
 							<div class="personal_name">
 								<div class="name_title">이름</div>
-								<div class="name_content"><%=username %></div>
+								<div class="name_content"><%=username%></div>
 							</div>
 
 							<div class="personal_birth">
 								<div class="birth_title">생년월일</div>
-								<div class="birth_content"><%=userbirth%></div>
+								<div class="birth_content">
+									<input type="date" name="userbirth" required>
+								</div>
 							</div>
 						</div>
 						<!-- 개인정보 왼쪽 (끝) -->
@@ -150,89 +155,60 @@ Character userdiv = (Character) user.getUserdiv();
 						<div class="personal_info_right">
 							<div class="personal_address">
 								<div class="address_title">주소</div>
-								<div class="address_content"><%=useraddress %></div>
+								<div class="address_content">
+									<input type="text" name ="useraddress" required>
+								</div>
 							</div>
 
 							<div class="personal_phone">
 								<div class="phone_title">전화번호</div>
-								<div class="phone_content"><%=userphone%></div>
+								<div class="phone_content">
+									<input type="text" name = "userphone" onkeypress="onlyNum();" maxlength="11">
+								</div>
 							</div>
 
 							<div class="personal_parent">
 								<div class="parent_title">보호자 전화번호</div>
-								<div class="parent_content"><%=userparentphone%></div>
+								<div class="parent_content">
+									<input type="text" name="userparentphone" onkeypress="onlyNum();" maxlength="11">
+								</div>
 							</div>
 
 							<div class="personal_disorder">
-  <div class="disorder_title">장애유형</div>
-  <div class="disorder_content">
-    <% 
-      switch(userobstccode) {
-        case "0":
-          out.print("해당 없음");
-          break;
-        case "1":
-          out.print("지체장애");
-          break;
-        case "2":
-          out.print("뇌병변장애");
-          break;
-        case "3":
-          out.print("시각장애");
-          break;
-        case "4":
-          out.print("청각장애");
-          break;
-        case "5":
-          out.print("언어장애");
-          break;
-        case "6":
-          out.print("지적장애");
-          break;
-        case "7":
-          out.print("자폐성장애");
-          break;
-        case "8":
-          out.print("정신장애");
-          break;
-        case "9":
-          out.print("신장장애");
-          break;
-        case "10":
-          out.print("심장장애");
-          break;
-        case "11":
-          out.print("호흡기장애");
-          break;
-        case "12":
-          out.print("간장애");
-          break;
-        case "13":
-          out.print("안면장애");
-          break;
-        case "14":
-          out.print("장루/요루장애");
-          break;
-        case "15":
-          out.print("뇌전증장애");
-          break;
-        default:
-          out.print("");
-          break;
-      }
-    %>
-  </div>
-</div>
+								<div class="disorder_title">장애유형</div>
+								<div class="disorder_content">
+									<select name="userobstccode" required>
+										<option disabled selected id="check">장애여부 선택</option>
+										<!-- 기본값이라 value나 name 불러올 필요 없음 -->
+										<option value="0" class="opt" >해당 없음</option>
+										<option value="1" class="opt" >지체장애</option>
+										<option value="2" class="opt">뇌병변장애</option>
+										<option value="3" class="opt" >시각장애</option>
+										<option value="4" class="opt" >청각장애</option>
+										<option value="5" class="opt" >언어장애</option>
+										<option value="6" class="opt" >지적장애</option>
+										<option value="7" class="opt" >자폐성장애</option>
+										<option value="8" class="opt" >정신장애</option>
+										<option value="9" class="opt" >신장장애</option>
+										<option value="10" class="opt" >심장장애</option>
+										<option value="11" class="opt" >호흡기장애</option>
+										<option value="12" class="opt" >간장애</option>
+										<option value="13" class="opt" >안면장애</option>
+										<option value="14" class="opt" >장루/요루장애</option>
+										<option value="15" class="opt" >뇌전증장애</option>
+									</select>
+								</div>
+							</div>
 						</div>
 						<!-- 개인정보 오른쪽 (끝) -->
 
 					</div>
 
 					<div class="personal_btn">
-						<a href="${path}/Useredit.do">수정</a>
-						
+						<button type="submit">수정</button>
+						<a href="${path}/UserMyinfo.do">취소</a>
 					</div>
-				</div>
+				</form>
 				<!-- 개인정보 수정 (끝) -->
 			</section>
 			<!-- 내정보 수정 (끝) -->
@@ -242,7 +218,7 @@ Character userdiv = (Character) user.getUserdiv();
 			<aside>
 				<div class="menu">
 					<div class="menu_top">
-						<a href="resume.html">이력서 수정</a>
+						<a href="${path}/resumeresult.do">이력서 수정</a>
 					</div>
 					<div class="menu_bottom">
 						<a href="service.html">문의·신고 내역</a>

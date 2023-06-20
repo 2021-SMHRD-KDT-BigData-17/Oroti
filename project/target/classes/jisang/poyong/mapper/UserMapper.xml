@@ -58,6 +58,8 @@
 		userpw = #{userpw},
 		userphone = #{userphone},
 		useremail = #{useremail},
+		userbirth = #{userbirth},
+		useraddress = #{useraddress},
 		userobstccode = #{userobstccode},
 		userparentphone = #{userparentphone}
 		WHERE userid = #{userid}

@@ -1,20 +1,16 @@
-<%@page import="jisang.poyong.vo.NoticeVO"%>
 <%@page import="jisang.poyong.vo.UserVO"%>
 <%@page import="javax.xml.crypto.dsig.SignedInfo"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-	NoticeVO notice = (NoticeVO) request.getAttribute("notice");
-UserVO userid = (UserVO) session.getAttribute("SignIn");
+	UserVO userid = (UserVO) session.getAttribute("SignIn");
 %>
-
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +26,7 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 
 .bookmark .fa-star:nth-child(1) {
 	display: block;
-	color: var(- -font-color3);
+	color: var(- -font-color2);
 }
 
 .bookmark .fa-star:nth-child(2) {
@@ -41,95 +37,12 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 </head>
 
 <body>
-
-	<script>
-    function NoticeResult(noticeidx) {
-        // AJAX를 사용하여 noticeidx 값을 서버로 전송
-        console.log(noticeidx);
-        $.ajax({
-            url: '${path}/NoticeResult.do',
-            method: 'GET',
-            data: { noticeidx: noticeidx },
-            success: function() {
-                // 성공적으로 응답을 받은 경우의 처리 로직
-                // 페이지 이동을 수행하며 noticeidx 값을 전달
-                window.location.href = '${path}/NoticeResult.do?noticeidx=' + noticeidx;
-            },
-            error: function() {
-                // 요청이 실패한 경우의 처리 로직
-                alert("연결 실패");
-                // ...
-            }
-        });
-    }
-</script>
-
-	<script type="text/javascript">
-	// ajax 시작
-	
-	function searchajax(){
-	
-		const tagWrapDiv1 = document.getElementById('tag_wrap');
-		const tagElements1 = tagWrapDiv.querySelectorAll('div[data-label]');
-		
-		const textValues = Array.from(tagElements1).map(tagElement1 => {
-		  let text1 = tagElement1.textContent.trim();
-		  text1 = text1.replace(/[×/]/g, ''); // '×'와 '/' 제거
-		  return text1;
-		});
-		
-		console.log(textValues);
-	
-	
-		// ajax 통신으로 요청 주고받기
-		$.ajax({
-			url : "${path}/Filtering",
-			type : "post",
-			contentType: "application/json;charset=utf-8",
-			data : JSON.stringify(textValues),
-			dataType : "json",
-			// ajax안에서 함수를 호출할 경우엔 반드시 ()를 쓰지 않는다.
-			success : function(response){
-		        alert("Ajax 성공");
-		        $('.announce_list').empty();
-				
-		        console.log(response);
-		        // 코드를 삽입할 위치 선택
-		        var targetElement = document.getElementsByClassName('announce_list')[0];
-		        
-		        for (var i = 0; i < response.length; i++) {
-		            var notisesearch = response[i];
-		            
-		            var liElement = $('<li>');
-		            var titleElement = $('<div>').addClass('announce_title').text(notisesearch.companyname);
-		            var contentElement = $('<div>').addClass('announce_content').text(notisesearch.noticejob);
-		            var bottomElement = $('<div>').addClass('announce_bottom');
-		            var dateElement = $('<div>').addClass('announce_date').text(notisesearch.noticeperiod);
-		            var bookmarkElement = $('<div>').addClass('bookmark').html('<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>');
-		            
-		            bottomElement.append(dateElement, bookmarkElement);
-		            liElement.append(titleElement, contentElement, bottomElement);
-		            
-		            $('.announce_list').append(liElement);
-		        }
-		        
-		    },
-			error : function(){
-				alert("조건에 맞는 공고글이 존재하지 않습니다.");
-			}
-		}); // ajax끝
-	}// searchajax 함수 끝
-
-
-
-	</script>
-
-	<header>
+	<header id="top">
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
 				<a href="${path}/MainPage.do"> <!-- 메인페이지 링크 --> <img
-					src="${path}/resources/img/logo.png" alt="logo">포용취업넷
+					src="img/logo.png" alt="logo">
 				</a>
 			</div>
 
@@ -150,7 +63,7 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-									<a href="${path}/business2.do" class="myPage">내정보</a>
+									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 							</c:choose>
 							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
@@ -173,21 +86,8 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 		<!-- 헤더 두 번째 줄 (시작) -->
 		<div class="nav2">
 			<div class="nav2_left">
-				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
-					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/preference.do" class="career">직업·진로</a>
-				<c:choose>
-					<c:when test="${not empty SignIn}">
-						<c:choose>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-							</c:when>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-								<a href="${path}/business.do" class="resume">공고글 작성</a>
-							</c:when>
-						</c:choose>
-					</c:when>
-				</c:choose>
+				<a href="index.html" class="hire">채용정보</a> <a href="#">취업 분포도</a> <a
+					href="${path}/preference.do">직업·진로</a> <a href="#">이력서 작성</a>
 			</div>
 
 			<div class="nav2_right">
@@ -312,13 +212,17 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 				<!-- 검색 폼 (끝) -->
 
 				<div class="hire_send">
-					<form action="#">
-						<div id="tag_wrap"></div>
+					<form id="myForm">
+						<div id="tag_wrap">
+							
+						</div>
+						
 						<div class="hire_send_btn">
+						
 							<button type="reset">
 								<i class="fa-solid fa-rotate-left"></i>&nbsp;초기화
 							</button>
-							<button type="submit">검색</button>
+							<button type="submit" onclick="searchajax()">검색</button>
 						</div>
 					</form>
 				</div>
@@ -334,47 +238,31 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 
 	<!-- 기업 공고 (시작) -->
 	<!-- 공고 글 클릭 시 모달창 노출 (js 기능) -->
-	<section class="announce_wrap">
-		<select name="announce_filter" id="announce_filter">
-			<option value="asc">등록일순</option>
-			<option value="desc">마감일순</option>
-		</select>
-		<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
-		<c:choose>
-			<c:when test="${not empty SignIn}">
-				<ul class="announce_list">
-					<c:forEach var="notice" items="${notices}">
-						<li onclick="NoticeResult(${notice.noticeidx})">
-							<div class="announce_title">${notice.companyname}</div>
-							<div class="announce_content">${notice.noticejob}</div>
-							<div class="announce_bottom">
-								<div class="announce_date">${notice.noticeregdate}~${notice.noticeperiod}</div>
-								<div class="bookmark">
-									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
-								</div>
-							</div>
-						</li>
-					</c:forEach>
-				</ul>
-			</c:when>
-			<c:otherwise>
-				<ul class="announce_list">
-					<c:forEach var="notice" items="${notices}">
-						<li>
-							<div class="announce_title">${notice.companyname}</div>
-							<div class="announce_content">${notice.noticejob}</div>
-							<div class="announce_bottom">
-								<div class="announce_date">${notice.noticeregdate}~${notice.noticeperiod}</div>
-								<div class="bookmark">
-									<i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
-								</div>
-							</div>
-						</li>
-					</c:forEach>
-				</ul>
-			</c:otherwise>
-		</c:choose>
-	</section>
+	<form action="">
+		<section class="announce_wrap">
+			<select name="announce_filter" id="announce_filter">
+				<option value="asc">등록일순</option>
+				<option value="desc">마감일순</option>
+			</select>
+			<!-- 공고 내용은 DB..에 임의로 넣고 출력하세요 -->
+			<ul class="announce_list">
+
+		        <c:forEach var="notisesearch" items="${notisesearch}">
+		        	<li>
+		                <div class="announce_title">${notisesearch.companyname}</div>
+		                <div class="announce_content">${notisesearch.noticejob}</div>
+		                <div class="announce_bottom">
+		                    <div class="announce_date">${notisesearch.noticeperiod}</div>
+		                    <div class="bookmark">
+		                        <i class="fa-regular fa-star"></i> <i class="fa-solid fa-star"></i>
+		                    </div>
+		                </div>
+		            </li>
+		        </c:forEach>
+
+			</ul>
+		</section>
+	</form>
 	<!-- 기업 공고 (끝) -->
 
 
@@ -396,9 +284,44 @@ UserVO userid = (UserVO) session.getAttribute("SignIn");
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 	<script src="${path}/resources/js/index.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	// ajax 시작
+	
+	function searchajax(){
+	
+		const tagWrapDiv1 = document.getElementById('tag_wrap');
+		const tagElements1 = tagWrapDiv.querySelectorAll('div[data-label]');
+		
+		const textValues = Array.from(tagElements1).map(tagElement1 => {
+		  let text1 = tagElement1.textContent.trim();
+		  text1 = text1.replace(/[×/]/g, ''); // '×'와 '/' 제거
+		  return text1;
+		});
+		
+		console.log(textValues);
+	
+	
+		// ajax 통신으로 요청 주고받기
+		$.ajax({
+			url : "${path}/Filtering",
+			type : "post",
+			contentType: "application/json;charset=utf-8",
+			data : JSON.stringify(textValues),
+			// ajax안에서 함수를 호출할 경우엔 반드시 ()를 쓰지 않는다.
+			success : function(){
+				alert("ajax성공")
+				window.location.href = '${path}/mainsearch.do';
+			},
+			error : function(){
+				alert("조건에 맞는 공고글이 존재하지 않습니다.");
+			}
+		}); // ajax끝
+	}// searchajax 함수 끝
 
+
+
+	</script>
+	
 </body>
-
+	
 </html>

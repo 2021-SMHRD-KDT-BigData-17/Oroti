@@ -65,5 +65,35 @@
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/Desktop/logo.png</locationURI>
 		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/controller/SurveyController.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/controller/SurveyController.java</locationURI>
+		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/controller/restController.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/controller/restController.java</locationURI>
+		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/mapper/SurveyMapper.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/SurveyMapper.java</locationURI>
+		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/mapper/SurveyMapper.xml</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/SurveyMapper.xml</locationURI>
+		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/vo/Survey_VO.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/Survey_VO.java</locationURI>
+		</link>
+		<link>
+			<name>src/main/java/jisang/poyong/vo/SurveyresultVO.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/%EC%9D%B4%EC%82%AC%EC%A4%80%EB%B9%84/SurveyresultVO.java</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

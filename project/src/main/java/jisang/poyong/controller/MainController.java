@@ -19,9 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jisang.poyong.mapper.ChatMapper;
 import jisang.poyong.mapper.NoticeMapper;
+import jisang.poyong.mapper.ResumeMapper;
 import jisang.poyong.vo.BusinessVO;
 import jisang.poyong.vo.ChatVO;
 import jisang.poyong.vo.NoticeVO;
+import jisang.poyong.vo.ResumeVO;
 import jisang.poyong.vo.UserVO;
 
 @Controller
@@ -31,6 +33,8 @@ public class MainController {
 	private ChatMapper chatMapper;
 	@Autowired
 	private NoticeMapper noticeMapper;
+	@Autowired
+	private ResumeMapper resumemapper;
 
 	@GetMapping("/MainPage.do")
 	public String loadNoticeData(Model model, HttpServletRequest request) {
@@ -90,6 +94,14 @@ public class MainController {
 		noticeMapper.insertNotice(notice);
 		return "redirect:/MainPage.do";
 	}
+	
+	@PostMapping("/resume.do")
+	public String insertResume(ResumeVO resume) {
+		System.out.println(resume.toString());
+		resumemapper.insertResume(resume);
+		System.out.println("ㅎㅇ");
+		return "redirect:/MainPage.do";
+	}
 
 	@RequestMapping("/SignUp.do")
 	public String SignUp() {
@@ -108,7 +120,7 @@ public class MainController {
 	@RequestMapping("/Useredit.do")
 	public String Useredit() {
 
-		return "/jisang/usermyinfoedit";
+		return "/jisang/useredit";
 	}
 
 	@RequestMapping("/SignIn.do")
@@ -202,5 +214,10 @@ public class MainController {
 	    model.addAttribute("noticeList", noticeList);
 	    System.out.println("모델 실행 확인");
 	    return "/jisang/noticeresult";
+	}
+	
+	@RequestMapping("/resumeresult.do")
+	public String resumeresult() {
+		return "/jisang/resumeresult";
 	}
 }

@@ -17,4 +17,14 @@ INSERT INTO chatinfo (senduser, chattext, chatdate, receiveuser)
 		userdiv = 'A'
 		WHERE userid = 'smhrd';
 		
-		
+		UPDATE userinfo
+		SET
+		userpw = '1234',
+		userphone = '1234',
+		useremail = 'gd',
+		userbirth = '2023-05-01',
+		useraddress = 'ㅎㅇ',
+		userobstccode = '1',
+		userparentphone = '1235',
+		userdiv = 'A'
+		WHERE userid = #{userid}

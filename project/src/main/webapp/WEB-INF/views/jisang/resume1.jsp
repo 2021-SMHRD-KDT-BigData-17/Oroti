@@ -22,15 +22,14 @@ String userbirth = user.getUserbirth();
 String useraddress = user.getUseraddress();
 Character userdiv = (Character) user.getUserdiv();
 %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>notice</title>
+<title>myinfo_1</title>
 <link rel="stylesheet" href="${path}/resources/css/resume.css">
-<!-- <link rel="stylesheet" href="header.css"> -->
 </head>
 <body>
 	<header>
@@ -59,7 +58,7 @@ Character userdiv = (Character) user.getUserdiv();
 									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-									<a href="${path}/business2.do" class="myPage">내정보</a>
+									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 							</c:choose>
 							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
@@ -108,18 +107,17 @@ Character userdiv = (Character) user.getUserdiv();
 	</header>
 	<!-- 이력서 시작 -->
 	<div class="resume_wrapper">
-		<form action="${path}/resume.do" method="post">
+		<form action="#" method="get">
 			<h1 class="resume_title">이력서</h1>
 			<!-- 인적사항 입력페이지 -->
-			<input type="hidden" value="<%=Userid%>" name="userid"> 
-			<input
-				type="hidden" value="<%=username%>" name="username"> <input
-				type="hidden" value="<%=useraddress%>" name="useraddress"> <input
-				type="hidden" value="<%=useremail%>" name="useremail"> <input
-				type="hidden" value="<%=userobstccode%>" name="userobstccode">
-			<input type="hidden" value="<%=userphone%>" name="userphone">
-			<input type="hidden" value="<%=userbirth%>" name="userbirth">
-
+			<input type = "hidden" value ="<%=Userid%>" name = "userid">
+			<input type = "hidden" value ="<%=username%>" name = "username">
+			<input type = "hidden" value ="<%=useraddress%>" name = "useraddress">
+			<input type = "hidden" value ="<%=useremail%>" name = "useremail">
+			<input type = "hidden" value ="<%=userobstccode%>" name = "userobstccode">
+			<input type = "hidden" value ="<%=userphone%>" name = "userphone">
+			<input type = "hidden" value ="<%=userbirth%>" name = "userbirth">
+			
 			<table class="resume_content" border="1" cellspacing="0">
 				<tr>
 					<td class="picture" rowspan="4"><button class="pic_register">사진파일
@@ -201,7 +199,6 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 			</table>
 
-
 			<h2 class="study">학력사항</h2>
 			<table class="resume_content_2" border="1" cellspacing="0">
 				<tr>
@@ -211,51 +208,33 @@ Character userdiv = (Character) user.getUserdiv();
 					<td class="graduate">졸업여부</td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart1"> ~ <input class="timebox" type="text"
-						name="eduend1"></td>
-					<td class="school_input"><input class="schoolbox" type="text"
-						name="schoolname1"> <input class="schoolbox" type="text"
-						name="major1"></td>
-					<td class="score_input"><input class="scorebox" type="text"
-						name="grade1"></td>
-					<td class="graduate_input"><select name="graduated1"
-						class="graduate_yn">
-							<option value=""></option>
-							<option value="졸업">졸업</option>
-							<option value="미졸업">미졸업</option>
+					<td class="time_input"><input class="timebox" type="date" name ="edustart1">
+						~ <input class="timebox" type="date" name ="eduend1"></td>
+					<td class="school_input"><input class="schoolbox" type="text" name="schoolname1"></td>
+					<td class="score_input"><input class="scorebox" type="text"></td>
+					<td class="graduate_input"><select class="graduate_yn">
+							<option value="yes">졸업</option>
+							<option value="no">미졸업</option>
 					</select></td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart2"> ~ <input class="timebox" type="text"
-						name="eduend2"></td>
-					<td class="school_input"><input class="schoolbox" type="text"
-						name="schoolname2"><input class="schoolbox" type="text"
-						name="major2"></td>
-					<td class="score_input"><input class="scorebox" type="text"
-						name="grade2"></td>
-					<td class="graduate_input"><select name="graduated2"
-						class="graduate_yn">
-							<option value=""></option>
-							<option value="졸업">졸업</option>
-							<option value="미졸업">미졸업</option>
+					<td class="time_input"><input class="timebox" type="date">
+						~ <input class="timebox" type="date"></td>
+					<td class="school_input"><input class="schoolbox" type="text"></td>
+					<td class="score_input"><input class="scorebox" type="text"></td>
+					<td class="graduate_input"><select class="graduate_yn">
+							<option value="yes">졸업</option>
+							<option value="no">미졸업</option>
 					</select></td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart3"> ~ <input class="timebox" type="text"
-						name="eduend3"></td>
-					<td class="school_input"><input class="schoolbox" type="text"
-						name="schoolname3"><input class="schoolbox" type="text"
-						name="major3"></td>
-					<td class="score_input"><input class="scorebox" type="text"
-						name="grade3"></td>
-					<td class="graduate_input"><select name="graduated3"
-						class="graduate_yn">
-							<option value=""></option>
-							<option value="졸업">졸업</option>
-							<option value="미졸업">미졸업</option>
+					<td class="time_input"><input class="timebox" type="date">
+						~ <input class="timebox" type="date"></td>
+					<td class="school_input"><input class="schoolbox" type="text"></td>
+					<td class="score_input"><input class="scorebox" type="text"></td>
+					<td class="graduate_input"><select class="graduate_yn">
+							<option value="yes">졸업</option>
+							<option value="no">미졸업</option>
 					</select></td>
 				</tr>
 			</table>
@@ -270,46 +249,41 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="career_time_input"><input class="timebox"
-						type="text" name="carrerstart1"> ~ <input class="timebox"
-						type="text" name="carrerend1"></td>
-					<td class="company_input"><input class="companybox"
-						type="text" name="companyname1"></td>
-					<td class="position_input"><input class="positionbox"
-						type="text" name="position1"></td>
-					<td class="retire_input"><select class="retirebox"
-						name="employment1">
-							<option value=""></option>
-							<option value="퇴직">퇴직</option>
-							<option value="재직">재직</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td class="career_time_input"><input class="timebox"
-						type="text" name ="carrerstart2"> ~ <input name = "carrerend2" class="timebox" type="text">
+						type="date"> ~ <input class="timebox" type="date">
 					</td>
-					<td class="company_input"><input name ="companyname2"class="companybox"
+					<td class="company_input"><input class="companybox"
 						type="text"></td>
 					<td class="position_input"><input class="positionbox"
-						type="text" name="position2"></td>
-					<td class="retire_input"><select class="retirebox" name="employment2">
-							<option value=""></option>
-							<option value="퇴직">퇴직</option>
-							<option value="재직">재직</option>
+						type="text"></td>
+					<td class="retire_input"><select class="retirebox">
+							<option value="retire_y">퇴직</option>
+							<option value="retire_n">재직</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td class="career_time_input"><input class="timebox"
-						type="text" name="carrerstart3"> ~ <input class="timebox"
-						type="text" name="carrerend3"></td>
+						type="date"> ~ <input class="timebox" type="date">
+					</td>
 					<td class="company_input"><input class="companybox"
-						type="text" name="companyname3"></td>
+						type="text"></td>
 					<td class="position_input"><input class="positionbox"
-						type="text" name="position3"></td>
-					<td class="retire_input"><select class="retirebox"
-						name="employment3">
-							<option value=""></option>
-							<option value="퇴직">퇴직</option>
-							<option value="재직">재직</option>
+						type="text"></td>
+					<td class="retire_input"><select class="retirebox">
+							<option value="retire_y">퇴직</option>
+							<option value="retire_n">재직</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="career_time_input"><input class="timebox"
+						type="date"> ~ <input class="timebox" type="date">
+					</td>
+					<td class="company_input"><input class="companybox"
+						type="text"></td>
+					<td class="position_input"><input class="positionbox"
+						type="text"></td>
+					<td class="retire_input"><select class="retirebox">
+							<option value="retire_y">퇴직</option>
+							<option value="retire_n">재직</option>
 					</select></td>
 				</tr>
 			</table>
@@ -318,48 +292,48 @@ Character userdiv = (Character) user.getUserdiv();
 			<table class="resume_content_4" border="1" cellspacing="0">
 				<tr>
 					<td class="hope_job">희망직종</td>
-					<td class="hope_job_input"><select name="jobcode" class="jikjong">
-							<option value=""></option>
-							<option value="1">IT⦁정보통신</option>
-							<option value="2">제조⦁생산⦁화학업</option>
-							<option value="3">건설업</option>
-							<option value="4">미디어⦁광고업</option>
-							<option value="5">판매⦁유통업</option>
-							<option value="6">교육업</option>
-							<option value="7">의료⦁제약업</option>
-							<option value="8">문화⦁예술⦁디자인업</option>
-							<option value="9">서비스업</option>
-							<option value="10">사무직</option>
+					<td class="hope_job_input"><select name="select_job"
+						class="jikjong">
+							<option value="it">IT⦁정보통신</option>
+							<option value="menu">제조⦁생산⦁화학업</option>
+							<option value="building">건설업</option>
+							<option value="media">미디어⦁광고업</option>
+							<option value="sell">판매⦁유통업</option>
+							<option value="education">교육업</option>
+							<option value="midical">의료⦁제약업</option>
+							<option value="culture">문화⦁예술⦁디자인업</option>
+							<option value="service">서비스업</option>
+							<option value="office">사무직</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td class="hope_pay">희망연봉</td>
-					<td class="hope_pay_input"><input type="text" class="yeonbong" name = "wage"></td>
+					<td class="hope_pay_input"><input type="text" class="yeonbong"></td>
 				</tr>
 				<tr>
 					<td class="hope_area">희망근무지역</td>
-					<td class="hope_area_input"><select name="worklocation" name = "worklocation" class="sido">
-							<option value=""></option>
-							<option value="특별시">특별시</option>
-							<option value="광역시">광역시</option>
-							<option value="경기도">경기도</option>
-							<option value="강원도">강원도</option>
-							<option value="충청남도">충청남도</option>
-							<option value="충청북도">충청북도</option>
-							<option value="전라남도">전라남도</option>
-							<option value="전라북도">전라북도</option>
-							<option value="경상남도">경상남도</option>
-							<option value="경상북도">경상북도</option>
-							<option value="제주도">제주도</option>
+					<td class="hope_area_input"><select name="area_option"
+						class="sido">
+							<option value="special">특별시</option>
+							<option value="wide">광역시</option>
+							<option value="kyoungki">경기도</option>
+							<option value="kangwon">강원도</option>
+							<option value="chungnam">충청남도</option>
+							<option value="chungbuk">충청북도</option>
+							<option value="jeonnam">전라남도</option>
+							<option value="jenobuk">전라북도</option>
+							<option value="kyoungnam">경상남도</option>
+							<option value="kyoungbuk">경상북도</option>
+							<option value="jeju">제주도</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td class="hire_type">고용형태</td>
-					<td class="hire_type_input"><select name="employmenttype" class="koyong">
-							<option value=""></option>
-							<option value="계약직">계약직</option>
-							<option value="상용직">상용직</option>
-							<option value="시간제">시간제</option>
+					<td class="hire_type_input"><select name="hire_option"
+						class="koyong">
+							<option value="contract">계약직</option>
+							<option value="fulltime">상용직</option>
+							<option value="parttime">시간제</option>
 					</select></td>
 				</tr>
 			</table>

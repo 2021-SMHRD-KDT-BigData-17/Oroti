@@ -1,42 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var form = document.querySelector('.chat_form');
-  var textarea = document.querySelector('.input_value');
-  var chatScreen = document.querySelector('.chat_screen');
+const lists = document.querySelectorAll('nav ul li');
 
-  // 폼 제출을 처리
-  form.addEventListener('submit', function(e) {
-  e.preventDefault();
+const form1 = document.getElementById('form1');
+const form2 = document.getElementById('form2');
+const form3 = document.getElementById('form3');
+const form4 = document.getElementById('form4');
+const form5 = document.getElementById('form5');
 
-    var message = textarea.value.trim();
+lists.forEach((list, index) => {
+  list.addEventListener('click', () => {
+    lists.forEach(item => {
+      item.style.backgroundColor = '';
+    });
 
-    if (message !== '') {
-      // 새로운 코멘트 패키지를 생성
-      var commentPackage = document.createElement('div');
-      commentPackage.className = 'chat_content_wrap2';
+    list.style.backgroundColor = '#e9e9e9';
 
-      // TTS 버튼 생성
-      var ttsButton = document.createElement('button');
-      ttsButton.className = 'chat_content_tts2';
-      var ttsIcon = document.createElement('i');
-      ttsIcon.className = 'fa-solid fa-volume-high';
-      ttsButton.appendChild(ttsIcon);
+    form1.style.display = 'none';
+    form2.style.display = 'none';
+    form3.style.display = 'none';
+    form4.style.display = 'none';
+    form5.style.display = 'none';
 
-      // 코멘트 요소를 생성
-      var comment = document.createElement('div');
-      comment.className = 'chat_content2';
-      comment.textContent = message;
-
-      // 코멘트와 TTS 버튼 코멘트 패키지에 추가
-      commentPackage.appendChild(ttsButton);
-      commentPackage.appendChild(comment);
-
-      chatScreen.appendChild(commentPackage);
-
-      // 입력 텍스트 영역을 지우기
-      textarea.value = '';
-
-      // 스크롤 하단 이동
-      chatScreen.scrollTop = chatScreen.scrollHeight;
+    if (index === 0) {
+      form1.style.display = 'block';
+    } else if (index === 1) {
+      form2.style.display = 'block';
+    } else if (index === 2) {
+      form3.style.display = 'block';
+    } else if (index === 3) {
+      form4.style.display = 'block';
+    } else if (index === 4) {
+      form5.style.display = 'block';
     }
   });
 });

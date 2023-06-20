@@ -123,11 +123,9 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 		<form action="${path}/InsertNotice.do" method="get">
 			<input name="userid" type="hidden" value="<%=Userid%>"> <input
 				name="companyname" type="hidden" value="<%=businessname%>">
-			<input name="companyaddress" type="hidden"
-				value="<%=companyaddress%>"> <input name="noticejoinmode"
-				type="hidden" value="임의의값"> <input name="businessboss"
-				type="hidden" value="<%=businessboss%>"> <input
-				name="businessmember" type="hidden" value="<%=businessmember%>">
+			<input name="companyaddress" type="hidden"	value="<%=companyaddress%>">
+			 <input name="businessboss"	type="hidden" value="<%=businessboss%>"> 
+			 <input	name="businessmember" type="hidden" value="<%=businessmember%>">
 			<input name="businesscode" type="hidden" value="<%=businesscode%>">
 			<h1 class="notice_title">채용공고</h1>
 			<!-- 회사정보 입력페이지 -->
@@ -194,7 +192,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 					<td class="requirementcareer">요구경력</td>
 					<td class="requirementedu">요구학력</td>
 					<td class="salarytype">임금형태</td>
-					<td class="salary">임금</td>
+					<td class="salary">임금(만원)</td>
 				</tr>
 				<tr>
 					<!-- 모집직종 -->
@@ -219,8 +217,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 							<option value="시간제">시간제</option>
 					</select></td>
 					<!-- 요국 -->
-					<td class="requirementcareer_input"><input
-						class="requirementcareer_box" name="noticecareer" type="text"></td>
+					<td class="requirementcareer_input"><input class="requirementcareer_box" name="noticejoinmode" type="text"></td>
 
 					<td class="requirementedu_input"><select name="noticeedu"
 						class="requirementedu_box">
