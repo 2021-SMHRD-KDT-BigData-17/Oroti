@@ -147,7 +147,7 @@ public class MainController {
 	@RequestMapping("/UserMyinfo.do")
 	public String UserMyinfo() {
 
-		return "/jisang/usermyinfo";
+		return "/jisang/userMyinfo";
 
 	}
 

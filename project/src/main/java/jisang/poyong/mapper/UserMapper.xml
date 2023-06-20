@@ -15,8 +15,8 @@
 		#{userphone},
 		#{userdiv},
 		#{userobstccode},
-		'',
-		'', '','')
+		'값을 입력해주세요',
+		'', '값을 입력해주세요','값을 입력해주세요')
 	</insert>
 
 	<insert id="BusinessSignUp"

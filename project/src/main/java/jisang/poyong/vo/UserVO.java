@@ -12,6 +12,8 @@ public class UserVO {
 	private String userobstccode; // 장애 분류 (0~15) 
 	private String userparentphone; // 보호자 연락처
 	private String businessidx;
+	private String userbirth;
+	private String useraddress;
 	public String getUserid() {
 		return userid;
 	}
@@ -66,10 +68,24 @@ public class UserVO {
 	public void setBusinessidx(String businessidx) {
 		this.businessidx = businessidx;
 	}
+	public String getUserbirth() {
+		return userbirth;
+	}
+	public void setUserbirth(String userbirth) {
+		this.userbirth = userbirth;
+	}
+	public String getUseraddress() {
+		return useraddress;
+	}
+	public void setUseraddress(String useraddress) {
+		this.useraddress = useraddress;
+	}
 	@Override
 	public String toString() {
 		return "UserVO [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", useremail=" + useremail
 				+ ", userphone=" + userphone + ", userdiv=" + userdiv + ", userobstccode=" + userobstccode
-				+ ", userparentphone=" + userparentphone + ", businessidx=" + businessidx + "]";
+				+ ", userparentphone=" + userparentphone + ", businessidx=" + businessidx + ", userbirth=" + userbirth
+				+ ", useraddress=" + useraddress + "]";
 	}
+	
 }
