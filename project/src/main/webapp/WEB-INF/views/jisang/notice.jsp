@@ -125,8 +125,10 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 				name="companyname" type="hidden" value="<%=businessname%>">
 			<input name="companyaddress" type="hidden"
 				value="<%=companyaddress%>"> <input name="noticejoinmode"
-				type="hidden" value="임의의값">
-
+				type="hidden" value="임의의값"> <input name="businessboss"
+				type="hidden" value="<%=businessboss%>"> <input
+				name="businessmember" type="hidden" value="<%=businessmember%>">
+			<input name="businesscode" type="hidden" value="<%=businesscode%>">
 			<h1 class="notice_title">채용공고</h1>
 			<!-- 회사정보 입력페이지 -->
 			<table class="notice_content">
@@ -146,7 +148,38 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 				</tr>
 				<tr>
 					<td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
-					<td class="businesscategory_input" colspan="3"><%=businesscode%></td>
+					<td class="businesscategory_input" colspan="3">
+						<%
+							if (businesscode.equals("1")) {
+						%> IT⦁정보통신 <%
+							} else if (businesscode.equals("2")) {
+						%>
+						제조⦁생산⦁화학업 <%
+							} else if (businesscode.equals("3")) {
+						%> 건설업 <%
+							} else if (businesscode.equals("4")) {
+						%>
+						미디어⦁광고업 <%
+							} else if (businesscode.equals("5")) {
+						%> 판매⦁유통업 <%
+							} else if (businesscode.equals("6")) {
+						%>
+						교육업 <%
+							} else if (businesscode.equals("7")) {
+						%> 의료⦁제약업 <%
+							} else if (businesscode.equals("8")) {
+						%>
+						문화⦁예술⦁디자인업 <%
+							} else if (businesscode.equals("9")) {
+						%> 서비스업 <%
+							} else if (businesscode.equals("10")) {
+						%>
+						사무직 <%
+							} else {
+						%> 기타 <%
+							}
+						%>
+					</td>
 				</tr>
 				<tr>
 					<td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
@@ -216,8 +249,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 				</tr>
 				<tr>
 					<td class="noticeperiod_input"><input name="noticeregdate"
-						type="hidden" value="<%=year%>-<%=month%>-<%=day%>">
-						<%=year%>-<%=month%>-<%=day%></td>
+						type="hidden" value="<%=year%>-<%=month%>-<%=day%>"> <%=year%>-<%=month%>-<%=day%></td>
 					<td class="noticeperiod_input"><input class="noticeperiod_box"
 						type="date" name="noticeperiod" value=""></td>
 				</tr>
@@ -233,18 +265,19 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
-		
-	<script>
-  function addValue() {
-    var noticeregdateInput = document.querySelector('input[name="noticeregdate"]');
-    var noticeperiodInput = document.querySelector('.noticeperiod_box');
-    var noticeregdate = noticeregdateInput.value;
-    var selectedDate = noticeperiodInput.value;
-    var modifiedValue = noticeregdate + selectedDate;
 
-    noticeperiodInput.value = modifiedValue;
-  }
-</script>	
+	<script>
+		function addValue() {
+			var noticeregdateInput = document
+					.querySelector('input[name="noticeregdate"]');
+			var noticeperiodInput = document.querySelector('.noticeperiod_box');
+			var noticeregdate = noticeregdateInput.value;
+			var selectedDate = noticeperiodInput.value;
+			var modifiedValue = noticeregdate + selectedDate;
+
+			noticeperiodInput.value = modifiedValue;
+		}
+	</script>
 
 </body>
 </html>

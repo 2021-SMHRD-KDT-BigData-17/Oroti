@@ -24,13 +24,13 @@
 		INSERT INTO noticeinfo (
 		userid, companyname, noticejobcode, noticeemp, noticewagemode,
 		noticewage, noticejoinmode, noticecareer, noticeedu,
-		companyaddress, noticeregdate, noticeperiod, noticejob
-		)
+		companyaddress, noticeregdate, noticeperiod, noticejob, businessboss, businessmember,
+		businesscode)
 		VALUES (
 		#{userid}, #{companyname}, #{noticejobcode}, #{noticeemp},
 		#{noticewagemode}, #{noticewage}, #{noticejoinmode},
 		#{noticecareer}, #{noticeedu}, #{companyaddress},
-		#{noticeregdate}, #{noticeperiod} , ''
+		#{noticeregdate}, #{noticeperiod} , '', #{businessboss}, #{businessmember} , #{businesscode}
 		)
 	</insert>
 

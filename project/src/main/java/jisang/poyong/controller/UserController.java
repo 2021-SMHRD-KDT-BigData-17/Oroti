@@ -93,7 +93,9 @@ public class UserController {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("SignIn", SignIn);
-		return "redirect:/UserMyinfo.do";
+	    session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
+
+	    return "redirect:/SignIn.do?updateSuccess=true";
 	}
 
 	@GetMapping("/Companymyinfoedit.do")
@@ -108,7 +110,9 @@ public class UserController {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("SignIn", SignIn);
-		return "redirect:/Signin.do";
+	    session.setAttribute("updateMessage", "수정이 완료되었습니다. 다시 로그인해주세요.");
+
+	    return "redirect:/SignIn.do?updateSuccess=true";
 	}
 
 	@GetMapping("/BusinessUpdate.do")

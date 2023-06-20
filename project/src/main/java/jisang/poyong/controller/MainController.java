@@ -94,7 +94,7 @@ public class MainController {
 	@RequestMapping("/SignUp.do")
 	public String SignUp() {
 
-		return "/jisang/Main";
+		return "/jisang/SignUp";
 
 	}
 

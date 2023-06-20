@@ -25,6 +25,7 @@ if (updateSuccess != null && updateSuccess.equals("true")) {
 %>
 
 
+
 <script>
     
     <%String errorMessage = (String) session.getAttribute("errorMessage");%>
@@ -42,6 +43,9 @@ if (updateSuccess != null && updateSuccess.equals("true")) {
 <%}%>
 	
 </script>
+
+
+
 </head>
 <body>
 	<div class="SignIn_wrap">

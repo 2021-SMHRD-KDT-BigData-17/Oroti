@@ -107,24 +107,37 @@ String userphone = user.getUserphone();
 					<tr>
 						<td class="logo" rowspan="4"><button class="logo_register">로고
 								등록</button></td>
-						<td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
-						<td class="business_boss_input">${notice.noticeidx}</td>
-						<td class="business_idx">&nbsp;사업자번호</td>
-						<td class="business_idx_input" name="businessidx">{notice.no</td>
+						<td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;회사명</td>
+						<td class="businessname_input">${notice.companyname}</td>
+						<td class="business_idx">&nbsp;공고번호</td>
+						<td class="business_idx_input" name="businessidx">${notice.noticeidx}</td>
 					</tr>
+
 					<tr>
 						<td class="business_boss">&nbsp;&nbsp;&nbsp;&nbsp;대표자명</td>
-						<td class="business_boss_input"></td>
+						<td class="business_boss_input">${notice.businessboss}</td>
 						<td class="business_number">&nbsp;총인원</td>
-						<td class="business_number_input">100</td>
+						<td class="business_number_input">${notice.businessmember}</td>
 					</tr>
 					<tr>
 						<td class="businesscategory">&nbsp;&nbsp;&nbsp;&nbsp;사업체 직군</td>
-						<td class="businesscategory_input" colspan="3">제조⦁생산⦁화학업</td>
+						<td class="businesscategory_input" colspan="3">
+							${notice.businesscode == "1" ? "IT⦁정보통신" :
+    notice.businesscode == "2" ? "제조⦁생산⦁화학업" :
+    notice.businesscode == "3" ? "건설업" :
+    notice.businesscode == "4" ? "미디어⦁광고업" :
+    notice.businesscode == "5" ? "판매⦁유통업" :
+    notice.businesscode == "6" ? "교육업" :
+    notice.businesscode == "7" ? "의료⦁제약업" :
+    notice.businesscode == "8" ? "문화⦁예술⦁디자인업" :
+    notice.businesscode == "9" ? "서비스업" :
+    notice.businesscode == "10" ? "사무직" :
+    "기타"}
+						</td>
 					</tr>
 					<tr>
 						<td class="businessaddress">&nbsp;&nbsp;&nbsp;&nbsp;사업장 주소</td>
-						<td class="businessaddress_input" colspan="3">순천시 중앙동 100번지</td>
+						<td class="businessaddress_input" colspan="3">${notice.companyaddress}</td>
 					</tr>
 				</table>
 
@@ -139,12 +152,46 @@ String userphone = user.getUserphone();
 						<td class="salary">임금</td>
 					</tr>
 					<tr>
-						<td class="hirecategory_input">제조⦁생산⦁화학업</td>
-						<td class="hiretype_input">상용직</td>
-						<td class="requirementcareer_input">경력무관</td>
-						<td class="requirementedu_input">고졸</td>
-						<td class="salarytype_input">연봉</td>
-						<td class="salary_input">3000만원</td>
+						<td class="hirecategory_input"><c:choose>
+								<c:when test="${notice.noticejobcode eq '1'}">
+      IT⦁정보통신
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '2'}">
+      제조⦁생산⦁화학업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '3'}">
+      건설업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '4'}">
+      미디어⦁광고업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '5'}">
+      판매⦁유통업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '6'}">
+      교육업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '7'}">
+      의료⦁제약업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '8'}">
+      문화⦁예술⦁디자인업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '9'}">
+      서비스업
+    </c:when>
+								<c:when test="${notice.noticejobcode eq '10'}">
+      사무직
+    </c:when>
+								<c:otherwise>
+      기타
+    </c:otherwise>
+							</c:choose></td>
+						<td class="hiretype_input">${notice.noticeemp}</td>
+						<td class="requirementcareer_input">${notice.noticejoinmode }</td>
+						<td class="requirementedu_input">${notice.noticeedu}</td>
+						<td class="salarytype_input">${notice.noticewagemode}</td>
+						<td class="salary_input">${notice.noticewage}</td>
 					</tr>
 				</table>
 
@@ -155,8 +202,8 @@ String userphone = user.getUserphone();
 						<td class="notice_period">공고글 마감일</td>
 					</tr>
 					<tr>
-						<td class="noticeregdate_input" name="noticeregdate">2023.06.15</td>
-						<td class="noticeperiod_input" name="noticeperiod">2023.06.22</td>
+						<td class="noticeregdate_input" name="noticeregdate">${notice.noticeregdate}</td>
+						<td class="noticeperiod_input" name="noticeperiod">${notice.noticeperiod}</td>
 					</tr>
 				</table>
 			</c:forEach>
