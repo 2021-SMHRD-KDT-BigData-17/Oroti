@@ -24,7 +24,7 @@ String userphone = user.getUserphone();
 <link rel="stylesheet" href="${path}/resources/css/notice_complete.css">
 </head>
 <body>
-	<header>
+<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
@@ -75,7 +75,7 @@ String userphone = user.getUserphone();
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
 					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/Career.do" class="career">직업·진로</a>
+					href="${path}/preference.do" class="career">직업·진로</a>
 				<c:choose>
 					<c:when test="${not empty SignIn}">
 						<c:choose>

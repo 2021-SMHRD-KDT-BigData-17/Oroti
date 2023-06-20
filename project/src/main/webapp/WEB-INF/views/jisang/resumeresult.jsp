@@ -84,7 +84,7 @@ Character userdiv = (Character) user.getUserdiv();
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
 					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/Career.do" class="career">직업·진로</a>
+					href="${path}/preference.do" class="career">직업·진로</a>
 				<c:choose>
 					<c:when test="${not empty SignIn}">
 						<c:choose>
@@ -118,15 +118,15 @@ Character userdiv = (Character) user.getUserdiv();
 					<td class="user_name" name="username">&nbsp;&nbsp;&nbsp;이름</td>
 					<td class="username_input"><%=Userid%></td>
 					<td class="person_number">&nbsp;생년월일</td>
-					<td class="personnumber_input"><%=userbirth %></td>
+					<td class="personnumber_input"><%=userbirth%></td>
 				</tr>
 				<tr>
 					<td class="user_address">&nbsp;&nbsp;&nbsp;주소</td>
-					<td class="useraddress_input" colspan="3"><%=useraddress %></td>
+					<td class="useraddress_input" colspan="3"><%=useraddress%></td>
 				</tr>
 				<tr>
 					<td class="user_phone">&nbsp;&nbsp;&nbsp;휴대전화</td>
-					<td class="userphone_input" colspan="3" name="userphone"><%=userphone %></td>
+					<td class="userphone_input" colspan="3" name="userphone"><%=userphone%></td>
 				</tr>
 				<tr>
 					<td class="email">&nbsp;&nbsp;&nbsp;이메일</td>

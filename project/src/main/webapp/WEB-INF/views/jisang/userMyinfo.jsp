@@ -58,7 +58,7 @@ Character userdiv = (Character) user.getUserdiv();
 									<a href="${path}/UserMyinfo.do" class="myPage">내정보</a>
 								</c:when>
 								<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-									<a href="${path}/CompanyMyinfo.do" class="myPage">내정보</a>
+									<a href="${path}/business2.do" class="myPage">내정보</a>
 								</c:when>
 							</c:choose>
 							<a href="${path}/ChatPage.do" class="message">쪽지함</a>
@@ -83,7 +83,7 @@ Character userdiv = (Character) user.getUserdiv();
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
 					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/Career.do" class="career">직업·진로</a>
+					href="${path}/preference.do" class="career">직업·진로</a>
 				<c:choose>
 					<c:when test="${not empty SignIn}">
 						<c:choose>
