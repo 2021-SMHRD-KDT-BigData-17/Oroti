@@ -74,12 +74,12 @@
 		<div class="nav2">
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
-					href="${path}/Chart.do" class="job">취업 분포도</a>
-
+					href="${path}/Chart.do" class="job">취업 분포도</a> 
+					
 			</div>
 
 			<div class="nav2_right">
-				<a href="#" class="customer">고객센터</a>
+				<a href="${path}/service.do" class="customer">고객센터</a>
 				<!-- 고객센터 페이지 링크 -->
 			</div>
 		</div>

@@ -1,17 +1,22 @@
+<%@page import="jisang.poyong.vo.UserVO"%>
+<%@page import="javax.xml.crypto.dsig.SignedInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
+<%
+	UserVO user = (UserVO) session.getAttribute("SignIn");
+%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>직업검사 결과</title>
-
-<link rel="stylesheet" href="${path}/resources/css/survey.css">
-<link rel="stylesheet" href="${path}/resources/css/header.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포용취업넷</title>
+<link rel="stylesheet" href="${path}/resources/css/service.css">
 </head>
 <body>
 	<header>
@@ -81,57 +86,74 @@
 			</div>
 
 			<div class="nav2_right">
-                <a href="${path}/service.do" class="customer">고객센터</a><!-- 고객센터 페이지 링크 -->
+				<a href="${path}/service.do" class="customer">고객센터</a>
+				<!-- 고객센터 페이지 링크 -->
 				<!-- 고객센터 페이지 링크 -->
 			</div>
 		</div>
 		<!-- 헤더 두 번째 줄 (끝) -->
 	</header>
-	<h1>직업검사 결과</h1>
 
-	<div class="result">
-		<p class="result-title">당신에게 적합한 직업은 다음과 같습니다:</p>
-		<ul class="job-list">
-			<li>IT 정보통신업</li>
-			<li>사무직</li>
-			<li>서비스업</li>
-			<!-- 필요한 만큼 목록을 추가하세요 -->
-		</ul>
+
+	<div class="service_wrap">
+		<div class="service_form">
+			<h2>문의·신고</h2>
+			<!-- 전송할 문의 내용 (시작) -->
+			<form action="#" method="#">
+				<div class="service_content">
+					<!-- 첫 번째 줄 (시작) -->
+					<div class="service_line1">
+						<div class="line1_title">문의 종류 (필수)</div>
+						<div class="line1_content">
+							<select name="service_type" required>
+								<option disabled selected>선택</option>
+								<option value="0">서비스 이용문의</option>
+								<option value="1">불량정보·오류 신고</option>
+								<option value="2">서비스 제안·칭찬</option>
+							</select>
+						</div>
+					</div>
+					<!-- 첫 번째 줄 (끝) -->
+
+					<!-- 두 번째 줄 (시작) -->
+					<div class="service_line2">
+						<div class="line2_title">문의 내용 (필수)</div>
+						<div class="line2_content">
+							<textarea name="" id=""></textarea>
+						</div>
+					</div>
+					<!-- 두 번째 줄 (끝) -->
+
+					<!-- 세 번째 줄 (시작) -->
+					<div class="service_line3">
+						<div class="line3_title">파일첨부</div>
+						<div class="line3_content">
+							<input type="file">
+						</div>
+					</div>
+					<!-- 세 번째 줄 (끝) -->
+				</div>
+
+				<div class="service_btn">
+					<a href="${path}/MainPage.do" class="go">등록</a> <a href="${path}/MainPage.do">취소</a>
+				</div>
+			</form>
+			<!-- 전송할 문의 내용 (끝) -->
+		</div>
 	</div>
 
-	<!-- 기존 코드를 여기에 추가하세요 -->
-<body>
-	<div class="container">
-
-		<div class="result">
-			<h3>IT 정보통신업:</h3>
-			<p>IT 정보통신업은 정보 기술과 통신 기술을 결합하여 제공되는 다양한 서비스와 솔루션을 제공하는 산업입니다.</p>
-			<p>이 산업은 컴퓨터와 네트워크 등의 기술을 활용하여 데이터의 전송과 통신을 가능하게 하며, 정보의 저장, 처리,
-				전달을 위한 다양한 시스템과 서비스를 개발, 운영, 유지보수합니다.</p>
-			<p>추천 직업:</p>
-			<span>프로그래머, 빅데이터 분석가, 정보보안전문가</span>
+	<footer>
+		<div class="footer">
+			<ul>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><strong><a href="#">개인정보처리방침</a></strong></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
 		</div>
+		<div class="copyright">copyright &copy; 2023 포용취업넷 All rights
+			reserved</div>
+	</footer>
 
-		<div class="result">
-			<h3>사무직:</h3>
-			<p>사무직은 사무 업무를 수행하는 직종을 일컫는 용어로, 조직 내에서 정보 처리, 문서 작성, 기록 보관, 일정
-				관리, 회의 조정 등의 업무를 담당합니다.</p>
-			<p>사무직은 다양한 조직이나 기업의 업무를 원활하게 진행하기 위해 필요한 역할을 수행하며, 기업의 효율성과 생산성에
-				직결됩니다.</p>
-			<p>추천직업:</p>
-			<span>비서, 경리, 회계사</span>
-		</div>
-		<div class="result">
-			<h3>서비스업:</h3>
-			<p>서비스업은 상품의 생산과는 달리 물리적인 제품을 생산하지 않고, 고객에게 다양한 종류의 서비스를 제공하는 경제
-				활동을 의미합니다.</p>
-			<p>서비스업은 전반적으로 경제에서 매우 중요한 역할을 하며, 개인과 기업 모두가 서비스를 필요로 합니다.</p>
-			<p>추천직업:</p>
-			<span>바리스타, 텔레마케터, 관광 가이드</span>
-		</div>
-
-		<!-- 추가 결과들을 이곳에 추가하십시오 -->
-
-	</div>
 </body>
 </html>

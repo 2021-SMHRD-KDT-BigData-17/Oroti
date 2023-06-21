@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="${path}/resources/css/chart.css">
 </head>
 <body>
-	<header>
+<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
@@ -69,24 +69,12 @@
 		<div class="nav2">
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
-					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/preference.do" class="career">직업·진로</a>
-				<c:choose>
-					<c:when test="${not empty SignIn}">
-						<c:choose>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-							</c:when>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-								<a href="${path}/business.do" class="resume">공고글 작성</a>
-							</c:when>
-						</c:choose>
-					</c:when>
-				</c:choose>
+					href="${path}/Chart.do" class="job">취업 분포도</a> 
+					
 			</div>
 
 			<div class="nav2_right">
-				<a href="#" class="customer">고객센터</a>
+				<a href="${path}/service.do" class="customer">고객센터</a>
 				<!-- 고객센터 페이지 링크 -->
 			</div>
 		</div>

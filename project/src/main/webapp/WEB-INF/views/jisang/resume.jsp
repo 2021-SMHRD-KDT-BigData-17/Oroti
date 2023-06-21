@@ -88,7 +88,7 @@ Character userdiv = (Character) user.getUserdiv();
 			</div>
 
 			<div class="nav2_right">
-				<a href="#" class="customer">고객센터</a>
+				<a href="${path}/service.do" class="customer">고객센터</a>
 				<!-- 고객센터 페이지 링크 -->
 			</div>
 		</div>

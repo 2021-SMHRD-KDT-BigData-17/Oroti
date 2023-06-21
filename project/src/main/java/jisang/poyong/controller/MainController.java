@@ -238,4 +238,10 @@ public class MainController {
 	    
 	    return "/jisang/resumeresult"; // 사용자에게 보여줄 뷰의 이름
 	}
+	
+	@RequestMapping("/service.do")
+		public String service() {
+		
+		return "/jisang/service";
+	}
 }
