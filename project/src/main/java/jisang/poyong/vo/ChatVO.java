@@ -6,7 +6,14 @@ public class ChatVO {
 	private String chattext; // 내용
 	private String chatdate; // 날짜
 	private String receiveuser; //받는이
+	private String chattime;
 	
+	public String getChattime() {
+		return chattime;
+	}
+	public void setChattime(String chattime) {
+		this.chattime = chattime;
+	}
 	public String getSenduser() {
 		return senduser;
 	}
@@ -34,8 +41,9 @@ public class ChatVO {
 	@Override
 	public String toString() {
 		return "ChatVO [senduser=" + senduser + ", chattext=" + chattext + ", chatdate=" + chatdate + ", receiveuser="
-				+ receiveuser + "]";
+				+ receiveuser + ", chattime=" + chattime + "]";
 	}
+	
 	
 	
 	

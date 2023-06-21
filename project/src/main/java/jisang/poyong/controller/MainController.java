@@ -183,6 +183,13 @@ public class MainController {
 		return "/jisang/resume";
 
 	}
+	
+	
+	@RequestMapping("/resumeresult.do")
+	public String Resumeresult() {
+		
+		return "/jisang/resumeresult";
+	}
 
 	@RequestMapping("/Career.do")
 	public String Carrer() {
@@ -199,7 +206,7 @@ public class MainController {
 
 	@RequestMapping("/Notice.do")
 	public String Notice(HttpSession session) {
-		BusinessVO businessAttribute = (BusinessVO) session.getAttribute("business");
+		BusinessVO businessAttributeVo = (BusinessVO) session.getAttribute("business");
 		// businessAttribute를 사용하여 필요한 작업을 수행
 
 		return "/jisang/notice";
@@ -217,11 +224,18 @@ public class MainController {
 	}
 
 	@GetMapping("/resumeresult.do")
-	public String getResumeInfo(Model model) {
+	public String getResumeInfo(Model model, HttpServletRequest request) {
+	    
 	    List<ResumeVO> resumeList = resumemapper.ResumeResult();
 	    System.out.println(resumeList);
-
 	    model.addAttribute("resumeList", resumeList);
+	    
+	    if (resumeList != null) {
+	        HttpSession session = request.getSession();
+	        session.setAttribute("resumeList", resumeList);
+	        System.out.println(resumeList + "세션 저장 확인");
+	    }
+	    
 	    return "/jisang/resumeresult"; // 사용자에게 보여줄 뷰의 이름
 	}
 }

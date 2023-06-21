@@ -253,7 +253,7 @@ int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
 			<aside>
 				<div class="menu">
 					<div class="menu_top">
-						<a href="resume.html">이력서 수정</a>
+						<a href="${path}/ChatPage.do">쪽지함 이동</a>
 					</div>
 					<div class="menu_bottom">
 						<a href="service.html">문의·신고 내역</a>

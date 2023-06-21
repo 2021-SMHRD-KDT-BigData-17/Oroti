@@ -24,7 +24,7 @@ String userphone = user.getUserphone();
 <link rel="stylesheet" href="${path}/resources/css/notice_complete.css">
 </head>
 <body>
-<header>
+	<header>
 		<!-- 헤더 첫 번째 줄 (시작)-->
 		<div class="nav1">
 			<div class="nav1_left">
@@ -105,8 +105,6 @@ String userphone = user.getUserphone();
 			<c:forEach var="notice" items="${noticeList}">
 				<table class="notice_content">
 					<tr>
-						<td class="logo" rowspan="4"><button class="logo_register">로고
-								등록</button></td>
 						<td class="businessname">&nbsp;&nbsp;&nbsp;&nbsp;회사명</td>
 						<td class="businessname_input">${notice.companyname}</td>
 						<td class="business_idx">&nbsp;공고번호</td>
@@ -208,9 +206,9 @@ String userphone = user.getUserphone();
 				</table>
 			</c:forEach>
 			<div class="buttons">
-				<button class="apply" type="submit">즉시지원</button>
+				<a href="${path}/MainPage.do"><button class="apply" type="button">즉시지원</button></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="chat" type="button">쪽지보내기</button>
+				<a href ="ChatPage.do"><button class="chat" type="button">쪽지보내기</button></a>
 			</div>
 		</form>
 	</div>

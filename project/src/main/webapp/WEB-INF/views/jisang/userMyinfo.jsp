@@ -242,7 +242,7 @@ Character userdiv = (Character) user.getUserdiv();
 			<aside>
 				<div class="menu">
 					<div class="menu_top">
-						<a href="${path}/resumeresult.do">이력서 수정</a>
+						<a href="${path}/resumeresult.do">이력서 조회</a>
 					</div>
 					<div class="menu_bottom">
 						<a href="service.html">문의·신고 내역</a>

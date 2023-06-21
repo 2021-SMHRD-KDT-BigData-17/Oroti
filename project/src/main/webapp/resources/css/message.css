@@ -460,11 +460,7 @@ aside {
 /* 채팅 입력, 전송 부분 (끝) */
 
 /* 채팅 부분 (끝) */
-
-.full_chat {
-    display: none;
-}
-
+ 
 .sidebar li:focus {
     outline: none;
 }

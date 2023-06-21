@@ -10,7 +10,7 @@
 		SELECT noticeidx, companyname, noticejobcode, noticeregdate,
 		noticeperiod
 		FROM noticeinfo
-		WHERE noticeidx > 1090
+		WHERE noticeidx &lt; 10000
 		ORDER BY
 		noticeidx DESC
 	</select>

@@ -7,14 +7,14 @@
 
 	<insert id="SendChat" parameterType="jisang.poyong.vo.ChatVO">
 		INSERT INTO chatinfo
-		(senduser, chattext, chatdate, receiveuser)
+		(senduser, chattext, chatdate, receiveuser, chattime)
 		VALUES (#{senduser},
-		#{chattext}, NOW(), "smhrd2")
+		#{chattext}, NOW(), "smhrd2", NOW())
 	</insert>
 
 	<select id="ReceiveChat" parameterType="String"
 		resultType="jisang.poyong.vo.ChatVO">
-		SELECT senduser, chattext, chatdate, receiveuser
+		SELECT senduser, chattext, chatdate, receiveuser , chattime
 		FROM chatinfo
 		WHERE receiveuser = #{receiveuser}
 		ORDER BY chatdate ASC
@@ -22,7 +22,7 @@
 
 	<select id="LoadChat" parameterType="String"
 		resultType="jisang.poyong.vo.ChatVO">
-		SELECT senduser, chattext, chatdate, receiveuser
+		SELECT senduser, chattext, chatdate, receiveuser, chattime
 		FROM chatinfo
 		WHERE (senduser = #{user} AND receiveuser = #{user})
 		OR (senduser = #{user} OR receiveuser = #{user})

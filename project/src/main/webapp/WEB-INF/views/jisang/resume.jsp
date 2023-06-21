@@ -83,20 +83,8 @@ Character userdiv = (Character) user.getUserdiv();
 		<div class="nav2">
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
-					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/preference.do" class="career">직업·진로</a>
-				<c:choose>
-					<c:when test="${not empty SignIn}">
-						<c:choose>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-							</c:when>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-								<a href="${path}/business.do" class="resume">공고글 작성</a>
-							</c:when>
-						</c:choose>
-					</c:when>
-				</c:choose>
+					href="${path}/Chart.do" class="job">취업 분포도</a> 
+					
 			</div>
 
 			<div class="nav2_right">
@@ -111,8 +99,7 @@ Character userdiv = (Character) user.getUserdiv();
 		<form action="${path}/resume.do" method="post">
 			<h1 class="resume_title">이력서</h1>
 			<!-- 인적사항 입력페이지 -->
-			<input type="hidden" value="<%=Userid%>" name="userid"> 
-			<input
+			<input type="hidden" value="<%=Userid%>" name="userid"> <input
 				type="hidden" value="<%=username%>" name="username"> <input
 				type="hidden" value="<%=useraddress%>" name="useraddress"> <input
 				type="hidden" value="<%=useremail%>" name="useremail"> <input
@@ -122,8 +109,7 @@ Character userdiv = (Character) user.getUserdiv();
 
 			<table class="resume_content" border="1" cellspacing="0">
 				<tr>
-					<td class="picture" rowspan="4"><button class="pic_register">사진파일
-							등록</button></td>
+
 					<td class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름</td>
 					<td class="name_input"><%=username%></td>
 					<td class="person_number">&nbsp;생년월일</td>
@@ -211,8 +197,8 @@ Character userdiv = (Character) user.getUserdiv();
 					<td class="graduate">졸업여부</td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart1"> ~ <input class="timebox" type="text"
+					<td class="time_input"><input class="timebox" type="date"
+						name="edustart1"> ~ <input class="timebox" type="date"
 						name="eduend1"></td>
 					<td class="school_input"><input class="schoolbox" type="text"
 						name="schoolname1"> <input class="schoolbox" type="text"
@@ -227,11 +213,11 @@ Character userdiv = (Character) user.getUserdiv();
 					</select></td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart2"> ~ <input class="timebox" type="text"
+					<td class="time_input"><input class="timebox" type="date"
+						name="edustart2"> ~ <input class="timebox" type="date"
 						name="eduend2"></td>
 					<td class="school_input"><input class="schoolbox" type="text"
-						name="schoolname2"><input class="schoolbox" type="text"
+						name="schoolname2"> <input class="schoolbox" type="text"
 						name="major2"></td>
 					<td class="score_input"><input class="scorebox" type="text"
 						name="grade2"></td>
@@ -243,11 +229,11 @@ Character userdiv = (Character) user.getUserdiv();
 					</select></td>
 				</tr>
 				<tr>
-					<td class="time_input"><input class="timebox" type="text"
-						name="edustart3"> ~ <input class="timebox" type="text"
+					<td class="time_input"><input class="timebox" type="date"
+						name="edustart3"> ~ <input class="timebox" type="date"
 						name="eduend3"></td>
 					<td class="school_input"><input class="schoolbox" type="text"
-						name="schoolname3"><input class="schoolbox" type="text"
+						name="schoolname3"> <input class="schoolbox" type="text"
 						name="major3"></td>
 					<td class="score_input"><input class="scorebox" type="text"
 						name="grade3"></td>
@@ -270,8 +256,8 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="career_time_input"><input class="timebox"
-						type="text" name="carrerstart1"> ~ <input class="timebox"
-						type="text" name="carrerend1"></td>
+						type="date" name="carrerstart1"> ~ <input class="timebox"
+						type="date" name="carrerend1"></td>
 					<td class="company_input"><input class="companybox"
 						type="text" name="companyname1"></td>
 					<td class="position_input"><input class="positionbox"
@@ -285,13 +271,14 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="career_time_input"><input class="timebox"
-						type="text" name ="carrerstart2"> ~ <input name = "carrerend2" class="timebox" type="text">
-					</td>
-					<td class="company_input"><input name ="companyname2"class="companybox"
-						type="text"></td>
+						type="date" name="carrerstart2"> ~ <input
+						name="carrerend2" class="timebox" type="date"></td>
+					<td class="company_input"><input name="companyname2"
+						class="companybox" type="text"></td>
 					<td class="position_input"><input class="positionbox"
 						type="text" name="position2"></td>
-					<td class="retire_input"><select class="retirebox" name="employment2">
+					<td class="retire_input"><select class="retirebox"
+						name="employment2">
 							<option value=""></option>
 							<option value="퇴직">퇴직</option>
 							<option value="재직">재직</option>
@@ -299,8 +286,8 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="career_time_input"><input class="timebox"
-						type="text" name="carrerstart3"> ~ <input class="timebox"
-						type="text" name="carrerend3"></td>
+						type="date" name="carrerstart3"> ~ <input class="timebox"
+						type="date" name="carrerend3"></td>
 					<td class="company_input"><input class="companybox"
 						type="text" name="companyname3"></td>
 					<td class="position_input"><input class="positionbox"
@@ -318,7 +305,8 @@ Character userdiv = (Character) user.getUserdiv();
 			<table class="resume_content_4" border="1" cellspacing="0">
 				<tr>
 					<td class="hope_job">희망직종</td>
-					<td class="hope_job_input"><select name="jobcode" class="jikjong">
+					<td class="hope_job_input"><select name="jobcode"
+						class="jikjong">
 							<option value=""></option>
 							<option value="1">IT⦁정보통신</option>
 							<option value="2">제조⦁생산⦁화학업</option>
@@ -334,11 +322,13 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="hope_pay">희망연봉</td>
-					<td class="hope_pay_input"><input type="text" class="yeonbong" name = "wage"></td>
+					<td class="hope_pay_input"><input type="text" class="yeonbong"
+						name="wage"></td>
 				</tr>
 				<tr>
 					<td class="hope_area">희망근무지역</td>
-					<td class="hope_area_input"><select name="worklocation" name = "worklocation" class="sido">
+					<td class="hope_area_input"><select name="worklocation"
+						name="worklocation" class="sido">
 							<option value=""></option>
 							<option value="특별시">특별시</option>
 							<option value="광역시">광역시</option>
@@ -355,7 +345,8 @@ Character userdiv = (Character) user.getUserdiv();
 				</tr>
 				<tr>
 					<td class="hire_type">고용형태</td>
-					<td class="hire_type_input"><select name="employmenttype" class="koyong">
+					<td class="hire_type_input"><select name="employmenttype"
+						class="koyong">
 							<option value=""></option>
 							<option value="계약직">계약직</option>
 							<option value="상용직">상용직</option>
@@ -365,9 +356,9 @@ Character userdiv = (Character) user.getUserdiv();
 			</table>
 
 			<div class="buttons">
-				<button class="register" type="submit">등록</button>
+				<a href="${path}/resumeresult.do"><button class="register" type="button">등록</button></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="cancle" type="button">취소</button>
+				<a href="${path}/MainPage.do"><button class="cancle2" type="button">취소</button></a>
 			</div>
 
 		</form>

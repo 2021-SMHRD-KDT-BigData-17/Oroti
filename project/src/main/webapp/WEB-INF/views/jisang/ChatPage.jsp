@@ -1,3 +1,4 @@
+<%@page import="jisang.poyong.vo.ChatVO"%>
 <%@page import="jisang.poyong.vo.UserVO"%>
 <%@page import="javax.xml.crypto.dsig.SignedInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,20 +7,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%
-	String userid = (String) session.getAttribute("userid");
+	UserVO userid = (UserVO) session.getAttribute("SignIn");
 %>
-<%@ page import="jisang.poyong.vo.ChatVO"%>
 <%
 	ChatVO chat;
 %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>포용취업넷</title>
+<title>notice</title>
 <link rel="stylesheet" href="${path}/resources/css/message.css">
+<!-- <link rel="stylesheet" href="header.css"> -->
 </head>
 <body>
 	<header>
@@ -72,20 +74,8 @@
 		<div class="nav2">
 			<div class="nav2_left">
 				<a href="${path}/MainPage.do" class="hire">채용정보</a> <a
-					href="${path}/Chart.do" class="job">취업 분포도</a> <a
-					href="${path}/preference.do" class="career">직업·진로</a>
-				<c:choose>
-					<c:when test="${not empty SignIn}">
-						<c:choose>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'A'}">
-								<a href="${path}/Resume.do" class="resume">이력서 작성</a>
-							</c:when>
-							<c:when test="${String.valueOf(SignIn.userdiv) eq 'B'}">
-								<a href="${path}/business.do" class="resume">공고글 작성</a>
-							</c:when>
-						</c:choose>
-					</c:when>
-				</c:choose>
+					href="${path}/Chart.do" class="job">취업 분포도</a>
+
 			</div>
 
 			<div class="nav2_right">
@@ -96,51 +86,63 @@
 		<!-- 헤더 두 번째 줄 (끝) -->
 	</header>
 
-	<!-- 쪽지 리스트 (시작) -->
-	<aside>
-		<nav class="sidebar">
-			<h3>쪽지</h3>
-			<ul class="scrollbox">
-				<li id="list1">1번째 기업</li>
-			</ul>
-		</nav>
-	</aside>
-	<!-- 쪽지 리스트 (끝) -->
+
+	<div class="all">
+		<!-- 쪽지 리스트 (시작) -->
+		<aside>
+			<nav class="sidebar">
+				<h3>쪽지</h3>
+				<ul class="scrollbox">
+					<li>1번째 기업</li>
+					<li>2번째 기업</li>
+					<li>3번째 기업</li>
+					<li>4번째 기업</li>
+					<li>5번째 기업</li>
+				</ul>
+			</nav>
+		</aside>
+		<!-- 쪽지 리스트 (끝) -->
 
 
-	<!-- 채팅창 (시작) -->
-	<section class="chat_wrap">
-		<div class="chat_screen">
-			<c:forEach var="chat" items="${chatList}">
-				<c:choose>
-					<c:when test="${chat.senduser eq currentUser.userid}">
-						<!-- 우측 -->
-						<div class="chat_content_wrap2">
-							<button type="button" class="chat_content_tts2">
-								<i class="fa-solid fa-volume-high"></i>
-							</button>
-							<div class="chat_content2">${chat.chattext}</div>
-						</div>
-						<!-- 우측 -->
-					</c:when>
-					<c:otherwise>
-						<!-- 좌측 -->
-						<div class="chat_content_wrap1">
-							<div class="chat_content1">${chat.chattext}</div>
-							<button type="button" class="chat_content_tts1">
-								<i class="fa-solid fa-volume-high"></i>
-							</button>
-						</div>
-						<!-- 좌측 -->
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		</div>
-	</section>
+		<!-- 채팅창 (시작) -->
+		<section class="chat_wrap">
+			<div class="chat_screen">
+
+				<!-- 첫 번째 기업 (시작) -->
+				<div class="full_chat" id="form1">
+
+					<!-- 기업회원 (시작) -->
+					<c:forEach var="chat" items="${chatList}">
+						<c:choose>
+							<c:when test="${chat.senduser eq currentUser.userid}">
+								<!-- 우측 -->
+								<div class="chat_content_wrap2">
+									<div class="chat_content2">${chat.chattext}</div>
+									 <div class="chat_content_time">${chat.chattime}</div>
+								</div>
+								<!-- 우측 -->
+							</c:when>
+							<c:otherwise>
+								<!-- 좌측 -->
+								<div class="chat_content_wrap1">
+									<div class="chat_content1">${chat.chattext}</div>
+									 <div class="chat_content_time">${chat.chattime}</div>
+								</div>
+								<!-- 좌측 -->
+							</c:otherwise>
+						</c:choose>
+						<!-- 개인회원 (끝) -->
+					</c:forEach>
+				</div>
+				<!-- 첫 번째 기업 (끝) -->
 
 
-	<!-- 채팅 입력, 전송 부분 (시작) -->
-	<div class="chat_bottom">
+			
+			</div>
+
+
+			<!-- 채팅 입력, 전송 부분 (시작) -->
+			<div class="chat_bottom">
 		<form action="${path}/SendChat.do" method="post" class="chat_form">
 			<input type="hidden" name="senduser" id="senduser"
 				value="<%=userid%>">
@@ -163,11 +165,17 @@
 			</div>
 		</form>
 	</div>
-	<!-- 채팅 입력, 전송 부분 (끝) -->
-	<!-- 채팅창 (끝) -->
+			<!-- 채팅 입력, 전송 부분 (끝) -->
+		</section>
+		<!-- 채팅창 (끝) -->
+	</div>
+
+	<!-- <div class="modal">
+        <div class="modal_content"></div>
+    </div> -->
 
 	<script src="https://kit.fontawesome.com/d18a01d55c.js"
 		crossorigin="anonymous"></script>
-	<%-- <script src="${path}/resources/js/message.js"></script> --%>
+	<script src="${path}/resources/js/message.js"></script>
 </body>
 </html>
