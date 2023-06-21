@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포용취업넷</title>
+
+    <link rel="stylesheet" href="css/service.css">
+</head>
+<body>
+    <header>
+        <!-- 헤더 첫 번째 줄 (시작)-->
+        <div class="nav1">
+            <div class="nav1_left">
+                <a href="index.html"> <!-- 메인페이지 링크 -->
+                    <img src="/project (3차)/img/logo.png" alt="logo">포용취업넷
+                </a>
+            </div>
+
+            <div class="nav1_center">
+                <input type="text" class="search">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            
+            <div class="nav1_right">
+                <div class="link_wrap">
+                    <!-- 로그인 전에는 "로그인, 회원가입" 버튼만 보이게, 나머지는 숨김 처리 -->
+                    <a href="SignIn.html">로그인</a>
+                    <a href="SignUp.html">회원가입</a>
+                    <!-- 로그인 후에는 "쪽지함, 내정보, 로그아웃" 버튼만 보이게, 나머지는 숨김 처리 -->
+                    <a href="message.html" class="message">쪽지함</a>
+                    <!-- myinfo_1 : 개인회원 / myinfo_2 : 기업회원 -->
+                    <a href="myinfo_1" class="myPage">내정보</a>
+                    <a href="myinfo_2" class="myPage">내정보</a>
+                    <a href="#" class="logout">로그아웃</a>
+                </div>
+            </div>
+        </div>
+        <!-- 헤더 첫 번째 줄 (끝) -->
+
+
+        <!-- 헤더 두 번째 줄 (시작) -->
+        <div class="nav2">
+            <div class="nav2_left">
+                <a href="index.html" class="hire">채용정보</a>
+                <a href="chart.html" class="job">취업 분포도</a>
+                <a href="preference_check_1.html" class="career">직업·진로</a>
+                <a href="resume.html" class="resume">이력서 작성</a>
+                <a href="#" class="announce">공고글 작성</a>
+            </div>
+
+            <div class="nav2_right">
+                <a href="service.html" class="customer">고객센터</a><!-- 고객센터 페이지 링크 -->
+            </div>
+        </div>
+        <!-- 헤더 두 번째 줄 (끝) -->
+    </header>
+
+
+    <div class="service_wrap">
+        <div class="service_form">
+            <h2>문의·신고</h2>
+            <!-- 전송할 문의 내용 (시작) -->
+            <form action="#" method="#">
+                <div class="service_content">
+                    <!-- 첫 번째 줄 (시작) -->
+                    <div class="service_line1">
+                        <div class="line1_title">문의 종류 (필수)</div>
+                        <div class="line1_content">
+                            <select name="service_type" required>
+                                <option disabled selected>선택</option>
+                                <option value="0">서비스 이용문의</option>
+                                <option value="1">불량정보·오류 신고</option>
+                                <option value="2">서비스 제안·칭찬</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 첫 번째 줄 (끝) -->
+
+                    <!-- 두 번째 줄 (시작) -->
+                    <div class="service_line2">
+                        <div class="line2_title">문의 내용 (필수)</div>
+                        <div class="line2_content">
+                            <textarea name="" id=""></textarea>
+                        </div>
+                    </div>
+                    <!-- 두 번째 줄 (끝) -->
+
+                    <!-- 세 번째 줄 (시작) -->
+                    <div class="service_line3">
+                        <div class="line3_title">파일첨부</div>
+                        <div class="line3_content">
+                            <input type="file">
+                        </div>
+                    </div>
+                    <!-- 세 번째 줄 (끝) -->
+                </div>
+
+                <div class="service_btn">
+                    <input type="submit" value="등록">
+                    <a href="index.html">취소</a>
+                </div>
+            </form>
+            <!-- 전송할 문의 내용 (끝) -->
+        </div>
+    </div>
+
+</body>
+</html>
