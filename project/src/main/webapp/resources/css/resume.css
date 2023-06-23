@@ -179,7 +179,7 @@ header {
 .resume_content{
     margin: auto;
     width: 850px;
-    height: 250px;
+    height: 220px;
     border: #c9c9c9;
     border-top: solid 2px #c9c9c9;
     /* border-bottom: solid 1px #c9c9c9; */
@@ -198,8 +198,8 @@ header {
 }
 
 .pic_register{
-    margin-left: 40px;
-    margin-top: 200px;
+    margin-left: 65px;
+    margin-top: 180px;
     background-color: #c9c9c9;
     cursor: pointer;
 }
@@ -251,7 +251,11 @@ header {
 .useraddress_input{
     border-left: none;
     height: 55px;
-    
+}
+
+.address{
+    height: 55px;
+    font-weight: 600;
 }
 
 .user_address{
@@ -348,9 +352,8 @@ header {
 .time{
     font-weight: 600;
     text-align: center;
-    width: 151px;
+    width: 300px;
     border-right: solid 1px #c9c9c9;
-
 }
 
 .time_input{
@@ -362,15 +365,30 @@ header {
 .school{
     font-weight: 600;
     text-align: center;
-    width: 500px;
+    width: 300px;
     border-right: solid 1px #c9c9c9;
+}
 
+.major{
+    font-weight: 600;
+    text-align: center;
+    width: 300px;
+    border-right: solid 1px #c9c9c9;
+}
+
+.major_input{
+    width: 300px;
+    text-align: center;
+}
+
+.majorbox{
+    width: 120px;
+    height: 35px;
 }
 
 .school_input{
     text-align: center;
     border-right: solid 1px #c9c9c9;
-
 }
 
 .score{
@@ -397,12 +415,12 @@ header {
 
 .timebox{
     height: 35px;
-    width: 110px;
+    width: 75px;
 }
 
 .schoolbox{
     height: 35px;
-    width: 400px;
+    width: 120px;
 }
 
 .scorebox{
@@ -440,7 +458,7 @@ header {
 .career_time{
     font-weight: 600;
     text-align: center;
-    width: 151px;
+    width: 300px;
     border-right: solid 1px #c9c9c9;
 }
 
@@ -448,11 +466,12 @@ header {
     height: 65.78px;
     text-align: center;
     border-right: solid 1px #c9c9c9;
+    width: 300px;
 }
 
 .companybox{
     height: 35px;
-    width: 400px;
+    width: 360px;
     text-align: center;
 }
 
@@ -460,11 +479,13 @@ header {
     font-weight: 600;
     text-align: center;
     border-right: solid 1px #c9c9c9;
+    width: 400px;
 }
 
 .company_input{
     text-align: center;
     border-right: solid 1px #c9c9c9;
+    width: 400px;
 }
 
 .position{
@@ -577,6 +598,12 @@ header {
 }
 
 .koyong{
+    height: 35px;
+    width: 500px;
+    margin-left: 25px;
+}
+
+.sido{
     height: 35px;
     width: 500px;
     margin-left: 25px;
