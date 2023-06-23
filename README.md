@@ -25,7 +25,8 @@
    ![차트](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/239d9734-6624-45e4-8f5f-07dd219ced79)
 
    ## 6. 시연 영
-   Uploading 메인기능 찐 (online-video-cutter.com).mp4…
+   
+   https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/02b36e3d-1840-4ab8-b958-79c534f7852d
 
    ## 7. 팀원 역할
    ![07 팀원 소개](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/36e82b88-4ca6-456c-b20f-cdf2a7ef2176)
