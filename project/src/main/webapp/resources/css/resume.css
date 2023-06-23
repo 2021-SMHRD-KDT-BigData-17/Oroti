@@ -51,9 +51,9 @@ header {
 }
 
 .nav1_left a img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
 }
 
 .nav1_center {
@@ -209,7 +209,7 @@ header {
     font-weight: 600;
 }
 
-.user_name{
+.name{
     width: 130px;
     text-align: left;
     font-weight: 600;
@@ -629,25 +629,30 @@ header {
 }
 
 .register{
-    width: 150px;
+    width: 120px;
     height: 50px;
     color: white;
-    font-weight: 500;
-    font-size: 30px;
+    font-size: 20px;
     background-color: #3399ff;
     cursor: pointer;
     border: none;
+    border-radius: 4px;
+    letter-spacing: 2px;
 }
 
 .cancle{
     width: 150px;
     height: 50px;
     background-color: white;
-    color: #c9c9c9;
-    border: solid 1px lightgray;
-    font-weight: 500;
-    font-size: 30px;
+    border: solid 1px #a9a9a9;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.cancle a {
+	text-decoration: none;
+	font-size: 16px;
+    color: #666;
 }
 
 .edit_bt{
@@ -662,4 +667,16 @@ header {
     cursor: pointer;
     margin-left: 1130px;
     margin-top: 10px;
+}
+
+.cancle2 {
+	width: 120px;
+	height: 50px;
+	border: 1px solid #a9a9a9;
+	border-radius: 4px;
+	background-color: transparent;
+	font-size: 20px;
+	color: #666;
+	letter-spacing: 2px;
+	cursor: pointer;
 }

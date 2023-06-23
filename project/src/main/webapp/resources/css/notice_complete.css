@@ -51,9 +51,9 @@ header {
 }
 
 .nav1_left a img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
 }
 
 .nav1_center {
@@ -297,7 +297,7 @@ header {
 .hire_information{
     font-size: 22px;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
     margin-top: 60px;
     margin-bottom: 20px;
 }
@@ -455,7 +455,7 @@ header {
 .apply_information{
     font-size: 22px;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
     margin-top: 60px;
     margin-bottom: 20px;
 }
