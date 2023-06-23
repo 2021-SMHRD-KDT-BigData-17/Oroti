@@ -6,6 +6,7 @@
        • 장애인 결제활동 실태조사 데이터를 기반으로 장애별, 직군별, 성별 3가지 요소를 분류 후, 인구수 차트 구현    
       
    ## 서비스 흐름도
-      
-
 ![서비스흐름도](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/c37efbc5-8078-48c3-afbc-e0c6e0ee4bbd)
+   
+   ## E-R 다이어그램
+   ![DB_ER](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/2999b1f2-dcdb-47f7-be7d-d4152f0acb7a)
