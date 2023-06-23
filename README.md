@@ -24,7 +24,7 @@
    ### 5-3. 장애별 직업별 인구수 차트
    ![차트](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/239d9734-6624-45e4-8f5f-07dd219ced79)
 
-   ## 6. 시연 영
+   ## 6. 시연 영상
    
    https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/02b36e3d-1840-4ab8-b958-79c534f7852d
 
