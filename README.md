@@ -7,7 +7,7 @@
       
    ## 서비스 흐름도
    <p align="center">
-  <img src="![서비스흐름도](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/d9fb6dfc-eadc-40ba-9059-13282c65c68b)">
+  <img src="(https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/d9fb6dfc-eadc-40ba-9059-13282c65c68b)">
    </p>
       
 
