@@ -1,5 +1,5 @@
 
-https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/02b36e3d-1840-4ab8-b958-79c534f7852d
+
 # Oroti
 # 주제 : MLP와 고용노동부 빅데이터를 활용한 장애인 직업 추천 시스템 및 구인구직 서비스
    ##  1. 주요 기능
