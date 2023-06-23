@@ -1,4 +1,5 @@
 package jisang.poyong.mapper;
+
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,7 +16,5 @@ public interface SurveyMapper {
 	public void surveyinsert(SurveyresultVO vo);
 
 	public List<NoticeVO> noticesearch(HashMap<String, List<String>> requestDataMap);
-
-
 
 }
