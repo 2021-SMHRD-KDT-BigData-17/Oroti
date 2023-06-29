@@ -29,7 +29,11 @@
    https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/02b36e3d-1840-4ab8-b958-79c534f7852d
 
    ## 7. 팀원 역할
-   ![07 팀원 소개](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/36e82b88-4ca6-456c-b20f-cdf2a7ef2176)
+   ![07 팀원 소개]
+   팀장 : 고민성 (딥러닝)
+   팀원 : 김지상 (백앤드)
+   팀원 : 김진영 (프론트앤드)
+   팀원 : 서현주 (프론트앤드)
 
    ## 8. 참고 문헌
    ![07 참고 문헌](https://github.com/2021-SMHRD-KDT-BigData-17/Oroti/assets/127484518/fc057746-def4-4938-9b94-597c49dcded4)
